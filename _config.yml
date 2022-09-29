@@ -99,6 +99,7 @@ ignore:
 ## Themes: https://hexo.io/themes/
 #theme: landscape
 theme: next
+#theme: jacman
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
