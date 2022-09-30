@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Chapter 01：Data Mining and Data Ware</title>
+    <title>Chapter 01：Data Mining and Data Warehouse</title>
     <url>/2022/09/30/DataMining-2/</url>
     <content><![CDATA[<h4 id="数据挖掘与数据仓库-1"><a href="#数据挖掘与数据仓库-1" class="headerlink" title="数据挖掘与数据仓库_1"></a>数据挖掘与数据仓库_1</h4><p><strong>1、</strong> <strong>数据仓库产生原因：</strong></p>
 <p>A、 数据的大量积累</p>
@@ -35,7 +35,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Chapter 02：Data Mining and Data Ware</title>
+    <title>Chapter 02：Data Mining and Data Warehouse</title>
     <url>/2022/09/30/DataMining-3/</url>
     <content><![CDATA[<h4 id="数据挖掘与数据仓库-2"><a href="#数据挖掘与数据仓库-2" class="headerlink" title="数据挖掘与数据仓库_2"></a>数据挖掘与数据仓库_2</h4><h5 id="1、-数据库与数据仓库对比"><a href="#1、-数据库与数据仓库对比" class="headerlink" title="1、 数据库与数据仓库对比"></a><strong>1、</strong> <strong>数据库与数据仓库对比</strong></h5><table>
 <thead>
@@ -209,7 +209,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Chapter 03：Data Mining and Data Ware</title>
+    <title>Chapter 03：Data Mining and Data Warehouse</title>
     <url>/2022/09/30/DataMining-4/</url>
     <content><![CDATA[<h4 id="数据挖掘与数据仓库-3"><a href="#数据挖掘与数据仓库-3" class="headerlink" title="数据挖掘与数据仓库_3"></a>数据挖掘与数据仓库_3</h4><h5 id="1、例题"><a href="#1、例题" class="headerlink" title="1、例题"></a><strong>1</strong>、例题</h5><p><img src="../images/DataMining/image-20220930202533332.png" alt="image-20220930202533332"></p>
 <p><strong>SQL</strong>查询：</p>
@@ -282,7 +282,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Chapter 04：Data Mining and Data Ware</title>
+    <title>Chapter 04：Data Mining and Data Warehouse</title>
     <url>/2022/09/30/DataMining-5/</url>
     <content><![CDATA[<h4 id="数据挖掘与数据仓库-4"><a href="#数据挖掘与数据仓库-4" class="headerlink" title="数据挖掘与数据仓库_4"></a>数据挖掘与数据仓库_4</h4><h5 id="1、联机分析处理（OLAP）"><a href="#1、联机分析处理（OLAP）" class="headerlink" title="1、联机分析处理（OLAP）"></a><strong>1</strong>、联机分析处理（OLAP）</h5><p>A、交互性：联机</p>
 <p>B、维（dimension）：分析数据的角度 à 立方体（超过三维的立方体称为超立方体或多维空间）</p>
