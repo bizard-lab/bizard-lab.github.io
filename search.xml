@@ -1,40 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Chapter 01：Data Mining and Data Ware</title>
-    <url>/2022/09/30/DataMining-2/</url>
-    <content><![CDATA[<h4 id="数据挖掘与数据仓库-1"><a href="#数据挖掘与数据仓库-1" class="headerlink" title="数据挖掘与数据仓库_1"></a>数据挖掘与数据仓库_1</h4><p><strong>1、</strong> <strong>数据仓库产生原因：</strong></p>
-<p>A、 数据的大量积累</p>
-<p>B、 关系数据库的局限（操作型数据库）{局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题}</p>
-<p>C、 异构数据源共享问题（各类数据库产品增加à异构环境数据增加）</p>
-<h5 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h5><p>一、 数据仓库</p>
-<p><img src="../images/DataMining/clip_image002.png" alt="clip_image002"></p>
-<p>二、联邦数据库</p>
-<p><img src="../images/DataMining/clip_image002-16645445572993.png" alt="clip_image002-16645445572993"></p>
-<h5 id="2、数据仓库与联邦数据库的区别："><a href="#2、数据仓库与联邦数据库的区别：" class="headerlink" title="2、数据仓库与联邦数据库的区别："></a>2、<strong>数据仓库与联邦数据库的区别：</strong></h5><p>数据仓库：优：查询速度快   </p>
-<p>​                   缺：空间占用大，安全性一般，实时更新一般</p>
-<p>联邦数据库：优：隐私保护性好，空间占用小，实时更新较好</p>
-<p>​                       缺：查询处理复杂，速度慢</p>
-<h5 id="3、数据仓库：一个面向主题的、集成的、时变的、非易失的数据集合。"><a href="#3、数据仓库：一个面向主题的、集成的、时变的、非易失的数据集合。" class="headerlink" title="3、数据仓库：一个面向主题的、集成的、时变的、非易失的数据集合。"></a>3、数据仓库：一个面向主题的、集成的、时变的、非易失的数据集合。</h5><p>A、面向主题的：与主题相关的数据导入数据仓库，由异构转换为同构；</p>
-<p>B、集成的：集成的主要方法：a、统一：消除不一致的现象（数据清洗）</p>
-<p>​                                                     b、综合：对原有数据进行综合和计算</p>
-<h5 id="ETL（Extraction、Transformation、Loading）："><a href="#ETL（Extraction、Transformation、Loading）：" class="headerlink" title="ETL（Extraction、Transformation、Loading）："></a><strong>ETL</strong>（Extraction、Transformation、Loading）：</h5><p>数据抽取、数据清洗、数据转换、数据加载、数据更新。</p>
-<p>数据更新：全量更新：数据库建立时期</p>
-<p>​                   增量更新：数据库维护</p>
-<p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
-<p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
-<h5 id="数据仓库与数据库的区别本质上主要为异构和同构的差别"><a href="#数据仓库与数据库的区别本质上主要为异构和同构的差别" class="headerlink" title="数据仓库与数据库的区别本质上主要为异构和同构的差别"></a><strong>数据仓库与数据库的区别本质上主要为异构和同构的差别</strong></h5><p>事务型数据库（操作型）：TP事务处理，以写为主</p>
-<p>分析型数据库：AP分析处理，以读为主</p>
-]]></content>
-      <categories>
-        <category>BigData</category>
-      </categories>
-      <tags>
-        <tag>BigData</tag>
-        <tag>DataMining</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Chapter 02：Data Mining and Data Ware</title>
     <url>/2022/09/30/DataMining-3/</url>
     <content><![CDATA[<h4 id="数据挖掘与数据仓库-2"><a href="#数据挖掘与数据仓库-2" class="headerlink" title="数据挖掘与数据仓库_2"></a>数据挖掘与数据仓库_2</h4><h5 id="1、-数据库与数据仓库对比"><a href="#1、-数据库与数据仓库对比" class="headerlink" title="1、 数据库与数据仓库对比"></a><strong>1、</strong> <strong>数据库与数据仓库对比</strong></h5><table>
@@ -209,40 +175,30 @@
       </tags>
   </entry>
   <entry>
-    <title>Chapter 04：Data Mining and Data Ware</title>
-    <url>/2022/09/30/DataMining-5/</url>
-    <content><![CDATA[<h4 id="数据挖掘与数据仓库-4"><a href="#数据挖掘与数据仓库-4" class="headerlink" title="数据挖掘与数据仓库_4"></a>数据挖掘与数据仓库_4</h4><h5 id="1、联机分析处理（OLAP）"><a href="#1、联机分析处理（OLAP）" class="headerlink" title="1、联机分析处理（OLAP）"></a><strong>1</strong>、联机分析处理（OLAP）</h5><p>A、交互性：联机</p>
-<p>B、维（dimension）：分析数据的角度 à 立方体（超过三维的立方体称为超立方体或多维空间）</p>
-<p><strong>a、维的层次（hierarchy）：</strong></p>
-<p>例.时间维：       </p>
-<p>​       年-季度-月-天</p>
-<p>​       年-学期-周   （每一层称为 <strong>级别（level）</strong>）</p>
-<p><strong>b、维的成员（member）</strong>：维的一个取值</p>
-<p><strong>c、多维数组（多维空间）</strong>：维和度量的组合</p>
-<p><img src="../images/DataMining/image-20220930214656970.png" alt="image-20220930214656970"></p>
-<p><strong>d、数据单元（单元格）</strong>：多维数组的一个取值</p>
-<p>如果查询结果保存起来，则称该查询视图物化</p>
-<p> <strong>e、多维分析：</strong></p>
-<p>A、切片（slice）/切块（dice）</p>
-<p>切片：单个维度分析</p>
-<p>切块：两个或以上维度分析</p>
-<p>B、钻取</p>
-<p>​     向下钻取（Drill-down）下钻：粗粒度—–&gt;细粒度分析</p>
-<p>​     向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
-<p>C、旋转（pivot）：不同维度的置换</p>
-<p>求不同城市的总销售量</p>
-<p>Select sum(sale-unit) from sale</p>
-<p>Join time on time.Q=sale.Q</p>
-<p>Join city on city.C=sale.C</p>
-<p>Group by city.C</p>
-<p><strong>f、OLAP实现架构</strong></p>
-<p>ROLAP：关系表 —–&gt;存储空间更小</p>
-<p>MOLAP：多维数组—–&gt;查询效率高</p>
-<p>Eg.sale(产品)(季度)(城市)——-&gt;value</p>
-<p>​               TV     Q1    北京</p>
-<p>​               CD    Q2    上海</p>
-<p>​               PC     Q3    广州</p>
-<p>​               ALL   ALL    ALL</p>
+    <title>Chapter 01：Data Mining and Data Ware</title>
+    <url>/2022/09/30/DataMining-2/</url>
+    <content><![CDATA[<h4 id="数据挖掘与数据仓库-1"><a href="#数据挖掘与数据仓库-1" class="headerlink" title="数据挖掘与数据仓库_1"></a>数据挖掘与数据仓库_1</h4><p><strong>1、</strong> <strong>数据仓库产生原因：</strong></p>
+<p>A、 数据的大量积累</p>
+<p>B、 关系数据库的局限（操作型数据库）{局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题}</p>
+<p>C、 异构数据源共享问题（各类数据库产品增加à异构环境数据增加）</p>
+<h5 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h5><p>一、 数据仓库</p>
+<p><img src="../images/DataMining/clip_image002.png" alt="clip_image002"></p>
+<p>二、联邦数据库</p>
+<p><img src="../images/DataMining/clip_image002-16645445572993.png" alt="clip_image002-16645445572993"></p>
+<h5 id="2、数据仓库与联邦数据库的区别："><a href="#2、数据仓库与联邦数据库的区别：" class="headerlink" title="2、数据仓库与联邦数据库的区别："></a>2、<strong>数据仓库与联邦数据库的区别：</strong></h5><p>数据仓库：优：查询速度快   </p>
+<p>​                   缺：空间占用大，安全性一般，实时更新一般</p>
+<p>联邦数据库：优：隐私保护性好，空间占用小，实时更新较好</p>
+<p>​                       缺：查询处理复杂，速度慢</p>
+<h5 id="3、数据仓库：一个面向主题的、集成的、时变的、非易失的数据集合。"><a href="#3、数据仓库：一个面向主题的、集成的、时变的、非易失的数据集合。" class="headerlink" title="3、数据仓库：一个面向主题的、集成的、时变的、非易失的数据集合。"></a>3、数据仓库：一个面向主题的、集成的、时变的、非易失的数据集合。</h5><p>A、面向主题的：与主题相关的数据导入数据仓库，由异构转换为同构；</p>
+<p>B、集成的：集成的主要方法：a、统一：消除不一致的现象（数据清洗）</p>
+<p>​                                                     b、综合：对原有数据进行综合和计算</p>
+<h5 id="ETL（Extraction、Transformation、Loading）："><a href="#ETL（Extraction、Transformation、Loading）：" class="headerlink" title="ETL（Extraction、Transformation、Loading）："></a><strong>ETL</strong>（Extraction、Transformation、Loading）：</h5><p>数据抽取、数据清洗、数据转换、数据加载、数据更新。</p>
+<p>数据更新：全量更新：数据库建立时期</p>
+<p>​                   增量更新：数据库维护</p>
+<p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
+<p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
+<h5 id="数据仓库与数据库的区别本质上主要为异构和同构的差别"><a href="#数据仓库与数据库的区别本质上主要为异构和同构的差别" class="headerlink" title="数据仓库与数据库的区别本质上主要为异构和同构的差别"></a><strong>数据仓库与数据库的区别本质上主要为异构和同构的差别</strong></h5><p>事务型数据库（操作型）：TP事务处理，以写为主</p>
+<p>分析型数据库：AP分析处理，以读为主</p>
 ]]></content>
       <categories>
         <category>BigData</category>
@@ -316,6 +272,50 @@
 <p>​           7、数据仓库的运行与维护</p>
 <h5 id="数据仓库设计方法论："><a href="#数据仓库设计方法论：" class="headerlink" title="数据仓库设计方法论："></a>数据仓库设计方法论：</h5><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
 <p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
+]]></content>
+      <categories>
+        <category>BigData</category>
+      </categories>
+      <tags>
+        <tag>BigData</tag>
+        <tag>DataMining</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chapter 04：Data Mining and Data Ware</title>
+    <url>/2022/09/30/DataMining-5/</url>
+    <content><![CDATA[<h4 id="数据挖掘与数据仓库-4"><a href="#数据挖掘与数据仓库-4" class="headerlink" title="数据挖掘与数据仓库_4"></a>数据挖掘与数据仓库_4</h4><h5 id="1、联机分析处理（OLAP）"><a href="#1、联机分析处理（OLAP）" class="headerlink" title="1、联机分析处理（OLAP）"></a><strong>1</strong>、联机分析处理（OLAP）</h5><p>A、交互性：联机</p>
+<p>B、维（dimension）：分析数据的角度 à 立方体（超过三维的立方体称为超立方体或多维空间）</p>
+<p><strong>a、维的层次（hierarchy）：</strong></p>
+<p>例.时间维：       </p>
+<p>​       年-季度-月-天</p>
+<p>​       年-学期-周   （每一层称为 <strong>级别（level）</strong>）</p>
+<p><strong>b、维的成员（member）</strong>：维的一个取值</p>
+<p><strong>c、多维数组（多维空间）</strong>：维和度量的组合</p>
+<p><img src="../images/DataMining/image-20220930214656970.png" alt="image-20220930214656970"></p>
+<p><strong>d、数据单元（单元格）</strong>：多维数组的一个取值</p>
+<p>如果查询结果保存起来，则称该查询视图物化</p>
+<p> <strong>e、多维分析：</strong></p>
+<p>A、切片（slice）/切块（dice）</p>
+<p>切片：单个维度分析</p>
+<p>切块：两个或以上维度分析</p>
+<p>B、钻取</p>
+<p>​     向下钻取（Drill-down）下钻：粗粒度—–&gt;细粒度分析</p>
+<p>​     向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
+<p>C、旋转（pivot）：不同维度的置换</p>
+<p>求不同城市的总销售量</p>
+<p>Select sum(sale-unit) from sale</p>
+<p>Join time on time.Q=sale.Q</p>
+<p>Join city on city.C=sale.C</p>
+<p>Group by city.C</p>
+<p><strong>f、OLAP实现架构</strong></p>
+<p>ROLAP：关系表 —–&gt;存储空间更小</p>
+<p>MOLAP：多维数组—–&gt;查询效率高</p>
+<p>Eg.sale(产品)(季度)(城市)——-&gt;value</p>
+<p>​               TV     Q1    北京</p>
+<p>​               CD    Q2    上海</p>
+<p>​               PC     Q3    广州</p>
+<p>​               ALL   ALL    ALL</p>
 ]]></content>
       <categories>
         <category>BigData</category>
