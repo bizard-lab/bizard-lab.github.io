@@ -293,6 +293,134 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/09/30/DataMining-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jinguo you">
+      <meta itemprop="description" content="本站立足于大数据、数据挖掘的知识分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大数据浪潮">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/30/DataMining-4/" class="post-title-link" itemprop="url">Chapter 03：Data Mining and Data Ware</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-30 21:24:32 / 修改时间：22:17:53" itemprop="dateCreated datePublished" datetime="2022-09-30T21:24:32+08:00">2022-09-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigData/" itemprop="url" rel="index"><span itemprop="name">BigData</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="数据挖掘与数据仓库-3"><a href="#数据挖掘与数据仓库-3" class="headerlink" title="数据挖掘与数据仓库_3"></a>数据挖掘与数据仓库_3</h4><h5 id="1、例题"><a href="#1、例题" class="headerlink" title="1、例题"></a><strong>1</strong>、例题</h5><p><img src="../images/DataMining/image-20220930202533332.png" alt="image-20220930202533332"></p>
+<p><strong>SQL</strong>查询：</p>
+<p>A、销售总量</p>
+<p>select sum(units_sold) from sales_fact</p>
+<p>B、不同年份的销售量</p>
+<p>select sum(units_sold) from sales_fact</p>
+<p>join time_dim on sales_fact.time_key = time_dim.time_key</p>
+<p>group by time_dim.year</p>
+<p>C、不同年份不同商品项的销售额</p>
+<p>select city as 城市,item_name as 商品项,sum(dollars_sold) as 销售额</p>
+<p>from sales_fact a</p>
+<p>inner join geo_dim b</p>
+<p>on a.location_key = b.location_key</p>
+<p>inner join item_dim c</p>
+<p>on a.item_key = c.item_key</p>
+<p>group by b.city,c.item_name</p>
+<p>D、2021年1~8月份各月平均销售</p>
+<p>select sum(avg_sales) from sales_fact a</p>
+<p>join time_dim b on a.time_key = b.time_key</p>
+<p>where mouth &gt;=1 and mouth &lt;=8</p>
+<h5 id="2、粒度"><a href="#2、粒度" class="headerlink" title="2、粒度"></a><strong>2</strong>、粒度</h5><p>粒度：数据综合程度高低的一个度量</p>
+<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
+<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
+<p>年（粗）–&gt;月–&gt;日（细）</p>
+<h5 id="3、分割（分区）（partition）"><a href="#3、分割（分区）（partition）" class="headerlink" title="3、分割（分区）（partition）"></a><strong>3</strong>、分割（分区）（partition）</h5><p>划分方式：水平划分和垂直划分</p>
+<p>分区类别：:1、范围分区：按时间分割，按单位分割。（分布式数据库）</p>
+<p>​                    2、哈希分区：（polarDB-X数据库）</p>
+<p>​                    3、列表分区：按职业、学历分区</p>
+<h5 id="4、系统设计差异"><a href="#4、系统设计差异" class="headerlink" title="4、系统设计差异"></a><strong>4</strong>、系统设计差异</h5><table>
+<thead>
+<tr>
+<th><strong>操作型数据库</strong></th>
+<th><strong>数据仓库</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>面向应用</td>
+<td>面向分析</td>
+</tr>
+<tr>
+<td>确定的应用需求</td>
+<td>不确定的分析需求</td>
+</tr>
+<tr>
+<td>事务处理性能</td>
+<td>数据的全局一致性</td>
+</tr>
+<tr>
+<td>数据来自组织外部</td>
+<td>数据来自系统内部</td>
+</tr>
+</tbody></table>
+<h5 id="数据仓库设计原则：面向主题原则、数据驱动原则、原型法设计原则"><a href="#数据仓库设计原则：面向主题原则、数据驱动原则、原型法设计原则" class="headerlink" title="数据仓库设计原则：面向主题原则、数据驱动原则、原型法设计原则"></a>数据仓库设计原则：面向主题原则、数据驱动原则、原型法设计原则</h5><h5 id="数据仓库设计步骤："><a href="#数据仓库设计步骤：" class="headerlink" title="数据仓库设计步骤："></a>数据仓库设计步骤：</h5><p>​           1、明确主题</p>
+<p>​           2、概念模型设计</p>
+<p>​           3、技术准备</p>
+<p>​           4、逻辑模型设计</p>
+<p>​           5、物理模型设计</p>
+<p>​           6、数据仓库生成</p>
+<p>​           7、数据仓库的运行与维护</p>
+<h5 id="数据仓库设计方法论："><a href="#数据仓库设计方法论：" class="headerlink" title="数据仓库设计方法论："></a>数据仓库设计方法论：</h5><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
+<p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/09/30/DataMining-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -592,134 +720,6 @@
 </tbody></table>
 <p><strong>销售分析的逻辑模型（星型模型）</strong></p>
 <p><img src="../images/DataMining/image-20220930201611688.png" alt="image-20220930201611688"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/09/30/DataMining-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jinguo you">
-      <meta itemprop="description" content="本站立足于大数据、数据挖掘的知识分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大数据浪潮">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/30/DataMining-4/" class="post-title-link" itemprop="url">Chapter 03：Data Mining and Data Ware</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-09-30 21:24:32 / 修改时间：22:17:53" itemprop="dateCreated datePublished" datetime="2022-09-30T21:24:32+08:00">2022-09-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/BigData/" itemprop="url" rel="index"><span itemprop="name">BigData</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="数据挖掘与数据仓库-3"><a href="#数据挖掘与数据仓库-3" class="headerlink" title="数据挖掘与数据仓库_3"></a>数据挖掘与数据仓库_3</h4><h5 id="1、例题"><a href="#1、例题" class="headerlink" title="1、例题"></a><strong>1</strong>、例题</h5><p><img src="../images/DataMining/image-20220930202533332.png" alt="image-20220930202533332"></p>
-<p><strong>SQL</strong>查询：</p>
-<p>A、销售总量</p>
-<p>select sum(units_sold) from sales_fact</p>
-<p>B、不同年份的销售量</p>
-<p>select sum(units_sold) from sales_fact</p>
-<p>join time_dim on sales_fact.time_key = time_dim.time_key</p>
-<p>group by time_dim.year</p>
-<p>C、不同年份不同商品项的销售额</p>
-<p>select city as 城市,item_name as 商品项,sum(dollars_sold) as 销售额</p>
-<p>from sales_fact a</p>
-<p>inner join geo_dim b</p>
-<p>on a.location_key = b.location_key</p>
-<p>inner join item_dim c</p>
-<p>on a.item_key = c.item_key</p>
-<p>group by b.city,c.item_name</p>
-<p>D、2021年1~8月份各月平均销售</p>
-<p>select sum(avg_sales) from sales_fact a</p>
-<p>join time_dim b on a.time_key = b.time_key</p>
-<p>where mouth &gt;=1 and mouth &lt;=8</p>
-<h5 id="2、粒度"><a href="#2、粒度" class="headerlink" title="2、粒度"></a><strong>2</strong>、粒度</h5><p>粒度：数据综合程度高低的一个度量</p>
-<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
-<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
-<p>年（粗）–&gt;月–&gt;日（细）</p>
-<h5 id="3、分割（分区）（partition）"><a href="#3、分割（分区）（partition）" class="headerlink" title="3、分割（分区）（partition）"></a><strong>3</strong>、分割（分区）（partition）</h5><p>划分方式：水平划分和垂直划分</p>
-<p>分区类别：:1、范围分区：按时间分割，按单位分割。（分布式数据库）</p>
-<p>​                    2、哈希分区：（polarDB-X数据库）</p>
-<p>​                    3、列表分区：按职业、学历分区</p>
-<h5 id="4、系统设计差异"><a href="#4、系统设计差异" class="headerlink" title="4、系统设计差异"></a><strong>4</strong>、系统设计差异</h5><table>
-<thead>
-<tr>
-<th><strong>操作型数据库</strong></th>
-<th><strong>数据仓库</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>面向应用</td>
-<td>面向分析</td>
-</tr>
-<tr>
-<td>确定的应用需求</td>
-<td>不确定的分析需求</td>
-</tr>
-<tr>
-<td>事务处理性能</td>
-<td>数据的全局一致性</td>
-</tr>
-<tr>
-<td>数据来自组织外部</td>
-<td>数据来自系统内部</td>
-</tr>
-</tbody></table>
-<h5 id="数据仓库设计原则：面向主题原则、数据驱动原则、原型法设计原则"><a href="#数据仓库设计原则：面向主题原则、数据驱动原则、原型法设计原则" class="headerlink" title="数据仓库设计原则：面向主题原则、数据驱动原则、原型法设计原则"></a>数据仓库设计原则：面向主题原则、数据驱动原则、原型法设计原则</h5><h5 id="数据仓库设计步骤："><a href="#数据仓库设计步骤：" class="headerlink" title="数据仓库设计步骤："></a>数据仓库设计步骤：</h5><p>​           1、明确主题</p>
-<p>​           2、概念模型设计</p>
-<p>​           3、技术准备</p>
-<p>​           4、逻辑模型设计</p>
-<p>​           5、物理模型设计</p>
-<p>​           6、数据仓库生成</p>
-<p>​           7、数据仓库的运行与维护</p>
-<h5 id="数据仓库设计方法论："><a href="#数据仓库设计方法论：" class="headerlink" title="数据仓库设计方法论："></a>数据仓库设计方法论：</h5><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
-<p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
 
       
     </div>
