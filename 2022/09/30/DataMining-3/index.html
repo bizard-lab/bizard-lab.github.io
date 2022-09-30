@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bizard-lab.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="数据挖掘与数据仓库_21、 数据库与数据仓库对比   数据库 数据仓库    细节的 综合或提炼的   在存取时准确的 代表过去的数据   可更新的 不更新   一次操作数据量小 一次操作数据量大   面向应用 面向分析   支持管理 支持决策   用于事务处理 主要用于分析数据   2、 DW（数据仓库）、ODS（操作型数据存储）、DM（数据集市）属性   DW（数据仓库）（侧重于计算能力） O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter 02：Data Mining and Data Ware">
+<meta property="og:url" content="https://bizard-lab.github.io/2022/09/30/DataMining-3/index.html">
+<meta property="og:site_name" content="大数据浪潮">
+<meta property="og:description" content="数据挖掘与数据仓库_21、 数据库与数据仓库对比   数据库 数据仓库    细节的 综合或提炼的   在存取时准确的 代表过去的数据   可更新的 不更新   一次操作数据量小 一次操作数据量大   面向应用 面向分析   支持管理 支持决策   用于事务处理 主要用于分析数据   2、 DW（数据仓库）、ODS（操作型数据存储）、DM（数据集市）属性   DW（数据仓库）（侧重于计算能力） O">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bizard-lab.github.io/2022/blog/source/img/image-20220930201611688.png">
+<meta property="article:published_time" content="2022-09-30T13:24:32.000Z">
+<meta property="article:modified_time" content="2022-09-30T13:58:35.417Z">
+<meta property="article:author" content="Jinguo you">
+<meta property="article:tag" content="BigData">
+<meta property="article:tag" content="DataMining">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bizard-lab.github.io/2022/blog/source/img/image-20220930201611688.png">
+
+<link rel="canonical" href="https://bizard-lab.github.io/2022/09/30/DataMining-3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Chapter 02：Data Mining and Data Ware | 大数据浪潮</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">大数据浪潮</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">站在大数据之巅</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/09/30/DataMining-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jinguo you">
+      <meta itemprop="description" content="本站立足于大数据、数据挖掘的知识分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大数据浪潮">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Chapter 02：Data Mining and Data Ware
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-30 21:24:32 / 修改时间：21:58:35" itemprop="dateCreated datePublished" datetime="2022-09-30T21:24:32+08:00">2022-09-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigData/" itemprop="url" rel="index"><span itemprop="name">BigData</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="数据挖掘与数据仓库-2"><a href="#数据挖掘与数据仓库-2" class="headerlink" title="数据挖掘与数据仓库_2"></a>数据挖掘与数据仓库_2</h4><h5 id="1、-数据库与数据仓库对比"><a href="#1、-数据库与数据仓库对比" class="headerlink" title="1、 数据库与数据仓库对比"></a><strong>1、</strong> <strong>数据库与数据仓库对比</strong></h5><table>
+<thead>
+<tr>
+<th><strong>数据库</strong></th>
+<th><strong>数据仓库</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>细节的</td>
+<td>综合或提炼的</td>
+</tr>
+<tr>
+<td>在存取时准确的</td>
+<td>代表过去的数据</td>
+</tr>
+<tr>
+<td>可更新的</td>
+<td>不更新</td>
+</tr>
+<tr>
+<td>一次操作数据量小</td>
+<td>一次操作数据量大</td>
+</tr>
+<tr>
+<td>面向应用</td>
+<td>面向分析</td>
+</tr>
+<tr>
+<td>支持管理</td>
+<td>支持决策</td>
+</tr>
+<tr>
+<td>用于事务处理</td>
+<td>主要用于分析数据</td>
+</tr>
+</tbody></table>
+<h5 id="2、-DW（数据仓库）、ODS（操作型数据存储）、DM（数据集市）属性"><a href="#2、-DW（数据仓库）、ODS（操作型数据存储）、DM（数据集市）属性" class="headerlink" title="2、 DW（数据仓库）、ODS（操作型数据存储）、DM（数据集市）属性"></a><strong>2、</strong> DW（数据仓库）、ODS（操作型数据存储）、DM（数据集市）属性</h5><table>
+<thead>
+<tr>
+<th><strong>DW</strong>（数据仓库）（侧重于计算能力）</th>
+<th>ODS（操作型数据存储）（能够实时报表分析）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A、面向主题的</td>
+<td>A、面向主题的</td>
+</tr>
+<tr>
+<td>B、集成的</td>
+<td>B、集成的</td>
+</tr>
+<tr>
+<td>C、时变的</td>
+<td>C、当前的</td>
+</tr>
+<tr>
+<td>D、非易失的/稳定的</td>
+<td>D、易失的</td>
+</tr>
+</tbody></table>
+<p><strong>DM（数据集市）</strong>（Data Mart）：1、独立的数据集市   </p>
+<p>​                                                           2、从属的数据集市</p>
+<p>A、面向部门的数据仓库 </p>
+<p>B、为满足用户特定需求而创建的数据仓库</p>
+<p>C、数据仓库的子集</p>
+<p><strong>附</strong>：</p>
+<p><strong>Data Lake</strong>（数据湖）（侧重于数据存储能力）</p>
+<p>A、 保存原始的、细节的数据</p>
+<p>B、 结构化数据、非结构化数据均存在（多模态）</p>
+<h5 id="发展趋势："><a href="#发展趋势：" class="headerlink" title="发展趋势："></a>发展趋势：</h5><p>1、 一体化：比如湖仓一体（Lakehouse）：融合了数据湖的存储能力和数据仓库的计算能力</p>
+<p>2、多模态：既能处理关系表数据，也能处理时序数据、图数据</p>
+<p>3、云原生：数据库迁移到云上（提升数据库存储和计算的拓展性）</p>
+<h5 id="3、元数据：用来描述数据的数据，包含业务元数据和技术元数据"><a href="#3、元数据：用来描述数据的数据，包含业务元数据和技术元数据" class="headerlink" title="3、元数据：用来描述数据的数据，包含业务元数据和技术元数据"></a>3、元数据：用来描述数据的数据，包含业务元数据和技术元数据</h5><h5 id="4、数据仓库模型和数据库模型对比"><a href="#4、数据仓库模型和数据库模型对比" class="headerlink" title="4、数据仓库模型和数据库模型对比"></a><strong>4、</strong>数据仓库模型和数据库模型对比</h5><table>
+<thead>
+<tr>
+<th><strong>数据仓库模型</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A</strong>、概念模型：分析主题（边界、主题、维度、类别、指标、事实）</td>
+</tr>
+<tr>
+<td><strong>B</strong>、逻辑模型：星型模型、雪花模型、星座模型</td>
+</tr>
+<tr>
+<td><strong>C</strong>、物理模型：</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>数据库模型</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A、</strong>概念模型：ER（实体关系模型）</td>
+</tr>
+<tr>
+<td><strong>B</strong>、逻辑模型：关系模型、网状模型、层次模型</td>
+</tr>
+<tr>
+<td><strong>C</strong>、物理模型：</td>
+</tr>
+</tbody></table>
+<p><strong>5、</strong> <strong>数据仓库模型</strong></p>
+<p><strong>销售分析的概念模型</strong></p>
+<p>信息包：    <u>销售分析</u>  </p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>销售地点</th>
+<th>销售产品</th>
+<th>年龄组别</th>
+<th>性别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年（10）</td>
+<td>国家（15）</td>
+<td>产品类（6）</td>
+<td>年龄组（8）</td>
+<td>性别组（2）</td>
+</tr>
+<tr>
+<td>季度（40）</td>
+<td>区域（45）</td>
+<td>产品组（48）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>月（120）</td>
+<td>城市（280）</td>
+<td>产品（240）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>区（880）</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>商店（2000）</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>度量和事实：</strong>  <strong>预测销售量、实际销售量、预测误差</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>销售分析的逻辑模型（星型模型）</strong></p>
+<p><img src="../../../blog/source/img/image-20220930201611688.png" alt="image-20220930201611688"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/BigData/" rel="tag"><i class="fa fa-tag"></i> BigData</a>
+              <a href="/tags/DataMining/" rel="tag"><i class="fa fa-tag"></i> DataMining</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/30/DataMining-4/" rel="prev" title="Chapter 03：Data Mining and Data Ware">
+      <i class="fa fa-chevron-left"></i> Chapter 03：Data Mining and Data Ware
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/30/DataMining-2/" rel="next" title="Chapter 01：Data Mining and Data Ware">
+      Chapter 01：Data Mining and Data Ware <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93-2"><span class="nav-number">1.</span> <span class="nav-text">数据挖掘与数据仓库_2</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AF%B9%E6%AF%94"><span class="nav-number">1.1.</span> <span class="nav-text">1、 数据库与数据仓库对比</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81-DW%EF%BC%88%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%EF%BC%89%E3%80%81ODS%EF%BC%88%E6%93%8D%E4%BD%9C%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%EF%BC%89%E3%80%81DM%EF%BC%88%E6%95%B0%E6%8D%AE%E9%9B%86%E5%B8%82%EF%BC%89%E5%B1%9E%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">2、 DW（数据仓库）、ODS（操作型数据存储）、DM（数据集市）属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">发展趋势：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E5%85%83%E6%95%B0%E6%8D%AE%EF%BC%9A%E7%94%A8%E6%9D%A5%E6%8F%8F%E8%BF%B0%E6%95%B0%E6%8D%AE%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%8C%85%E5%90%AB%E4%B8%9A%E5%8A%A1%E5%85%83%E6%95%B0%E6%8D%AE%E5%92%8C%E6%8A%80%E6%9C%AF%E5%85%83%E6%95%B0%E6%8D%AE"><span class="nav-number">1.4.</span> <span class="nav-text">3、元数据：用来描述数据的数据，包含业务元数据和技术元数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94"><span class="nav-number">1.5.</span> <span class="nav-text">4、数据仓库模型和数据库模型对比</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jinguo you</p>
+  <div class="site-description" itemprop="description">本站立足于大数据、数据挖掘的知识分享</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jinguo you</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
