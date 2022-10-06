@@ -13,11 +13,11 @@
 <p>事务型数据库：OLTP，以写为主，行存</p>
 <p>分析型数据库：OLAP，以读为主，列存</p>
 <p>混合事务分析型数据库：HTAP</p>
-<p><img src="../images/DataMining/image-20221005095819438-16649450967654.png" alt="image-20221005095819438"></p>
+<p><img src="../images/DataMining/image-20221006171118346.png" alt="image-20221006171118346"></p>
 <h5 id="PolarDB-X数据库"><a href="#PolarDB-X数据库" class="headerlink" title="PolarDB-X数据库"></a>PolarDB-X数据库</h5><p>结构框架：</p>
-<p><img src="../images/DataMining/image-20221005095819438-16649451025256.png" alt="image-20221005102013310"></p>
-<h5 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h5><p><img src="../images/DataMining/image-20221005102953518-16649451079098.png" alt="image-20221005103435280"></p>
-<h5 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h5><p><img src="../images/DataMining/image-20221005104044640-166494510975510.png" alt="image-20221005104044640"></p>
+<p><img src="../images/DataMining/image-20221005102013310.png" alt="image-20221005102013310"></p>
+<h5 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h5><p><img src="../images/DataMining/image-20221005103435280.png" alt="image-20221005103435280"></p>
+<h5 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h5><p><img src="../images/DataMining/image-20221005104044640.png" alt="image-20221005104044640"></p>
 ]]></content>
       <categories>
         <category>BigData</category>
