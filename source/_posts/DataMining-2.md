@@ -1,7 +1,7 @@
 ---
 title:  Chapter 01：Data Mining and Data Warehouse
 date: 2022-09-30 21:24:32
-top: 5
+top: 1
 tags:
 - BigData
 - DataMining
