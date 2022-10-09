@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"bizard-lab.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="数据挖掘与数据仓库_41、联机分析处理（OLAP）A、交互性：联机 B、维（dimension）：分析数据的角度 à 立方体（超过三维的立方体称为超立方体或多维空间） a、维的层次（hierarchy）： 例.时间维：        ​       年-季度-月-天 ​       年-学期-周   （每一层称为 级别（level）） b、维的成员（member）：维的一个取值 c、多维数组（多维">
+  <meta name="description" content="数据挖掘与数据仓库_4联机分析处理（OLAP）A、交互性：联机 B、维（dimension）：分析数据的角度  立方体（超过三维的立方体称为超立方体或多维空间） 维的层次（hierarchy）例.时间维：        ​       年-季度-月-天 ​       年-学期-周   （每一层称为 级别（level）） 维的成员（member）维的一个取值 多维数组（多维空间）维和度量的组合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Chapter 04：Data Mining and Data Warehouse">
 <meta property="og:url" content="https://bizard-lab.github.io/2022/09/30/DataMining-5/index.html">
 <meta property="og:site_name" content="大数据浪潮">
-<meta property="og:description" content="数据挖掘与数据仓库_41、联机分析处理（OLAP）A、交互性：联机 B、维（dimension）：分析数据的角度 à 立方体（超过三维的立方体称为超立方体或多维空间） a、维的层次（hierarchy）： 例.时间维：        ​       年-季度-月-天 ​       年-学期-周   （每一层称为 级别（level）） b、维的成员（member）：维的一个取值 c、多维数组（多维">
+<meta property="og:description" content="数据挖掘与数据仓库_4联机分析处理（OLAP）A、交互性：联机 B、维（dimension）：分析数据的角度  立方体（超过三维的立方体称为超立方体或多维空间） 维的层次（hierarchy）例.时间维：        ​       年-季度-月-天 ​       年-学期-周   （每一层称为 级别（level）） 维的成员（member）维的一个取值 多维数组（多维空间）维和度量的组合">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20220930214656970.png">
 <meta property="article:published_time" content="2022-09-30T13:24:32.000Z">
-<meta property="article:modified_time" content="2022-10-05T04:45:45.300Z">
+<meta property="article:modified_time" content="2022-10-09T16:02:59.925Z">
 <meta property="article:author" content="Jinguo you">
-<meta property="article:tag" content="BigData">
-<meta property="article:tag" content="DataMining">
+<meta property="article:tag" content="Big Data">
+<meta property="article:tag" content="Data Mining">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20220930214656970.png">
 
@@ -230,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-05 12:45:45" itemprop="dateModified" datetime="2022-10-05T12:45:45+08:00">2022-10-05</time>
+                <time title="修改时间：2022-10-10 00:02:59" itemprop="dateModified" datetime="2022-10-10T00:02:59+08:00">2022-10-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,7 +238,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/BigData/" itemprop="url" rel="index"><span itemprop="name">BigData</span></a>
+                  <a href="/categories/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
                 </span>
             </span>
 
@@ -253,32 +253,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="数据挖掘与数据仓库-4"><a href="#数据挖掘与数据仓库-4" class="headerlink" title="数据挖掘与数据仓库_4"></a>数据挖掘与数据仓库_4</h4><h5 id="1、联机分析处理（OLAP）"><a href="#1、联机分析处理（OLAP）" class="headerlink" title="1、联机分析处理（OLAP）"></a><strong>1</strong>、联机分析处理（OLAP）</h5><p>A、交互性：联机</p>
-<p>B、维（dimension）：分析数据的角度 à 立方体（超过三维的立方体称为超立方体或多维空间）</p>
-<p><strong>a、维的层次（hierarchy）：</strong></p>
-<p>例.时间维：       </p>
+        <h1 id="数据挖掘与数据仓库-4"><a href="#数据挖掘与数据仓库-4" class="headerlink" title="数据挖掘与数据仓库_4"></a>数据挖掘与数据仓库_4</h1><h2 id="联机分析处理（OLAP）"><a href="#联机分析处理（OLAP）" class="headerlink" title="联机分析处理（OLAP）"></a>联机分析处理（OLAP）</h2><p>A、交互性：联机</p>
+<p>B、维（dimension）：分析数据的角度 </p>
+<p>立方体（超过三维的立方体称为超立方体或多维空间）</p>
+<h3 id="维的层次（hierarchy）"><a href="#维的层次（hierarchy）" class="headerlink" title="维的层次（hierarchy）"></a><strong>维的层次（hierarchy）</strong></h3><p>例.时间维：       </p>
 <p>​       年-季度-月-天</p>
 <p>​       年-学期-周   （每一层称为 <strong>级别（level）</strong>）</p>
-<p><strong>b、维的成员（member）</strong>：维的一个取值</p>
-<p><strong>c、多维数组（多维空间）</strong>：维和度量的组合</p>
+<h3 id="维的成员（member）"><a href="#维的成员（member）" class="headerlink" title="维的成员（member）"></a><strong>维的成员（member）</strong></h3><p>维的一个取值</p>
+<h3 id="多维数组（多维空间）"><a href="#多维数组（多维空间）" class="headerlink" title="多维数组（多维空间）"></a><strong>多维数组（多维空间）</strong></h3><p>维和度量的组合</p>
 <p><img src="../images/DataMining/image-20220930214656970.png" alt="image-20220930214656970"></p>
-<p><strong>d、数据单元（单元格）</strong>：多维数组的一个取值</p>
+<h3 id="数据单元（单元格）"><a href="#数据单元（单元格）" class="headerlink" title="数据单元（单元格）"></a><strong>数据单元（单元格）</strong></h3><p>多维数组的一个取值</p>
 <p>如果查询结果保存起来，则称该查询视图物化</p>
-<p> <strong>e、多维分析：</strong></p>
-<p>A、切片（slice）/切块（dice）</p>
-<p>切片：单个维度分析</p>
+<h3 id="多维分析"><a href="#多维分析" class="headerlink" title="多维分析"></a><strong>多维分析</strong></h3><h4 id="切片（slice）-切块（dice）"><a href="#切片（slice）-切块（dice）" class="headerlink" title="切片（slice）/切块（dice）"></a>切片（slice）/切块（dice）</h4><p>切片：单个维度分析</p>
 <p>切块：两个或以上维度分析</p>
-<p>B、钻取</p>
-<p>​     向下钻取（Drill-down）下钻：粗粒度—–&gt;细粒度分析</p>
-<p>​     向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
-<p>C、旋转（pivot）：不同维度的置换</p>
+<h4 id="钻取"><a href="#钻取" class="headerlink" title="钻取"></a>钻取</h4><p>向下钻取（Drill-down）下钻：粗粒度—–&gt;细粒度分析</p>
+<p>向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
+<h4 id="旋转（pivot）"><a href="#旋转（pivot）" class="headerlink" title="旋转（pivot）"></a>旋转（pivot）</h4><p>不同维度的置换</p>
 <p>求不同城市的总销售量</p>
 <p>Select sum(sale-unit) from sale</p>
 <p>Join time on time.Q=sale.Q</p>
 <p>Join city on city.C=sale.C</p>
 <p>Group by city.C</p>
-<p><strong>f、OLAP实现架构</strong></p>
-<p>ROLAP：关系表 —–&gt;存储空间更小</p>
+<h3 id="OLAP实现架构"><a href="#OLAP实现架构" class="headerlink" title="OLAP实现架构"></a>OLAP实现架构</h3><p>ROLAP：关系表 —–&gt;存储空间更小</p>
 <p>MOLAP：多维数组—–&gt;查询效率高</p>
 <p>Eg.sale(产品)(季度)(城市)——-&gt;value</p>
 <p>​               TV     Q1    北京</p>
@@ -295,8 +291,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/BigData/" rel="tag"><i class="fa fa-tag"></i> BigData</a>
-              <a href="/tags/DataMining/" rel="tag"><i class="fa fa-tag"></i> DataMining</a>
+              <a href="/tags/Big-Data/" rel="tag"><i class="fa fa-tag"></i> Big Data</a>
+              <a href="/tags/Data-Mining/" rel="tag"><i class="fa fa-tag"></i> Data Mining</a>
           </div>
 
         
@@ -304,10 +300,7 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/09/30/DataMining-3/" rel="prev" title="Chapter 02：Data Mining and Data Warehouse">
-      <i class="fa fa-chevron-left"></i> Chapter 02：Data Mining and Data Warehouse
-    </a></div>
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
     <a href="/2022/09/30/DataMining-4/" rel="next" title="Chapter 03：Data Mining and Data Warehouse">
       Chapter 03：Data Mining and Data Warehouse <i class="fa fa-chevron-right"></i>
@@ -370,7 +363,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93-4"><span class="nav-number">1.</span> <span class="nav-text">数据挖掘与数据仓库_4</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E8%81%94%E6%9C%BA%E5%88%86%E6%9E%90%E5%A4%84%E7%90%86%EF%BC%88OLAP%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">1、联机分析处理（OLAP）</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93-4"><span class="nav-number">1.</span> <span class="nav-text">数据挖掘与数据仓库_4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%94%E6%9C%BA%E5%88%86%E6%9E%90%E5%A4%84%E7%90%86%EF%BC%88OLAP%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">联机分析处理（OLAP）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%B4%E7%9A%84%E5%B1%82%E6%AC%A1%EF%BC%88hierarchy%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">维的层次（hierarchy）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%B4%E7%9A%84%E6%88%90%E5%91%98%EF%BC%88member%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">维的成员（member）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%EF%BC%88%E5%A4%9A%E7%BB%B4%E7%A9%BA%E9%97%B4%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">多维数组（多维空间）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8D%95%E5%85%83%EF%BC%88%E5%8D%95%E5%85%83%E6%A0%BC%EF%BC%89"><span class="nav-number">1.1.4.</span> <span class="nav-text">数据单元（单元格）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E5%88%86%E6%9E%90"><span class="nav-number">1.1.5.</span> <span class="nav-text">多维分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E7%89%87%EF%BC%88slice%EF%BC%89-%E5%88%87%E5%9D%97%EF%BC%88dice%EF%BC%89"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">切片（slice）&#x2F;切块（dice）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%92%BB%E5%8F%96"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">钻取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC%EF%BC%88pivot%EF%BC%89"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">旋转（pivot）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OLAP%E5%AE%9E%E7%8E%B0%E6%9E%B6%E6%9E%84"><span class="nav-number">1.1.6.</span> <span class="nav-text">OLAP实现架构</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
