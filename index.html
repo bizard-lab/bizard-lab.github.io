@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-10 00:25:30" itemprop="dateModified" datetime="2022-10-10T00:25:30+08:00">2022-10-10</time>
+                <time title="修改时间：2022-10-10 09:43:41" itemprop="dateModified" datetime="2022-10-10T09:43:41+08:00">2022-10-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -234,6 +234,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/Data-Mining/" itemprop="url" rel="index"><span itemprop="name">Data Mining</span></a>
                 </span>
             </span>
 
@@ -313,7 +317,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-10 00:24:56" itemprop="dateModified" datetime="2022-10-10T00:24:56+08:00">2022-10-10</time>
+                <time title="修改时间：2022-10-10 09:42:42" itemprop="dateModified" datetime="2022-10-10T09:42:42+08:00">2022-10-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -322,6 +326,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/Data-Mining/" itemprop="url" rel="index"><span itemprop="name">Data Mining</span></a>
                 </span>
             </span>
 
@@ -353,17 +361,45 @@
 <p>向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
 <h4 id="旋转（pivot）"><a href="#旋转（pivot）" class="headerlink" title="旋转（pivot）"></a>旋转（pivot）</h4><p>不同维度的置换</p>
 <p>求不同城市的总销售量</p>
-<p>Select sum(sale-unit) from sale</p>
-<p>Join time on time.Q=sale.Q</p>
-<p>Join city on city.C=sale.C</p>
-<p>Group by city.C</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(sale_unit) <span class="keyword">from</span> sale</span><br><span class="line"><span class="keyword">join</span> <span class="type">time</span> <span class="keyword">on</span> time.Q <span class="operator">=</span> sale.Q</span><br><span class="line"><span class="keyword">join</span> city <span class="keyword">on</span> city.C <span class="operator">=</span> sale.C</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> city.C;</span><br></pre></td></tr></table></figure>
+
 <h3 id="OLAP实现架构"><a href="#OLAP实现架构" class="headerlink" title="OLAP实现架构"></a>OLAP实现架构</h3><p>ROLAP：关系表 —–&gt;存储空间更小</p>
 <p>MOLAP：多维数组—–&gt;查询效率高</p>
 <p>Eg.sale(产品)(季度)(城市)——-&gt;value</p>
-<p>​               TV     Q1    北京</p>
-<p>​               CD    Q2    上海</p>
-<p>​               PC     Q3    广州</p>
-<p>​               ALL   ALL    ALL</p>
+<table>
+<thead>
+<tr>
+<th align="center">产品</th>
+<th align="center">季度</th>
+<th align="center">城市</th>
+<th align="center">value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TV</td>
+<td align="center">Q1</td>
+<td align="center">北京</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">CD</td>
+<td align="center">Q2</td>
+<td align="center">上海</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">PC</td>
+<td align="center">Q3</td>
+<td align="center">广州</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">ALL</td>
+<td align="center">ALL</td>
+<td align="center">ALL</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -414,7 +450,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-10 00:36:23" itemprop="dateModified" datetime="2022-10-10T00:36:23+08:00">2022-10-10</time>
+                <time title="修改时间：2022-10-10 09:44:23" itemprop="dateModified" datetime="2022-10-10T09:44:23+08:00">2022-10-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -423,6 +459,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/Data-Mining/" itemprop="url" rel="index"><span itemprop="name">Data Mining</span></a>
                 </span>
             </span>
 
@@ -438,20 +478,14 @@
 
       
           <h1 id="数据挖掘与数据仓库-3"><a href="#数据挖掘与数据仓库-3" class="headerlink" title="数据挖掘与数据仓库_3"></a>数据挖掘与数据仓库_3</h1><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="../images/DataMining/image-20220930202533332.png" alt="image-20220930202533332"></p>
-<h3 id="SQL查询"><a href="#SQL查询" class="headerlink" title="SQL查询"></a>SQL查询</h3><h4 id="销售质量"><a href="#销售质量" class="headerlink" title="销售质量"></a>销售质量</h4><p>select sum(units_sold) from sales_fact</p>
-<h4 id="不同年份的销售量"><a href="#不同年份的销售量" class="headerlink" title="不同年份的销售量"></a>不同年份的销售量</h4><p>select sum(units_sold) from sales_fact</p>
-<p>join time_dim on sales_fact.time_key = time_dim.time_key</p>
-<p>group by time_dim.year</p>
-<h4 id="不同年份不同商品项的销售额"><a href="#不同年份不同商品项的销售额" class="headerlink" title="不同年份不同商品项的销售额"></a>不同年份不同商品项的销售额</h4><p>select city as 城市,item_name as 商品项,sum(dollars_sold) as 销售额</p>
-<p>from sales_fact a</p>
-<p>inner join geo_dim b</p>
-<p>on a.location_key = b.location_key</p>
-<p>inner join item_dim c</p>
-<p>on a.item_key = c.item_key</p>
-<p>group by b.city,c.item_name</p>
-<h4 id="2021年1-8月份各月平均销售"><a href="#2021年1-8月份各月平均销售" class="headerlink" title="2021年1~8月份各月平均销售"></a>2021年1~8月份各月平均销售</h4><p>select sum(avg_sales) from sales_fact a</p>
-<p>join time_dim b on a.time_key = b.time_key</p>
-<p>where mouth &gt;=1 and mouth &lt;=8</p>
+<h3 id="SQL查询"><a href="#SQL查询" class="headerlink" title="SQL查询"></a>SQL查询</h3><h4 id="销售质量"><a href="#销售质量" class="headerlink" title="销售质量"></a>销售质量</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact;</span><br></pre></td></tr></table></figure>
+
+<h4 id="不同年份的销售量"><a href="#不同年份的销售量" class="headerlink" title="不同年份的销售量"></a>不同年份的销售量</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact</span><br><span class="line"><span class="keyword">join</span> time_dim <span class="keyword">on</span> sales_fact.time_key <span class="operator">=</span> time_dim.time_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_dim.year;</span><br></pre></td></tr></table></figure>
+
+<h4 id="不同年份不同商品项的销售额"><a href="#不同年份不同商品项的销售额" class="headerlink" title="不同年份不同商品项的销售额"></a>不同年份不同商品项的销售额</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> city <span class="keyword">as</span> 城市,item_names <span class="keyword">as</span> 商品项,<span class="built_in">sum</span>(dollars_sold) <span class="keyword">as</span> 销售额</span><br><span class="line"><span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> geo_dim b</span><br><span class="line"><span class="keyword">on</span> a.location_key <span class="operator">=</span> b.location_key</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> item_dim c</span><br><span class="line"><span class="keyword">on</span> a.item_key <span class="operator">=</span> c.item_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> b.city,c.item_name;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2021年1-8月份各月平均销售"><a href="#2021年1-8月份各月平均销售" class="headerlink" title="2021年1~8月份各月平均销售"></a>2021年1~8月份各月平均销售</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(avg_sales) <span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">join</span> time_dim b <span class="keyword">on</span> a.time_key <span class="operator">=</span> b.time_key</span><br><span class="line"><span class="keyword">where</span> mouth <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">and</span> mouth <span class="operator">&lt;=</span> <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+
 <h2 id="粒度"><a href="#粒度" class="headerlink" title="粒度"></a>粒度</h2><p>粒度：数据综合程度高低的一个度量</p>
 <p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
 <p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
@@ -545,7 +579,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-10 00:35:44" itemprop="dateModified" datetime="2022-10-10T00:35:44+08:00">2022-10-10</time>
+                <time title="修改时间：2022-10-10 09:44:45" itemprop="dateModified" datetime="2022-10-10T09:44:45+08:00">2022-10-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -554,6 +588,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/Data-Mining/" itemprop="url" rel="index"><span itemprop="name">Data Mining</span></a>
                 </span>
             </span>
 
@@ -629,10 +667,16 @@
 </tr>
 </tbody></table>
 <h3 id="DM（数据集市）（Data-Mart）"><a href="#DM（数据集市）（Data-Mart）" class="headerlink" title="DM（数据集市）（Data Mart）"></a>DM（数据集市）（Data Mart）</h3><p>1、独立的数据集市   </p>
-<p>2、从属的数据集市</p>
-<p>A、面向部门的数据仓库 </p>
-<p>B、为满足用户特定需求而创建的数据仓库</p>
-<p>C、数据仓库的子集</p>
+<p>2、从属的数据集市：</p>
+<ul>
+<li>面向部门的数据仓库 </li>
+</ul>
+<ul>
+<li>为满足用户特定需求而创建的数据仓库</li>
+</ul>
+<ul>
+<li>数据仓库的子集</li>
+</ul>
 <h3 id="Data-Lake（数据湖）"><a href="#Data-Lake（数据湖）" class="headerlink" title="Data Lake（数据湖）"></a>Data Lake（数据湖）</h3><p>（侧重于数据存储能力）</p>
 <p>A、 保存原始的、细节的数据</p>
 <p>B、 结构化数据、非结构化数据均存在（多模态）</p>
@@ -777,7 +821,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-10 00:34:50" itemprop="dateModified" datetime="2022-10-10T00:34:50+08:00">2022-10-10</time>
+                <time title="修改时间：2022-10-10 09:45:23" itemprop="dateModified" datetime="2022-10-10T09:45:23+08:00">2022-10-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -786,6 +830,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/Data-Mining/" itemprop="url" rel="index"><span itemprop="name">Data Mining</span></a>
                 </span>
             </span>
 
@@ -801,25 +849,37 @@
 
       
           <h1 id="数据挖掘与数据仓库-1"><a href="#数据挖掘与数据仓库-1" class="headerlink" title="数据挖掘与数据仓库_1"></a>数据挖掘与数据仓库_1</h1><h2 id="数据仓库产生原因："><a href="#数据仓库产生原因：" class="headerlink" title="数据仓库产生原因："></a>数据仓库产生原因：</h2><p>A、 数据的大量积累</p>
-<p>B、 关系数据库的局限（操作型数据库）{局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题}</p>
-<p>C、 异构数据源共享问题（各类数据库产品增加à异构环境数据增加）</p>
+<p>B、 关系数据库的局限（操作型数据库）</p>
+<p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
+<p>C、 异构数据源共享问题（各类数据库产品增加导致异构环境数据增加）</p>
 <h3 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h3><p>一、 数据仓库</p>
 <p><img src="../images/DataMining/clip_image002.png" alt="clip_image002"></p>
 <p>二、联邦数据库</p>
 <p><img src="../images/DataMining/clip_image002-16645445572993.png" alt="clip_image002-16645445572993"></p>
-<h2 id="数据仓库与联邦数据库的区别："><a href="#数据仓库与联邦数据库的区别：" class="headerlink" title="数据仓库与联邦数据库的区别："></a>数据仓库与联邦数据库的区别：</h2><p>数据仓库：优：查询速度快   </p>
-<p>​                   缺：空间占用大，安全性一般，实时更新一般</p>
-<p>联邦数据库：优：隐私保护性好，空间占用小，实时更新较好</p>
-<p>​                       缺：查询处理复杂，速度慢</p>
+<h2 id="数据仓库与联邦数据库的区别："><a href="#数据仓库与联邦数据库的区别：" class="headerlink" title="数据仓库与联邦数据库的区别："></a>数据仓库与联邦数据库的区别：</h2><p>数据仓库：</p>
+<ul>
+<li>优：查询速度快   </li>
+<li>缺：空间占用大，安全性一般，实时更新一般</li>
+</ul>
+<p>联邦数据库：</p>
+<ul>
+<li>优：隐私保护性好，空间占用小，实时更新较好</li>
+<li>缺：查询处理复杂，速度慢</li>
+</ul>
 <h2 id="数据仓库"><a href="#数据仓库" class="headerlink" title="数据仓库"></a>数据仓库</h2><p>一个面向主题的、集成的、时变的、非易失的数据集合。</p>
 <p>A、面向主题的：与主题相关的数据导入数据仓库，由异构转换为同构；</p>
 <p>B、集成的：集成的主要方法：</p>
-<p>1、统一：消除不一致的现象（数据清洗）</p>
-<p>2、综合：对原有数据进行综合和计算</p>
+<ul>
+<li>统一：消除不一致的现象（数据清洗）</li>
+<li>综合：对原有数据进行综合和计算</li>
+</ul>
 <h3 id="ETL"><a href="#ETL" class="headerlink" title="ETL"></a>ETL</h3><p>（Extraction、Transformation、Loading）</p>
 <p>数据抽取、数据清洗、数据转换、数据加载、数据更新。</p>
-<p>数据更新：全量更新：数据库建立时期</p>
-<p>​                   增量更新：数据库维护</p>
+<p>数据更新：</p>
+<ul>
+<li>全量更新：数据库建立时期</li>
+<li>增量更新：数据库维护</li>
+</ul>
 <p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
 <p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
 <h2 id="数据仓库与数据库的区别"><a href="#数据仓库与数据库的区别" class="headerlink" title="数据仓库与数据库的区别"></a>数据仓库与数据库的区别</h2><p>本质上主要为异构和同构的差别</p>
@@ -913,7 +973,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

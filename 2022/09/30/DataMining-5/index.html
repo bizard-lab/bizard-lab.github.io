@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20220930214656970.png">
 <meta property="article:published_time" content="2022-09-30T13:24:32.000Z">
-<meta property="article:modified_time" content="2022-10-09T16:24:56.398Z">
+<meta property="article:modified_time" content="2022-10-10T01:42:42.800Z">
 <meta property="article:author" content="Jinguo you">
 <meta property="article:tag" content="Big Data">
 <meta property="article:tag" content="Data Mining">
@@ -125,7 +125,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -230,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-10 00:24:56" itemprop="dateModified" datetime="2022-10-10T00:24:56+08:00">2022-10-10</time>
+                <time title="修改时间：2022-10-10 09:42:42" itemprop="dateModified" datetime="2022-10-10T09:42:42+08:00">2022-10-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,6 +239,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/Data-Mining/" itemprop="url" rel="index"><span itemprop="name">Data Mining</span></a>
                 </span>
             </span>
 
@@ -270,17 +274,45 @@
 <p>向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
 <h4 id="旋转（pivot）"><a href="#旋转（pivot）" class="headerlink" title="旋转（pivot）"></a>旋转（pivot）</h4><p>不同维度的置换</p>
 <p>求不同城市的总销售量</p>
-<p>Select sum(sale-unit) from sale</p>
-<p>Join time on time.Q=sale.Q</p>
-<p>Join city on city.C=sale.C</p>
-<p>Group by city.C</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(sale_unit) <span class="keyword">from</span> sale</span><br><span class="line"><span class="keyword">join</span> <span class="type">time</span> <span class="keyword">on</span> time.Q <span class="operator">=</span> sale.Q</span><br><span class="line"><span class="keyword">join</span> city <span class="keyword">on</span> city.C <span class="operator">=</span> sale.C</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> city.C;</span><br></pre></td></tr></table></figure>
+
 <h3 id="OLAP实现架构"><a href="#OLAP实现架构" class="headerlink" title="OLAP实现架构"></a>OLAP实现架构</h3><p>ROLAP：关系表 —–&gt;存储空间更小</p>
 <p>MOLAP：多维数组—–&gt;查询效率高</p>
 <p>Eg.sale(产品)(季度)(城市)——-&gt;value</p>
-<p>​               TV     Q1    北京</p>
-<p>​               CD    Q2    上海</p>
-<p>​               PC     Q3    广州</p>
-<p>​               ALL   ALL    ALL</p>
+<table>
+<thead>
+<tr>
+<th align="center">产品</th>
+<th align="center">季度</th>
+<th align="center">城市</th>
+<th align="center">value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TV</td>
+<td align="center">Q1</td>
+<td align="center">北京</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">CD</td>
+<td align="center">Q2</td>
+<td align="center">上海</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">PC</td>
+<td align="center">Q3</td>
+<td align="center">广州</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">ALL</td>
+<td align="center">ALL</td>
+<td align="center">ALL</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -300,13 +332,10 @@
 
         
     <div class="post-nav">
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/09/30/DataMining-4/" rel="prev" title="Chapter 03：Data Mining and Data Warehouse">
-      <i class="fa fa-chevron-left"></i> Chapter 03：Data Mining and Data Warehouse
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/09/30/DataMining-3/" rel="next" title="Chapter 02：Data Mining and Data Warehouse">
-      Chapter 02：Data Mining and Data Warehouse <i class="fa fa-chevron-right"></i>
+    <a href="/2022/09/30/DataMining-4/" rel="next" title="Chapter 03：Data Mining and Data Warehouse">
+      Chapter 03：Data Mining and Data Warehouse <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -387,7 +416,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
