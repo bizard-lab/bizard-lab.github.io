@@ -100,8 +100,8 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  #repo: https://github.com/bizard-lab/bizard-lab.github.io.git
-  repo: git@github.com:bizard-lab/bizard-lab.github.io.git
+  repo: https://github.com/bizard-lab/bizard-lab.github.io.git 
+  #repo: git@github.com:bizard-lab/bizard-lab.github.io.git
   branch: main
   
 # 搜索
