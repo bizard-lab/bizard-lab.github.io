@@ -1,6 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Chapter 04：Data Mining and Data Warehouse</title>
+    <url>/2022/09/30/DataMining-5/</url>
+    <content><![CDATA[<h1 id="数据挖掘与数据仓库-4"><a href="#数据挖掘与数据仓库-4" class="headerlink" title="数据挖掘与数据仓库_4"></a>数据挖掘与数据仓库_4</h1><h2 id="联机分析处理（OLAP）"><a href="#联机分析处理（OLAP）" class="headerlink" title="联机分析处理（OLAP）"></a>联机分析处理（OLAP）</h2><p>A、交互性：联机</p>
+<p>B、维（dimension）：分析数据的角度 </p>
+<p>立方体（超过三维的立方体称为超立方体或多维空间）</p>
+<h3 id="维的层次（hierarchy）"><a href="#维的层次（hierarchy）" class="headerlink" title="维的层次（hierarchy）"></a>维的层次（hierarchy）</h3><p>例.时间维：       </p>
+<p>​       年-季度-月-天</p>
+<p>​       年-学期-周   （每一层称为 <strong>级别（level）</strong>）</p>
+<h3 id="维的成员（member）"><a href="#维的成员（member）" class="headerlink" title="维的成员（member）"></a>维的成员（member）</h3><p>维的一个取值</p>
+<h3 id="多维数组（多维空间）"><a href="#多维数组（多维空间）" class="headerlink" title="多维数组（多维空间）"></a>多维数组（多维空间）</h3><p>维和度量的组合</p>
+<p><img src="../images/DataMining/image-20220930214656970.png" alt="image-20220930214656970"></p>
+<h3 id="数据单元（单元格）"><a href="#数据单元（单元格）" class="headerlink" title="数据单元（单元格）"></a>数据单元（单元格）</h3><p>多维数组的一个取值</p>
+<p>如果查询结果保存起来，则称该查询视图物化</p>
+<h3 id="多维分析"><a href="#多维分析" class="headerlink" title="多维分析"></a>多维分析</h3><h4 id="切片（slice）-切块（dice）"><a href="#切片（slice）-切块（dice）" class="headerlink" title="切片（slice）/切块（dice）"></a>切片（slice）/切块（dice）</h4><p>切片：单个维度分析</p>
+<p>切块：两个或以上维度分析</p>
+<h4 id="钻取"><a href="#钻取" class="headerlink" title="钻取"></a>钻取</h4><p>向下钻取（Drill-down）下钻：粗粒度—–&gt;细粒度分析</p>
+<p>向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
+<h4 id="旋转（pivot）"><a href="#旋转（pivot）" class="headerlink" title="旋转（pivot）"></a>旋转（pivot）</h4><p>不同维度的置换</p>
+<p>求不同城市的总销售量</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(sale_unit) <span class="keyword">from</span> sale</span><br><span class="line"><span class="keyword">join</span> <span class="type">time</span> <span class="keyword">on</span> time.Q <span class="operator">=</span> sale.Q</span><br><span class="line"><span class="keyword">join</span> city <span class="keyword">on</span> city.C <span class="operator">=</span> sale.C</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> city.C;</span><br></pre></td></tr></table></figure>
+
+<h3 id="OLAP实现架构"><a href="#OLAP实现架构" class="headerlink" title="OLAP实现架构"></a>OLAP实现架构</h3><p>ROLAP：关系表 —–&gt;存储空间更小</p>
+<p>MOLAP：多维数组—–&gt;查询效率高</p>
+<p>Eg.sale(产品)(季度)(城市)——-&gt;value</p>
+<table>
+<thead>
+<tr>
+<th align="center">产品</th>
+<th align="center">季度</th>
+<th align="center">城市</th>
+<th align="center">value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TV</td>
+<td align="center">Q1</td>
+<td align="center">北京</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">CD</td>
+<td align="center">Q2</td>
+<td align="center">上海</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">PC</td>
+<td align="center">Q3</td>
+<td align="center">广州</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">ALL</td>
+<td align="center">ALL</td>
+<td align="center">ALL</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Big Data</category>
+        <category>Data Mining</category>
+      </categories>
+      <tags>
+        <tag>Big Data</tag>
+        <tag>Data Mining</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chapter 03：Data Mining and Data Warehouse</title>
+    <url>/2022/09/30/DataMining-4/</url>
+    <content><![CDATA[<h1 id="数据挖掘与数据仓库-3"><a href="#数据挖掘与数据仓库-3" class="headerlink" title="数据挖掘与数据仓库_3"></a>数据挖掘与数据仓库_3</h1><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="../images/DataMining/image-20220930202533332.png" alt="image-20220930202533332"></p>
+<h3 id="SQL查询"><a href="#SQL查询" class="headerlink" title="SQL查询"></a>SQL查询</h3><h4 id="销售质量"><a href="#销售质量" class="headerlink" title="销售质量"></a>销售质量</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact;</span><br></pre></td></tr></table></figure>
+
+<h4 id="不同年份的销售量"><a href="#不同年份的销售量" class="headerlink" title="不同年份的销售量"></a>不同年份的销售量</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact</span><br><span class="line"><span class="keyword">join</span> time_dim <span class="keyword">on</span> sales_fact.time_key <span class="operator">=</span> time_dim.time_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_dim.year;</span><br></pre></td></tr></table></figure>
+
+<h4 id="不同年份不同商品项的销售额"><a href="#不同年份不同商品项的销售额" class="headerlink" title="不同年份不同商品项的销售额"></a>不同年份不同商品项的销售额</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> city <span class="keyword">as</span> 城市,item_names <span class="keyword">as</span> 商品项,<span class="built_in">sum</span>(dollars_sold) <span class="keyword">as</span> 销售额</span><br><span class="line"><span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> geo_dim b</span><br><span class="line"><span class="keyword">on</span> a.location_key <span class="operator">=</span> b.location_key</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> item_dim c</span><br><span class="line"><span class="keyword">on</span> a.item_key <span class="operator">=</span> c.item_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> b.city,c.item_name;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2021年1-8月份各月平均销售"><a href="#2021年1-8月份各月平均销售" class="headerlink" title="2021年1~8月份各月平均销售"></a>2021年1~8月份各月平均销售</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(avg_sales) <span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">join</span> time_dim b <span class="keyword">on</span> a.time_key <span class="operator">=</span> b.time_key</span><br><span class="line"><span class="keyword">where</span> mouth <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">and</span> mouth <span class="operator">&lt;=</span> <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="粒度"><a href="#粒度" class="headerlink" title="粒度"></a>粒度</h2><p>粒度：数据综合程度高低的一个度量</p>
+<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
+<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
+<p>年（粗）–&gt;月–&gt;日（细）</p>
+<h2 id="分割（分区）（partition）"><a href="#分割（分区）（partition）" class="headerlink" title="分割（分区）（partition）"></a>分割（分区）（partition）</h2><p>划分方式：水平划分和垂直划分</p>
+<p>分区类别：:</p>
+<p>1、范围分区：按时间分割，按单位分割。（分布式数据库）</p>
+<p>2、哈希分区：（polarDB-X数据库）</p>
+<p>3、列表分区：按职业、学历分区</p>
+<h2 id="系统设计差异"><a href="#系统设计差异" class="headerlink" title="系统设计差异"></a>系统设计差异</h2><table>
+<thead>
+<tr>
+<th><strong>操作型数据库</strong></th>
+<th><strong>数据仓库</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>面向应用</td>
+<td>面向分析</td>
+</tr>
+<tr>
+<td>确定的应用需求</td>
+<td>不确定的分析需求</td>
+</tr>
+<tr>
+<td>事务处理性能</td>
+<td>数据的全局一致性</td>
+</tr>
+<tr>
+<td>数据来自组织外部</td>
+<td>数据来自系统内部</td>
+</tr>
+</tbody></table>
+<h3 id="数据仓库设计原则"><a href="#数据仓库设计原则" class="headerlink" title="数据仓库设计原则"></a>数据仓库设计原则</h3><p>面向主题原则、数据驱动原则、原型法设计原则</p>
+<h3 id="数据仓库设计步骤"><a href="#数据仓库设计步骤" class="headerlink" title="数据仓库设计步骤"></a>数据仓库设计步骤</h3><p>​           1、明确主题</p>
+<p>​           2、概念模型设计</p>
+<p>​           3、技术准备</p>
+<p>​           4、逻辑模型设计</p>
+<p>​           5、物理模型设计</p>
+<p>​           6、数据仓库生成</p>
+<p>​           7、数据仓库的运行与维护</p>
+<h3 id="数据仓库设计方法论"><a href="#数据仓库设计方法论" class="headerlink" title="数据仓库设计方法论"></a>数据仓库设计方法论</h3><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
+<p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
+]]></content>
+      <categories>
+        <category>Big Data</category>
+        <category>Data Mining</category>
+      </categories>
+      <tags>
+        <tag>Big Data</tag>
+        <tag>Data Mining</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Chapter 02：Data Mining and Data Warehouse</title>
     <url>/2022/09/30/DataMining-3/</url>
     <content><![CDATA[<h1 id="数据挖掘与数据仓库-2"><a href="#数据挖掘与数据仓库-2" class="headerlink" title="数据挖掘与数据仓库_2"></a>数据挖掘与数据仓库_2</h1><h2 id="数据库与数据仓库对比"><a href="#数据库与数据仓库对比" class="headerlink" title="数据库与数据仓库对比"></a>数据库与数据仓库对比</h2><table>
@@ -218,168 +352,6 @@
 <h2 id="数据仓库与数据库的区别"><a href="#数据仓库与数据库的区别" class="headerlink" title="数据仓库与数据库的区别"></a>数据仓库与数据库的区别</h2><p>本质上主要为异构和同构的差别</p>
 <p>事务型数据库（操作型）：TP事务处理，以写为主</p>
 <p>分析型数据库：AP分析处理，以读为主</p>
-]]></content>
-      <categories>
-        <category>Big Data</category>
-        <category>Data Mining</category>
-      </categories>
-      <tags>
-        <tag>Big Data</tag>
-        <tag>Data Mining</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Chapter 03：Data Mining and Data Warehouse</title>
-    <url>/2022/09/30/DataMining-4/</url>
-    <content><![CDATA[<h1 id="数据挖掘与数据仓库-3"><a href="#数据挖掘与数据仓库-3" class="headerlink" title="数据挖掘与数据仓库_3"></a>数据挖掘与数据仓库_3</h1><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="../images/DataMining/image-20220930202533332.png" alt="image-20220930202533332"></p>
-<h3 id="SQL查询"><a href="#SQL查询" class="headerlink" title="SQL查询"></a>SQL查询</h3><h4 id="销售质量"><a href="#销售质量" class="headerlink" title="销售质量"></a>销售质量</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact;</span><br></pre></td></tr></table></figure>
-
-<h4 id="不同年份的销售量"><a href="#不同年份的销售量" class="headerlink" title="不同年份的销售量"></a>不同年份的销售量</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact</span><br><span class="line"><span class="keyword">join</span> time_dim <span class="keyword">on</span> sales_fact.time_key <span class="operator">=</span> time_dim.time_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_dim.year;</span><br></pre></td></tr></table></figure>
-
-<h4 id="不同年份不同商品项的销售额"><a href="#不同年份不同商品项的销售额" class="headerlink" title="不同年份不同商品项的销售额"></a>不同年份不同商品项的销售额</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> city <span class="keyword">as</span> 城市,item_names <span class="keyword">as</span> 商品项,<span class="built_in">sum</span>(dollars_sold) <span class="keyword">as</span> 销售额</span><br><span class="line"><span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> geo_dim b</span><br><span class="line"><span class="keyword">on</span> a.location_key <span class="operator">=</span> b.location_key</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> item_dim c</span><br><span class="line"><span class="keyword">on</span> a.item_key <span class="operator">=</span> c.item_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> b.city,c.item_name;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2021年1-8月份各月平均销售"><a href="#2021年1-8月份各月平均销售" class="headerlink" title="2021年1~8月份各月平均销售"></a>2021年1~8月份各月平均销售</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(avg_sales) <span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">join</span> time_dim b <span class="keyword">on</span> a.time_key <span class="operator">=</span> b.time_key</span><br><span class="line"><span class="keyword">where</span> mouth <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">and</span> mouth <span class="operator">&lt;=</span> <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="粒度"><a href="#粒度" class="headerlink" title="粒度"></a>粒度</h2><p>粒度：数据综合程度高低的一个度量</p>
-<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
-<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
-<p>年（粗）–&gt;月–&gt;日（细）</p>
-<h2 id="分割（分区）（partition）"><a href="#分割（分区）（partition）" class="headerlink" title="分割（分区）（partition）"></a>分割（分区）（partition）</h2><p>划分方式：水平划分和垂直划分</p>
-<p>分区类别：:</p>
-<p>1、范围分区：按时间分割，按单位分割。（分布式数据库）</p>
-<p>2、哈希分区：（polarDB-X数据库）</p>
-<p>3、列表分区：按职业、学历分区</p>
-<h2 id="系统设计差异"><a href="#系统设计差异" class="headerlink" title="系统设计差异"></a>系统设计差异</h2><table>
-<thead>
-<tr>
-<th><strong>操作型数据库</strong></th>
-<th><strong>数据仓库</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>面向应用</td>
-<td>面向分析</td>
-</tr>
-<tr>
-<td>确定的应用需求</td>
-<td>不确定的分析需求</td>
-</tr>
-<tr>
-<td>事务处理性能</td>
-<td>数据的全局一致性</td>
-</tr>
-<tr>
-<td>数据来自组织外部</td>
-<td>数据来自系统内部</td>
-</tr>
-</tbody></table>
-<h3 id="数据仓库设计原则"><a href="#数据仓库设计原则" class="headerlink" title="数据仓库设计原则"></a>数据仓库设计原则</h3><p>面向主题原则、数据驱动原则、原型法设计原则</p>
-<h3 id="数据仓库设计步骤"><a href="#数据仓库设计步骤" class="headerlink" title="数据仓库设计步骤"></a>数据仓库设计步骤</h3><p>​           1、明确主题</p>
-<p>​           2、概念模型设计</p>
-<p>​           3、技术准备</p>
-<p>​           4、逻辑模型设计</p>
-<p>​           5、物理模型设计</p>
-<p>​           6、数据仓库生成</p>
-<p>​           7、数据仓库的运行与维护</p>
-<h3 id="数据仓库设计方法论"><a href="#数据仓库设计方法论" class="headerlink" title="数据仓库设计方法论"></a>数据仓库设计方法论</h3><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
-<p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
-]]></content>
-      <categories>
-        <category>Big Data</category>
-        <category>Data Mining</category>
-      </categories>
-      <tags>
-        <tag>Big Data</tag>
-        <tag>Data Mining</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Chapter 04：Data Mining and Data Warehouse</title>
-    <url>/2022/09/30/DataMining-5/</url>
-    <content><![CDATA[<h1 id="数据挖掘与数据仓库-4"><a href="#数据挖掘与数据仓库-4" class="headerlink" title="数据挖掘与数据仓库_4"></a>数据挖掘与数据仓库_4</h1><h2 id="联机分析处理（OLAP）"><a href="#联机分析处理（OLAP）" class="headerlink" title="联机分析处理（OLAP）"></a>联机分析处理（OLAP）</h2><p>A、交互性：联机</p>
-<p>B、维（dimension）：分析数据的角度 </p>
-<p>立方体（超过三维的立方体称为超立方体或多维空间）</p>
-<h3 id="维的层次（hierarchy）"><a href="#维的层次（hierarchy）" class="headerlink" title="维的层次（hierarchy）"></a>维的层次（hierarchy）</h3><p>例.时间维：       </p>
-<p>​       年-季度-月-天</p>
-<p>​       年-学期-周   （每一层称为 <strong>级别（level）</strong>）</p>
-<h3 id="维的成员（member）"><a href="#维的成员（member）" class="headerlink" title="维的成员（member）"></a>维的成员（member）</h3><p>维的一个取值</p>
-<h3 id="多维数组（多维空间）"><a href="#多维数组（多维空间）" class="headerlink" title="多维数组（多维空间）"></a>多维数组（多维空间）</h3><p>维和度量的组合</p>
-<p><img src="../images/DataMining/image-20220930214656970.png" alt="image-20220930214656970"></p>
-<h3 id="数据单元（单元格）"><a href="#数据单元（单元格）" class="headerlink" title="数据单元（单元格）"></a>数据单元（单元格）</h3><p>多维数组的一个取值</p>
-<p>如果查询结果保存起来，则称该查询视图物化</p>
-<h3 id="多维分析"><a href="#多维分析" class="headerlink" title="多维分析"></a>多维分析</h3><h4 id="切片（slice）-切块（dice）"><a href="#切片（slice）-切块（dice）" class="headerlink" title="切片（slice）/切块（dice）"></a>切片（slice）/切块（dice）</h4><p>切片：单个维度分析</p>
-<p>切块：两个或以上维度分析</p>
-<h4 id="钻取"><a href="#钻取" class="headerlink" title="钻取"></a>钻取</h4><p>向下钻取（Drill-down）下钻：粗粒度—–&gt;细粒度分析</p>
-<p>向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
-<h4 id="旋转（pivot）"><a href="#旋转（pivot）" class="headerlink" title="旋转（pivot）"></a>旋转（pivot）</h4><p>不同维度的置换</p>
-<p>求不同城市的总销售量</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(sale_unit) <span class="keyword">from</span> sale</span><br><span class="line"><span class="keyword">join</span> <span class="type">time</span> <span class="keyword">on</span> time.Q <span class="operator">=</span> sale.Q</span><br><span class="line"><span class="keyword">join</span> city <span class="keyword">on</span> city.C <span class="operator">=</span> sale.C</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> city.C;</span><br></pre></td></tr></table></figure>
-
-<h3 id="OLAP实现架构"><a href="#OLAP实现架构" class="headerlink" title="OLAP实现架构"></a>OLAP实现架构</h3><p>ROLAP：关系表 —–&gt;存储空间更小</p>
-<p>MOLAP：多维数组—–&gt;查询效率高</p>
-<p>Eg.sale(产品)(季度)(城市)——-&gt;value</p>
-<table>
-<thead>
-<tr>
-<th align="center">产品</th>
-<th align="center">季度</th>
-<th align="center">城市</th>
-<th align="center">value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">TV</td>
-<td align="center">Q1</td>
-<td align="center">北京</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">CD</td>
-<td align="center">Q2</td>
-<td align="center">上海</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">PC</td>
-<td align="center">Q3</td>
-<td align="center">广州</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">ALL</td>
-<td align="center">ALL</td>
-<td align="center">ALL</td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Big Data</category>
-        <category>Data Mining</category>
-      </categories>
-      <tags>
-        <tag>Big Data</tag>
-        <tag>Data Mining</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Chapter 05：Data Mining and Data Warehouse</title>
-    <url>/2022/10/05/DataMining-6/</url>
-    <content><![CDATA[<h1 id="数据挖掘与数据仓库-5"><a href="#数据挖掘与数据仓库-5" class="headerlink" title="数据挖掘与数据仓库-5"></a>数据挖掘与数据仓库-5</h1><h2 id="OLAP（联机分析处理）"><a href="#OLAP（联机分析处理）" class="headerlink" title="OLAP（联机分析处理）"></a>OLAP（联机分析处理）</h2><p>实现框架：</p>
-<p>1、<u>R</u>OLAP：基于关系表，存储空间效率高，利用关系数据库特性</p>
-<p>​      Relational</p>
-<p>2、<u>M</u>OLAP：基于多维数组，查询效率高</p>
-<p>​      Multi-dimensional</p>
-<p>3、<u>H</u>OLAP：包含综合数据（MOLAP）和详细数据（ROLAP）</p>
-<p>​      Hybrid</p>
-<p>事务型数据库：OLTP，以写为主，行存</p>
-<p>分析型数据库：OLAP，以读为主，列存</p>
-<p>混合事务分析型数据库：HTAP</p>
-<p><img src="../images/DataMining/image-20221006171118346.png" alt="image-20221006171118346"></p>
-<h2 id="PolarDB-X数据库"><a href="#PolarDB-X数据库" class="headerlink" title="PolarDB-X数据库"></a>PolarDB-X数据库</h2><p>结构框架：</p>
-<p><img src="../images/DataMining/image-20221005102013310.png" alt="image-20221005102013310"></p>
-<h2 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h2><p><img src="../images/DataMining/image-20221005103435280.png" alt="image-20221005103435280"></p>
-<h2 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h2><p><img src="../images/DataMining/image-20221005104044640.png" alt="image-20221005104044640"></p>
 ]]></content>
       <categories>
         <category>Big Data</category>
