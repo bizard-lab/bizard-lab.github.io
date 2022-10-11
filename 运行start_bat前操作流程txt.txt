@@ -1,3 +1,6 @@
-1. 运行git checkout source
-2. 运行hexo clean
-3. git add .
+1. git pull origin source
+2. 运行git checkout source
+3. 运行hexo clean
+4. git add .
+5. git commit -m"backup md resource"
+6. git push origin source
