@@ -1,0 +1,1 @@
+cd /k "cd C:\gitRepo\bizard-lab.github.io && hexo clean && hexo hexo g -d"
