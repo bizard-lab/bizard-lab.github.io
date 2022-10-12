@@ -2,9 +2,9 @@
 # Site
 title: 大数据浪潮
 subtitle: '站在大数据之巅'
-description: '本站立足于大数据、数据挖掘的知识分享'
-keywords: BigData、DataBase、Data Mining
-author: Jinguo you
+description: '本站立足于大数据、数据仓库、数据挖掘的知识分享'
+keywords: Data Warehouse, Database、Big Data、Data Mining
+author: Jinguo You
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
@@ -100,8 +100,13 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
+<<<<<<< HEAD
+  #repo: https://github.com/bizard-lab/bizard-lab.github.io.git
+  repo: git@github.com:bizard-lab/bizard-lab.github.io.git
+=======
   repo: https://github.com/bizard-lab/bizard-lab.github.io.git 
   #repo: git@github.com:bizard-lab/bizard-lab.github.io.git
+>>>>>>> b35b1b56b679f7fee8495ad3a33a7adb1f6bd9a9
   branch: main
   
 # 搜索
