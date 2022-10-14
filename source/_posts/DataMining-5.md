@@ -1,7 +1,7 @@
 ---
 title: Chapter 04：Data Warehouse and Data Mining
 date: 2022-09-30 21:24:32
-top: 2
+top: 4
 tags:
 - Data Warehouse
 - Big Data
@@ -10,72 +10,159 @@ categories:
 - Big Data
 ---
 
-#### 数据挖掘与数据仓库_4
+# 联机分析处理
 
-##### **1**、联机分析处理（OLAP）
+## OLAP的概念
+
+### 联机分析处理（OLAP）
 
 A、交互性：联机
 
-B、维（dimension）：分析数据的角度；多个维度的组合形成数据立方体（超过三维的立方体称为超立方体或多维空间）
+B、维（dimension）：分析数据的角度 
 
-**a、维的层次（hierarchy）：**
+立方体（超过三维的立方体称为超立方体或多维空间）
 
-例如时间维：       
+### 维的层次（hierarchy）
+
+例.时间维：       
 
 ​       年-季度-月-天
 
 ​       年-学期-周   （每一层称为 **级别（level）**）
 
-**b、维的成员（member）**：维的一个取值
+### 维的成员（member）
 
-**c、多维数组（多维空间）**：维和度量的组合
+维的一个取值
 
-![image-20220930214656970](../images/DataMining/image-20220930214656970.png)
+### 多维数组（多维空间）
 
-**d、数据单元（单元格）**：多维数组的一个取值
+维和度量的组合
+
+![image-20220930214656970](../images/DataMining/image-20220930214656970-16657432322291.png)
+
+### 数据单元（单元格）
+
+多维数组的一个取值
 
 如果查询结果保存起来，则称该查询视图物化
 
- **e、多维分析：**
 
-A、切片（slice）/切块（dice）
+
+## OLAP的多维数据分析
+
+### 多维分析
+
+#### 切片（slice）/切块（dice）
 
 切片：单个维度分析
 
 切块：两个或以上维度分析
 
-B、钻取
 
-​     向下钻取（Drill-down）下钻：粗粒度----->细粒度分析
 
-​     向上钻取（Roll-up）上卷：细粒度----->粗粒度分析
+#### 钻取
 
-C、旋转（pivot）：不同维度的置换
+向下钻取（Drill-down）下钻：粗粒度----->细粒度分析
 
-例如：求不同城市的总销售量
+向上钻取（Roll-up）上卷：细粒度----->粗粒度分析
 
-Select sum(sale_unit) from sale
 
-Join time on time.Q=sale.Q
 
-Join city on city.C=sale.C
+#### 旋转（pivot）
 
-Group by city.C
+不同维度的置换
 
-**f、OLAP实现架构**
+求不同城市的总销售量
+
+```sql
+select sum(sale_unit) from sale
+join time on time.Q = sale.Q
+join city on city.C = sale.C
+group by city.C;
+```
+
+
+
+## OLAP的存储模型
+
+### OLAP实现架构
 
 ROLAP：关系表 ----->存储空间更小
 
 MOLAP：多维数组----->查询效率高
 
-例如：sale(产品)(季度)(城市)------->value
+Eg.sale(产品)(季度)(城市)------->value
 
-​               TV     Q1    北京
+| 产品 | 季度 | 城市 | value |
+| :--: | :--: | :--: | :---: |
+|  TV  |  Q1  | 北京 |       |
+|  CD  |  Q2  | 上海 |       |
+|  PC  |  Q3  | 广州 |       |
+| ALL  | ALL  | ALL  |       |
 
-​               CD    Q2    上海
 
-​               PC     Q3    广州
 
-​               ALL   ALL    ALL
+实现框架：
 
-HOLAP：
+1、<u>R</u>OLAP：基于关系表，存储空间效率高，利用关系数据库特性
+
+​      Relational
+
+2、<u>M</u>OLAP：基于多维数组，查询效率高
+
+​      Multi-dimensional
+
+3、<u>H</u>OLAP：包含综合数据（MOLAP）和详细数据（ROLAP）
+
+​      Hybrid
+
+## HTAP
+
+事务型数据库：OLTP，以写为主，行存
+
+分析型数据库：OLAP，以读为主，列存
+
+混合事务分析型数据库：HTAP
+
+![image-20221006171118346](../images/DataMining/image-20221006171118346-16657435018683.png)
+
+
+
+## 国产数据库示例
+
+### PolarDB-X数据库
+
+结构框架：
+
+![image-20221005102013310](../images/DataMining/image-20221005102013310-16657435018695.png)
+
+### 下推
+
+![image-20221005103435280](../images/DataMining/image-20221005103435280-16657435018696.png)
+
+### BI
+
+![image-20221005104044640](../images/DataMining/image-20221005104044640-16657435018694.png)
+
+
+
+## 习题讲解
+
+数据转换一般可以分为：
+
+- 工具转换
+
+- 人工转换
+
+事实表的特点：
+
+- 数据量大
+- 表中行数多
+- 表中数据常进行追加
+
+数据集市的特点：
+
+- 主题少
+- 数据少
+- 建设周期短
+- 风险小
