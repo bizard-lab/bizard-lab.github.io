@@ -1,101 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Chapter 03：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/DataMining-4/</url>
-    <content><![CDATA[<h1 id="数据仓库设计与开发"><a href="#数据仓库设计与开发" class="headerlink" title="数据仓库设计与开发"></a>数据仓库设计与开发</h1><h2 id="数据仓库设计"><a href="#数据仓库设计" class="headerlink" title="数据仓库设计"></a>数据仓库设计</h2><h3 id="系统设计差异"><a href="#系统设计差异" class="headerlink" title="系统设计差异"></a>系统设计差异</h3><table>
+    <title>Chapter 05：Data Warehouse and Data Mining</title>
+    <url>/2022/10/11/DataMining-6/</url>
+    <content><![CDATA[<h1 id="数据立方体和商立方体"><a href="#数据立方体和商立方体" class="headerlink" title="数据立方体和商立方体"></a>数据立方体和商立方体</h1><h2 id="物化视图选择"><a href="#物化视图选择" class="headerlink" title="物化视图选择"></a>物化视图选择</h2><h3 id="Greedy-Algorithm-贪心算法"><a href="#Greedy-Algorithm-贪心算法" class="headerlink" title="Greedy Algorithm(贪心算法)"></a>Greedy Algorithm(贪心算法)</h3><ul>
+<li><p>k = number of views to be materialized</p>
+</li>
+<li><p>Given</p>
+<ul>
+<li><p>v is a view</p>
+</li>
+<li><p>S is a set of views which are selected to be materialized</p>
+</li>
+</ul>
+</li>
+<li><p>Define the benefit of selecting v for materialization as</p>
+<ul>
+<li>B(v, S) = Gain(S U v, S) </li>
+</ul>
+</li>
+<li><p>S &lt;–{top view};</p>
+</li>
+<li><p>For i = 1 to k do </p>
+<ul>
+<li><p>Select that view v not in S such that B(v, S) is maximized;</p>
+</li>
+<li><p>S &lt;– S U {v}</p>
+</li>
+</ul>
+</li>
+<li><p>Resulting S is the greedy selection</p>
+</li>
+</ul>
+<p><img src="../images/DataMining/image-20221011210827373.png" alt="image-20221011210827373"></p>
+<table>
 <thead>
 <tr>
-<th><strong>操作型数据库</strong></th>
-<th><strong>数据仓库</strong></th>
+<th align="center"></th>
+<th align="center">1st Choice(M)</th>
+<th align="center">2nd Choice(M)</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>面向应用</td>
-<td>面向分析</td>
+<td align="center">pc</td>
+<td align="center">(6-6)*3 = 0</td>
+<td align="center">(6-6)*2 = 0</td>
 </tr>
 <tr>
-<td>确定的应用需求</td>
-<td>不确定的分析需求</td>
+<td align="center">ps</td>
+<td align="center">(6-0.8)*3 = 15.6</td>
+<td align="center"></td>
 </tr>
 <tr>
-<td>事务处理性能</td>
-<td>数据的全局一致性</td>
+<td align="center">sc</td>
+<td align="center">(6-6)*3 = 0</td>
+<td align="center">(6-6)*2 = 0</td>
 </tr>
 <tr>
-<td>数据来自组织外部</td>
-<td>数据来自系统内部</td>
+<td align="center">p</td>
+<td align="center">(6-0.2)*1 = 5.8</td>
+<td align="center">(0.8-0.2)*1=0.6</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">(6-0.01)*1 = 5.99</td>
+<td align="center">(0.8-0.01)*1 = 0.79</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td align="center">(6-0.1)*1 = 5.9</td>
+<td align="center">(6-0.1)*1 = 5.9</td>
 </tr>
 </tbody></table>
-<h3 id="数据仓库设计原则"><a href="#数据仓库设计原则" class="headerlink" title="数据仓库设计原则"></a>数据仓库设计原则</h3><p>面向主题原则、数据驱动原则、原型法设计原则</p>
-<h3 id="数据仓库设计步骤"><a href="#数据仓库设计步骤" class="headerlink" title="数据仓库设计步骤"></a>数据仓库设计步骤</h3><p>​           1、明确主题</p>
-<p>​           2、概念模型设计</p>
-<p>​           3、技术准备</p>
-<p>​           4、逻辑模型设计</p>
-<p>​           5、物理模型设计</p>
-<p>​           6、数据仓库生成</p>
-<p>​           7、数据仓库的运行与维护</p>
-<h3 id="数据仓库设计方法论"><a href="#数据仓库设计方法论" class="headerlink" title="数据仓库设计方法论"></a>数据仓库设计方法论</h3><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
-<p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
-<h2 id="数据仓库开发"><a href="#数据仓库开发" class="headerlink" title="数据仓库开发"></a>数据仓库开发</h2><h3 id="数据粒度"><a href="#数据粒度" class="headerlink" title="数据粒度"></a>数据粒度</h3><p>粒度：数据综合程度高低的一个度量</p>
-<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
-<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
-<p>年（粗）–&gt;月–&gt;日（细）</p>
-<h3 id="分割（分区）"><a href="#分割（分区）" class="headerlink" title="分割（分区）"></a>分割（分区）</h3><p>划分方式：水平划分和垂直划分</p>
-<p>分区类别：:</p>
-<ul>
-<li>范围分区：按时间分割，按单位分割。（分布式数据库）</li>
-</ul>
-<ul>
-<li>哈希分区：（polarDB-X数据库）</li>
-</ul>
-<ul>
-<li>列表分区：按职业、学历分区</li>
-</ul>
+<p>Two views to be materialized are</p>
+<p>1、ps     2、c</p>
+<p>V = {ps, c}</p>
+<p>Gain(V U {top view}, {top view})</p>
+<p>= 15.6 + 5.9 = 21.5</p>
+<h2 id="数据立方体"><a href="#数据立方体" class="headerlink" title="数据立方体"></a>数据立方体</h2><p><img src="../images/DataMining/image-20221011212714894.png" alt="image-20221011212714894"></p>
+<h2 id="商立方体"><a href="#商立方体" class="headerlink" title="商立方体"></a>商立方体</h2><p><img src="../images/DataMining/image-20221011213423839.png" alt="image-20221011213423839"></p>
+<p><img src="../images/DataMining/image-20221011213108994.png" alt="image-20221011213108994"></p>
 ]]></content>
       <categories>
-        <category>Data Warehouse</category>
         <category>Big Data</category>
-      </categories>
-      <tags>
-        <tag>Data Warehouse</tag>
-        <tag>Big Data</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Chapter 01：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/DataMining-2/</url>
-    <content><![CDATA[<h1 id="数据仓库与数据挖掘概述"><a href="#数据仓库与数据挖掘概述" class="headerlink" title="数据仓库与数据挖掘概述"></a>数据仓库与数据挖掘概述</h1><h2 id="数据仓库的兴起"><a href="#数据仓库的兴起" class="headerlink" title="数据仓库的兴起"></a>数据仓库的兴起</h2><h3 id="数据仓库产生原因"><a href="#数据仓库产生原因" class="headerlink" title="数据仓库产生原因"></a>数据仓库产生原因</h3><p>A、 数据的大量积累</p>
-<p>B、 关系数据库的局限（操作型数据库）</p>
-<p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
-<p>C、 异构数据源共享问题（各类数据库产品增加导致异构环境数据增加）</p>
-<h3 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h3><p>一、 数据仓库</p>
-<p><img src="../images/DataMining/image-20221015105608879.png" alt="image-20221015105608879"></p>
-<p>二、联邦数据库</p>
-<p><img src="../images/DataMining/image-20221015105635006.png" alt="image-20221015105635006"></p>
-<h3 id="数据仓库与联邦数据库的区别"><a href="#数据仓库与联邦数据库的区别" class="headerlink" title="数据仓库与联邦数据库的区别"></a>数据仓库与联邦数据库的区别</h3><p>数据仓库：</p>
-<ul>
-<li>优：查询速度快   </li>
-<li>缺：空间占用大，安全性一般，实时更新一般</li>
-</ul>
-<p>联邦数据库：</p>
-<ul>
-<li>优：隐私保护性好，空间占用小，实时更新较好</li>
-<li>缺：查询处理复杂，速度慢</li>
-</ul>
-<h2 id="数据仓库的概念"><a href="#数据仓库的概念" class="headerlink" title="数据仓库的概念"></a>数据仓库的概念</h2><h3 id="数据仓库的特点"><a href="#数据仓库的特点" class="headerlink" title="数据仓库的特点"></a>数据仓库的特点</h3><p>一个面向主题的、集成的、时变的、非易失的数据集合。</p>
-<p>A、面向主题的：与主题相关的数据导入数据仓库，由异构转换为同构；</p>
-<p>B、集成的：集成的主要方法：</p>
-<ul>
-<li>统一：消除不一致的现象（数据清洗）</li>
-<li>综合：对原有数据进行综合和计算</li>
-</ul>
-<p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
-<p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
-]]></content>
-      <categories>
         <category>Data Warehouse</category>
-        <category>Big Data</category>
       </categories>
       <tags>
         <tag>Data Warehouse</tag>
@@ -217,89 +205,61 @@
       </tags>
   </entry>
   <entry>
-    <title>Chapter 06：Data Warehouse and Data Mining</title>
-    <url>/2022/10/11/DataMining-6/</url>
-    <content><![CDATA[<h1 id="数据立方体和商立方体"><a href="#数据立方体和商立方体" class="headerlink" title="数据立方体和商立方体"></a>数据立方体和商立方体</h1><h2 id="物化视图选择"><a href="#物化视图选择" class="headerlink" title="物化视图选择"></a>物化视图选择</h2><h3 id="Greedy-Algorithm-贪心算法"><a href="#Greedy-Algorithm-贪心算法" class="headerlink" title="Greedy Algorithm(贪心算法)"></a>Greedy Algorithm(贪心算法)</h3><ul>
-<li><p>k = number of views to be materialized</p>
-</li>
-<li><p>Given</p>
-<ul>
-<li><p>v is a view</p>
-</li>
-<li><p>S is a set of views which are selected to be materialized</p>
-</li>
-</ul>
-</li>
-<li><p>Define the benefit of selecting v for materialization as</p>
-<ul>
-<li>B(v, S) = Gain(S U v, S) </li>
-</ul>
-</li>
-<li><p>S &lt;–{top view};</p>
-</li>
-<li><p>For i = 1 to k do </p>
-<ul>
-<li><p>Select that view v not in S such that B(v, S) is maximized;</p>
-</li>
-<li><p>S &lt;– S U {v}</p>
-</li>
-</ul>
-</li>
-<li><p>Resulting S is the greedy selection</p>
-</li>
-</ul>
-<p><img src="../images/DataMining/image-20221011210827373.png" alt="image-20221011210827373"></p>
-<table>
+    <title>Chapter 03：Data Warehouse and Data Mining</title>
+    <url>/2022/09/30/DataMining-4/</url>
+    <content><![CDATA[<h1 id="数据仓库设计与开发"><a href="#数据仓库设计与开发" class="headerlink" title="数据仓库设计与开发"></a>数据仓库设计与开发</h1><h2 id="数据仓库设计"><a href="#数据仓库设计" class="headerlink" title="数据仓库设计"></a>数据仓库设计</h2><h3 id="系统设计差异"><a href="#系统设计差异" class="headerlink" title="系统设计差异"></a>系统设计差异</h3><table>
 <thead>
 <tr>
-<th align="center"></th>
-<th align="center">1st Choice(M)</th>
-<th align="center">2nd Choice(M)</th>
+<th><strong>操作型数据库</strong></th>
+<th><strong>数据仓库</strong></th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">pc</td>
-<td align="center">(6-6)*3 = 0</td>
-<td align="center">(6-6)*2 = 0</td>
+<td>面向应用</td>
+<td>面向分析</td>
 </tr>
 <tr>
-<td align="center">ps</td>
-<td align="center">(6-0.8)*3 = 15.6</td>
-<td align="center"></td>
+<td>确定的应用需求</td>
+<td>不确定的分析需求</td>
 </tr>
 <tr>
-<td align="center">sc</td>
-<td align="center">(6-6)*3 = 0</td>
-<td align="center">(6-6)*2 = 0</td>
+<td>事务处理性能</td>
+<td>数据的全局一致性</td>
 </tr>
 <tr>
-<td align="center">p</td>
-<td align="center">(6-0.2)*1 = 5.8</td>
-<td align="center">(0.8-0.2)*1=0.6</td>
-</tr>
-<tr>
-<td align="center">s</td>
-<td align="center">(6-0.01)*1 = 5.99</td>
-<td align="center">(0.8-0.01)*1 = 0.79</td>
-</tr>
-<tr>
-<td align="center">c</td>
-<td align="center">(6-0.1)*1 = 5.9</td>
-<td align="center">(6-0.1)*1 = 5.9</td>
+<td>数据来自组织外部</td>
+<td>数据来自系统内部</td>
 </tr>
 </tbody></table>
-<p>Two views to be materialized are</p>
-<p>1、ps     2、c</p>
-<p>V = {ps, c}</p>
-<p>Gain(V U {top view}, {top view})</p>
-<p>= 15.6 + 5.9 = 21.5</p>
-<h2 id="数据立方体"><a href="#数据立方体" class="headerlink" title="数据立方体"></a>数据立方体</h2><p><img src="../images/DataMining/image-20221011212714894.png" alt="image-20221011212714894"></p>
-<h2 id="商立方体"><a href="#商立方体" class="headerlink" title="商立方体"></a>商立方体</h2><p><img src="../images/DataMining/image-20221011213423839.png" alt="image-20221011213423839"></p>
-<p><img src="../images/DataMining/image-20221011213108994.png" alt="image-20221011213108994"></p>
+<h3 id="数据仓库设计原则"><a href="#数据仓库设计原则" class="headerlink" title="数据仓库设计原则"></a>数据仓库设计原则</h3><p>面向主题原则、数据驱动原则、原型法设计原则</p>
+<h3 id="数据仓库设计步骤"><a href="#数据仓库设计步骤" class="headerlink" title="数据仓库设计步骤"></a>数据仓库设计步骤</h3><p>​           1、明确主题</p>
+<p>​           2、概念模型设计</p>
+<p>​           3、技术准备</p>
+<p>​           4、逻辑模型设计</p>
+<p>​           5、物理模型设计</p>
+<p>​           6、数据仓库生成</p>
+<p>​           7、数据仓库的运行与维护</p>
+<h3 id="数据仓库设计方法论"><a href="#数据仓库设计方法论" class="headerlink" title="数据仓库设计方法论"></a>数据仓库设计方法论</h3><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
+<p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
+<h2 id="数据仓库开发"><a href="#数据仓库开发" class="headerlink" title="数据仓库开发"></a>数据仓库开发</h2><h3 id="数据粒度"><a href="#数据粒度" class="headerlink" title="数据粒度"></a>数据粒度</h3><p>粒度：数据综合程度高低的一个度量</p>
+<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
+<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
+<p>年（粗）–&gt;月–&gt;日（细）</p>
+<h3 id="分割（分区）"><a href="#分割（分区）" class="headerlink" title="分割（分区）"></a>分割（分区）</h3><p>划分方式：水平划分和垂直划分</p>
+<p>分区类别：:</p>
+<ul>
+<li>范围分区：按时间分割，按单位分割。（分布式数据库）</li>
+</ul>
+<ul>
+<li>哈希分区：（polarDB-X数据库）</li>
+</ul>
+<ul>
+<li>列表分区：按职业、学历分区</li>
+</ul>
 ]]></content>
       <categories>
-        <category>Big Data</category>
         <category>Data Warehouse</category>
+        <category>Big Data</category>
       </categories>
       <tags>
         <tag>Data Warehouse</tag>
@@ -499,6 +459,46 @@
       <categories>
         <category>Big Data</category>
         <category>Data Warehouse</category>
+      </categories>
+      <tags>
+        <tag>Data Warehouse</tag>
+        <tag>Big Data</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chapter 01：Data Warehouse and Data Mining</title>
+    <url>/2022/09/30/DataMining-2/</url>
+    <content><![CDATA[<h1 id="数据仓库与数据挖掘概述"><a href="#数据仓库与数据挖掘概述" class="headerlink" title="数据仓库与数据挖掘概述"></a>数据仓库与数据挖掘概述</h1><h2 id="数据仓库的兴起"><a href="#数据仓库的兴起" class="headerlink" title="数据仓库的兴起"></a>数据仓库的兴起</h2><h3 id="数据仓库产生原因"><a href="#数据仓库产生原因" class="headerlink" title="数据仓库产生原因"></a>数据仓库产生原因</h3><p>A、 数据的大量积累</p>
+<p>B、 关系数据库的局限（操作型数据库）</p>
+<p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
+<p>C、 异构数据源共享问题（各类数据库产品增加导致异构环境数据增加）</p>
+<h3 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h3><p>一、 数据仓库</p>
+<p><img src="../images/DataMining/image-20221015105608879.png" alt="image-20221015105608879"></p>
+<p>二、联邦数据库</p>
+<p><img src="../images/DataMining/image-20221015105635006.png" alt="image-20221015105635006"></p>
+<h3 id="数据仓库与联邦数据库的区别"><a href="#数据仓库与联邦数据库的区别" class="headerlink" title="数据仓库与联邦数据库的区别"></a>数据仓库与联邦数据库的区别</h3><p>数据仓库：</p>
+<ul>
+<li>优：查询速度快   </li>
+<li>缺：空间占用大，安全性一般，实时更新一般</li>
+</ul>
+<p>联邦数据库：</p>
+<ul>
+<li>优：隐私保护性好，空间占用小，实时更新较好</li>
+<li>缺：查询处理复杂，速度慢</li>
+</ul>
+<h2 id="数据仓库的概念"><a href="#数据仓库的概念" class="headerlink" title="数据仓库的概念"></a>数据仓库的概念</h2><h3 id="数据仓库的特点"><a href="#数据仓库的特点" class="headerlink" title="数据仓库的特点"></a>数据仓库的特点</h3><p>一个面向主题的、集成的、时变的、非易失的数据集合。</p>
+<p>A、面向主题的：与主题相关的数据导入数据仓库，由异构转换为同构；</p>
+<p>B、集成的：集成的主要方法：</p>
+<ul>
+<li>统一：消除不一致的现象（数据清洗）</li>
+<li>综合：对原有数据进行综合和计算</li>
+</ul>
+<p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
+<p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
+]]></content>
+      <categories>
+        <category>Data Warehouse</category>
+        <category>Big Data</category>
       </categories>
       <tags>
         <tag>Data Warehouse</tag>
