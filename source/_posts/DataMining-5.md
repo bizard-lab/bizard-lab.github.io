@@ -38,7 +38,7 @@ B、维（dimension）：分析数据的角度
 
 维和度量的组合
 
-![image-20220930214656970](../images/DataMining/image-20220930214656970-16657432322291.png)
+![image-20221015120755730](../images/DataMining/image-20221015120755730.png)
 
 ### 数据单元（单元格）
 
@@ -124,9 +124,12 @@ Eg.sale(产品)(季度)(城市)------->value
 
 混合事务分析型数据库：HTAP
 
-![image-20221006171118346](../images/DataMining/image-20221006171118346-16657435018683.png)
+- TP、AP资源物理分离
+- TP、AP数据一致性：
+  - 强一致性
+  - 弱一致性
 
-
+![image-20221015114905013](../images/DataMining/image-20221015114905013.png)
 
 ## 国产数据库示例
 
@@ -138,11 +141,11 @@ Eg.sale(产品)(季度)(城市)------->value
 
 ### 下推
 
-![image-20221005103435280](../images/DataMining/image-20221005103435280-16657435018696.png)
+![image-20221015121820341](../images/DataMining/image-20221015121820341.png)
 
 ### BI
 
-![image-20221005104044640](../images/DataMining/image-20221005104044640-16657435018694.png)
+![image-202210152](../images/DataMining/3.png)
 
 
 

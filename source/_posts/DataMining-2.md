@@ -30,11 +30,11 @@ C、 异构数据源共享问题（各类数据库产品增加导致异构环境
 
 一、 数据仓库
 
-![clip_image002](../images/DataMining/clip_image002.png)
+![image-20221015105608879](../images/DataMining/image-20221015105608879.png)
 
 二、联邦数据库
 
-![clip_image002-16645445572993](../images/DataMining/clip_image002-16645445572993.png)
+![image-20221015105635006](../images/DataMining/image-20221015105635006.png)
 
 ### 数据仓库与联邦数据库的区别
 
