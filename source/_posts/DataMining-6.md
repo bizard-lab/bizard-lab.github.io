@@ -1,7 +1,7 @@
 ---
-title: Chapter 06：Data Warehouse and Data Mining
+title: Chapter 05：Data Warehouse and Data Mining
 date: 2022-10-11 19:55:30
-top: 6
+top: 5
 tags:
 - Big Data
 - Data Warehouse
