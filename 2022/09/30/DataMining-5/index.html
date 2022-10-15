@@ -27,18 +27,18 @@
 <meta property="og:site_name" content="大数据浪潮">
 <meta property="og:description" content="联机分析处理OLAP的概念联机分析处理（OLAP）A、交互性：联机 B、维（dimension）：分析数据的角度  立方体（超过三维的立方体称为超立方体或多维空间） 维的层次（hierarchy）例.时间维：        ​       年-季度-月-天 ​       年-学期-周   （每一层称为 级别（level）） 维的成员（member）维的一个取值 多维数组（多维空间）维和度量的组合">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20220930214656970-16657432322291.png">
-<meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20221006171118346-16657435018683.png">
+<meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20221015120755730.png">
+<meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20221015114905013.png">
 <meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20221005102013310-16657435018695.png">
-<meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20221005103435280-16657435018696.png">
-<meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20221005104044640-16657435018694.png">
+<meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20221015121820341.png">
+<meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/3.png">
 <meta property="article:published_time" content="2022-09-30T13:24:32.000Z">
-<meta property="article:modified_time" content="2022-10-14T10:38:50.877Z">
+<meta property="article:modified_time" content="2022-10-15T05:00:57.271Z">
 <meta property="article:author" content="Jinguo You">
 <meta property="article:tag" content="Data Warehouse">
 <meta property="article:tag" content="Big Data">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20220930214656970-16657432322291.png">
+<meta name="twitter:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/image-20221015120755730.png">
 
 <link rel="canonical" href="https://bizard-lab.github.io/2022/09/30/DataMining-5/">
 
@@ -234,7 +234,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-14 18:38:50" itemprop="dateModified" datetime="2022-10-14T18:38:50+08:00">2022-10-14</time>
+                <time title="修改时间：2022-10-15 13:00:57" itemprop="dateModified" datetime="2022-10-15T13:00:57+08:00">2022-10-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,7 +269,7 @@
 <p>​       年-学期-周   （每一层称为 <strong>级别（level）</strong>）</p>
 <h3 id="维的成员（member）"><a href="#维的成员（member）" class="headerlink" title="维的成员（member）"></a>维的成员（member）</h3><p>维的一个取值</p>
 <h3 id="多维数组（多维空间）"><a href="#多维数组（多维空间）" class="headerlink" title="多维数组（多维空间）"></a>多维数组（多维空间）</h3><p>维和度量的组合</p>
-<p><img src="../images/DataMining/image-20220930214656970-16657432322291.png" alt="image-20220930214656970"></p>
+<p><img src="../images/DataMining/image-20221015120755730.png" alt="image-20221015120755730"></p>
 <h3 id="数据单元（单元格）"><a href="#数据单元（单元格）" class="headerlink" title="数据单元（单元格）"></a>数据单元（单元格）</h3><p>多维数组的一个取值</p>
 <p>如果查询结果保存起来，则称该查询视图物化</p>
 <h2 id="OLAP的多维数据分析"><a href="#OLAP的多维数据分析" class="headerlink" title="OLAP的多维数据分析"></a>OLAP的多维数据分析</h2><h3 id="多维分析"><a href="#多维分析" class="headerlink" title="多维分析"></a>多维分析</h3><h4 id="切片（slice）-切块（dice）"><a href="#切片（slice）-切块（dice）" class="headerlink" title="切片（slice）/切块（dice）"></a>切片（slice）/切块（dice）</h4><p>切片：单个维度分析</p>
@@ -329,11 +329,19 @@
 <h2 id="HTAP"><a href="#HTAP" class="headerlink" title="HTAP"></a>HTAP</h2><p>事务型数据库：OLTP，以写为主，行存</p>
 <p>分析型数据库：OLAP，以读为主，列存</p>
 <p>混合事务分析型数据库：HTAP</p>
-<p><img src="../images/DataMining/image-20221006171118346-16657435018683.png" alt="image-20221006171118346"></p>
+<ul>
+<li>TP、AP资源物理分离</li>
+<li>TP、AP数据一致性：<ul>
+<li>强一致性</li>
+<li>弱一致性</li>
+</ul>
+</li>
+</ul>
+<p><img src="../images/DataMining/image-20221015114905013.png" alt="image-20221015114905013"></p>
 <h2 id="国产数据库示例"><a href="#国产数据库示例" class="headerlink" title="国产数据库示例"></a>国产数据库示例</h2><h3 id="PolarDB-X数据库"><a href="#PolarDB-X数据库" class="headerlink" title="PolarDB-X数据库"></a>PolarDB-X数据库</h3><p>结构框架：</p>
 <p><img src="../images/DataMining/image-20221005102013310-16657435018695.png" alt="image-20221005102013310"></p>
-<h3 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h3><p><img src="../images/DataMining/image-20221005103435280-16657435018696.png" alt="image-20221005103435280"></p>
-<h3 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h3><p><img src="../images/DataMining/image-20221005104044640-16657435018694.png" alt="image-20221005104044640"></p>
+<h3 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h3><p><img src="../images/DataMining/image-20221015121820341.png" alt="image-20221015121820341"></p>
+<h3 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h3><p><img src="../images/DataMining/3.png" alt="image-202210152"></p>
 <h2 id="习题讲解"><a href="#习题讲解" class="headerlink" title="习题讲解"></a>习题讲解</h2><p>数据转换一般可以分为：</p>
 <ul>
 <li><p>工具转换</p>
@@ -374,12 +382,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/09/30/DataMining-3/" rel="prev" title="Chapter 02：Data Warehouse and Data Mining">
-      <i class="fa fa-chevron-left"></i> Chapter 02：Data Warehouse and Data Mining
+    <a href="/2022/09/30/DataMining-4/" rel="prev" title="Chapter 03：Data Warehouse and Data Mining">
+      <i class="fa fa-chevron-left"></i> Chapter 03：Data Warehouse and Data Mining
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/09/30/DataMining-2/" rel="next" title="Chapter 01：Data Warehouse and Data Mining">
-      Chapter 01：Data Warehouse and Data Mining <i class="fa fa-chevron-right"></i>
+    <a href="/2022/09/30/DataMining-3/" rel="next" title="Chapter 02：Data Warehouse and Data Mining">
+      Chapter 02：Data Warehouse and Data Mining <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

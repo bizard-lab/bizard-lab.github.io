@@ -101,7 +101,7 @@
 <p>​       年-学期-周   （每一层称为 <strong>级别（level）</strong>）</p>
 <h3 id="维的成员（member）"><a href="#维的成员（member）" class="headerlink" title="维的成员（member）"></a>维的成员（member）</h3><p>维的一个取值</p>
 <h3 id="多维数组（多维空间）"><a href="#多维数组（多维空间）" class="headerlink" title="多维数组（多维空间）"></a>多维数组（多维空间）</h3><p>维和度量的组合</p>
-<p><img src="../images/DataMining/image-20220930214656970-16657432322291.png" alt="image-20220930214656970"></p>
+<p><img src="../images/DataMining/image-20221015120755730.png" alt="image-20221015120755730"></p>
 <h3 id="数据单元（单元格）"><a href="#数据单元（单元格）" class="headerlink" title="数据单元（单元格）"></a>数据单元（单元格）</h3><p>多维数组的一个取值</p>
 <p>如果查询结果保存起来，则称该查询视图物化</p>
 <h2 id="OLAP的多维数据分析"><a href="#OLAP的多维数据分析" class="headerlink" title="OLAP的多维数据分析"></a>OLAP的多维数据分析</h2><h3 id="多维分析"><a href="#多维分析" class="headerlink" title="多维分析"></a>多维分析</h3><h4 id="切片（slice）-切块（dice）"><a href="#切片（slice）-切块（dice）" class="headerlink" title="切片（slice）/切块（dice）"></a>切片（slice）/切块（dice）</h4><p>切片：单个维度分析</p>
@@ -161,11 +161,19 @@
 <h2 id="HTAP"><a href="#HTAP" class="headerlink" title="HTAP"></a>HTAP</h2><p>事务型数据库：OLTP，以写为主，行存</p>
 <p>分析型数据库：OLAP，以读为主，列存</p>
 <p>混合事务分析型数据库：HTAP</p>
-<p><img src="../images/DataMining/image-20221006171118346-16657435018683.png" alt="image-20221006171118346"></p>
+<ul>
+<li>TP、AP资源物理分离</li>
+<li>TP、AP数据一致性：<ul>
+<li>强一致性</li>
+<li>弱一致性</li>
+</ul>
+</li>
+</ul>
+<p><img src="../images/DataMining/image-20221015114905013.png" alt="image-20221015114905013"></p>
 <h2 id="国产数据库示例"><a href="#国产数据库示例" class="headerlink" title="国产数据库示例"></a>国产数据库示例</h2><h3 id="PolarDB-X数据库"><a href="#PolarDB-X数据库" class="headerlink" title="PolarDB-X数据库"></a>PolarDB-X数据库</h3><p>结构框架：</p>
 <p><img src="../images/DataMining/image-20221005102013310-16657435018695.png" alt="image-20221005102013310"></p>
-<h3 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h3><p><img src="../images/DataMining/image-20221005103435280-16657435018696.png" alt="image-20221005103435280"></p>
-<h3 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h3><p><img src="../images/DataMining/image-20221005104044640-16657435018694.png" alt="image-20221005104044640"></p>
+<h3 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h3><p><img src="../images/DataMining/image-20221015121820341.png" alt="image-20221015121820341"></p>
+<h3 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h3><p><img src="../images/DataMining/3.png" alt="image-202210152"></p>
 <h2 id="习题讲解"><a href="#习题讲解" class="headerlink" title="习题讲解"></a>习题讲解</h2><p>数据转换一般可以分为：</p>
 <ul>
 <li><p>工具转换</p>
@@ -430,7 +438,7 @@
 </tr>
 </tbody></table>
 <p>销售分析的逻辑模型（星型模型）</p>
-<p><img src="../images/DataMining/image-20220930201611688.png" alt="image-20220930201611688"></p>
+<p><img src="../images/DataMining/1.png" alt="20221015"></p>
 <h2 id="数据抽取、转换和装载"><a href="#数据抽取、转换和装载" class="headerlink" title="数据抽取、转换和装载"></a>数据抽取、转换和装载</h2><h3 id="ETL"><a href="#ETL" class="headerlink" title="ETL"></a>ETL</h3><p>（Extraction、Transformation、Loading）</p>
 <p>数据抽取、数据清洗、数据转换、数据加载、数据更新。</p>
 <p>数据更新：</p>
@@ -439,7 +447,7 @@
 <li>增量更新：数据库维护</li>
 </ul>
 <h2 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h2><p>用来描述数据的数据，包含业务元数据和技术元数据</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="../images/DataMining/image-20220930202533332-16657407595191.png" alt="image-20220930202533332"></p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="../images/DataMining/1-16658031339742.png" alt="image-202210151"></p>
 <h3 id="销售质量"><a href="#销售质量" class="headerlink" title="销售质量"></a>销售质量</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact;</span><br></pre></td></tr></table></figure>
 
 <h3 id="不同年份的销售量"><a href="#不同年份的销售量" class="headerlink" title="不同年份的销售量"></a>不同年份的销售量</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact</span><br><span class="line"><span class="keyword">join</span> time_dim <span class="keyword">on</span> sales_fact.time_key <span class="operator">=</span> time_dim.time_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_dim.year;</span><br></pre></td></tr></table></figure>
@@ -465,9 +473,9 @@
 <p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
 <p>C、 异构数据源共享问题（各类数据库产品增加导致异构环境数据增加）</p>
 <h3 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h3><p>一、 数据仓库</p>
-<p><img src="../images/DataMining/clip_image002.png" alt="clip_image002"></p>
+<p><img src="../images/DataMining/image-20221015105608879.png" alt="image-20221015105608879"></p>
 <p>二、联邦数据库</p>
-<p><img src="../images/DataMining/clip_image002-16645445572993.png" alt="clip_image002-16645445572993"></p>
+<p><img src="../images/DataMining/image-20221015105635006.png" alt="image-20221015105635006"></p>
 <h3 id="数据仓库与联邦数据库的区别"><a href="#数据仓库与联邦数据库的区别" class="headerlink" title="数据仓库与联邦数据库的区别"></a>数据仓库与联邦数据库的区别</h3><p>数据仓库：</p>
 <ul>
 <li>优：查询速度快   </li>
