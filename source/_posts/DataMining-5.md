@@ -1,171 +1,74 @@
 ---
-title: Chapter 04：Data Warehouse and Data Mining
-date: 2022-09-30 21:24:32
-top: 4
+title: Chapter 05：Data Warehouse and Data Mining
+date: 2022-10-11 19:55:30
+top: 5
 tags:
-- Data Warehouse
 - Big Data
+- Data Warehouse
 categories:
-- Data Warehouse
 - Big Data
+- Data Warehouse
 ---
 
-# 联机分析处理
+# 数据立方体和商立方体
 
-## OLAP的概念
+## 物化视图选择
 
-### 联机分析处理（OLAP）
+### Greedy Algorithm(贪心算法)
 
-A、交互性：联机
+- k = number of views to be materialized
 
-B、维（dimension）：分析数据的角度 
+- Given
 
-立方体（超过三维的立方体称为超立方体或多维空间）
+  - v is a view
 
-### 维的层次（hierarchy）
+  - S is a set of views which are selected to be materialized
 
-例.时间维：       
+- Define the benefit of selecting v for materialization as
 
-​       年-季度-月-天
+  - B(v, S) = Gain(S U v, S) 
 
-​       年-学期-周   （每一层称为 **级别（level）**）
+- S <--{top view};
 
-### 维的成员（member）
+- For i = 1 to k do 
 
-维的一个取值
+  - Select that view v not in S such that B(v, S) is maximized;
 
-### 多维数组（多维空间）
+  - S <-- S U {v}
 
-维和度量的组合
+- Resulting S is the greedy selection
 
-![image-20221015120755730](../images/DataMining/image-20221015120755730.png)
+![image-20221011210827373](../images/DataMining/image-20221011210827373.png)
 
-### 数据单元（单元格）
+|      |   1st Choice(M)   |    2nd Choice(M)    |
+| :--: | :---------------: | :-----------------: |
+|  pc  |    (6-6)*3 = 0    |     (6-6)*2 = 0     |
+|  ps  | (6-0.8)*3 = 15.6  |                     |
+|  sc  |    (6-6)*3 = 0    |     (6-6)*2 = 0     |
+|  p   |  (6-0.2)*1 = 5.8  |   (0.8-0.2)*1=0.6   |
+|  s   | (6-0.01)*1 = 5.99 | (0.8-0.01)*1 = 0.79 |
+|  c   |  (6-0.1)*1 = 5.9  |   (6-0.1)*1 = 5.9   |
 
-多维数组的一个取值
+Two views to be materialized are
 
-如果查询结果保存起来，则称该查询视图物化
+1、ps     2、c
 
+V = {ps, c}
 
+Gain(V U {top view}, {top view})
 
-## OLAP的多维数据分析
+= 15.6 + 5.9 = 21.5
 
-### 多维分析
 
-#### 切片（slice）/切块（dice）
 
-切片：单个维度分析
+## 数据立方体
 
-切块：两个或以上维度分析
+![image-20221011212714894](../images/DataMining/image-20221011212714894.png)
 
 
 
-#### 钻取
+## 商立方体
 
-向下钻取（Drill-down）下钻：粗粒度----->细粒度分析
+![image-20221011213423839](../images/DataMining/image-20221011213423839.png)
 
-向上钻取（Roll-up）上卷：细粒度----->粗粒度分析
-
-
-
-#### 旋转（pivot）
-
-不同维度的置换
-
-求不同城市的总销售量
-
-```sql
-select sum(sale_unit) from sale
-join time on time.Q = sale.Q
-join city on city.C = sale.C
-group by city.C;
-```
-
-
-
-## OLAP的存储模型
-
-### OLAP实现架构
-
-ROLAP：关系表 ----->存储空间更小
-
-MOLAP：多维数组----->查询效率高
-
-Eg.sale(产品)(季度)(城市)------->value
-
-| 产品 | 季度 | 城市 | value |
-| :--: | :--: | :--: | :---: |
-|  TV  |  Q1  | 北京 |       |
-|  CD  |  Q2  | 上海 |       |
-|  PC  |  Q3  | 广州 |       |
-| ALL  | ALL  | ALL  |       |
-
-
-
-实现框架：
-
-1、<u>R</u>OLAP：基于关系表，存储空间效率高，利用关系数据库特性
-
-​      Relational
-
-2、<u>M</u>OLAP：基于多维数组，查询效率高
-
-​      Multi-dimensional
-
-3、<u>H</u>OLAP：包含综合数据（MOLAP）和详细数据（ROLAP）
-
-​      Hybrid
-
-## HTAP
-
-事务型数据库：OLTP，以写为主，行存
-
-分析型数据库：OLAP，以读为主，列存
-
-混合事务分析型数据库：HTAP
-
-- TP、AP资源物理分离
-- TP、AP数据一致性：
-  - 强一致性
-  - 弱一致性
-
-![image-20221015114905013](../images/DataMining/image-20221015114905013.png)
-
-## 国产数据库示例
-
-### PolarDB-X数据库
-
-结构框架：
-
-![image-20221005102013310](../images/DataMining/image-20221005102013310-16657435018695.png)
-
-### 下推
-
-![image-20221015121820341](../images/DataMining/image-20221015121820341.png)
-
-### BI
-
-![image-202210152](../images/DataMining/3.png)
-
-
-
-## 习题讲解
-
-数据转换一般可以分为：
-
-- 工具转换
-
-- 人工转换
-
-事实表的特点：
-
-- 数据量大
-- 表中行数多
-- 表中数据常进行追加
-
-数据集市的特点：
-
-- 主题少
-- 数据少
-- 建设周期短
-- 风险小
+![image-20221011213108994](../images/DataMining/image-20221011213108994.png)
