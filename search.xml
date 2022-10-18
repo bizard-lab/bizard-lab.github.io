@@ -1,70 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Chapter 03：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/DataMining-3/</url>
-    <content><![CDATA[<h1 id="数据仓库设计与开发"><a href="#数据仓库设计与开发" class="headerlink" title="数据仓库设计与开发"></a>数据仓库设计与开发</h1><h2 id="数据仓库设计"><a href="#数据仓库设计" class="headerlink" title="数据仓库设计"></a>数据仓库设计</h2><h3 id="系统设计差异"><a href="#系统设计差异" class="headerlink" title="系统设计差异"></a>系统设计差异</h3><table>
-<thead>
-<tr>
-<th><strong>操作型数据库</strong></th>
-<th><strong>数据仓库</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>面向应用</td>
-<td>面向分析</td>
-</tr>
-<tr>
-<td>确定的应用需求</td>
-<td>不确定的分析需求</td>
-</tr>
-<tr>
-<td>事务处理性能</td>
-<td>数据的全局一致性</td>
-</tr>
-<tr>
-<td>数据来自组织外部</td>
-<td>数据来自系统内部</td>
-</tr>
-</tbody></table>
-<h3 id="数据仓库设计原则"><a href="#数据仓库设计原则" class="headerlink" title="数据仓库设计原则"></a>数据仓库设计原则</h3><p>面向主题原则、数据驱动原则、原型法设计原则</p>
-<h3 id="数据仓库设计步骤"><a href="#数据仓库设计步骤" class="headerlink" title="数据仓库设计步骤"></a>数据仓库设计步骤</h3><p>​           1、明确主题</p>
-<p>​           2、概念模型设计</p>
-<p>​           3、技术准备</p>
-<p>​           4、逻辑模型设计</p>
-<p>​           5、物理模型设计</p>
-<p>​           6、数据仓库生成</p>
-<p>​           7、数据仓库的运行与维护</p>
-<h3 id="数据仓库设计方法论"><a href="#数据仓库设计方法论" class="headerlink" title="数据仓库设计方法论"></a>数据仓库设计方法论</h3><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
-<p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
-<h2 id="数据仓库开发"><a href="#数据仓库开发" class="headerlink" title="数据仓库开发"></a>数据仓库开发</h2><h3 id="数据粒度"><a href="#数据粒度" class="headerlink" title="数据粒度"></a>数据粒度</h3><p>粒度：数据综合程度高低的一个度量</p>
-<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
-<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
-<p>年（粗）–&gt;月–&gt;日（细）</p>
-<h3 id="分割（分区）"><a href="#分割（分区）" class="headerlink" title="分割（分区）"></a>分割（分区）</h3><p>划分方式：水平划分和垂直划分</p>
-<p>分区类别：:</p>
-<ul>
-<li>范围分区：按时间分割，按单位分割。（分布式数据库）</li>
-</ul>
-<ul>
-<li>哈希分区：（polarDB-X数据库）</li>
-</ul>
-<ul>
-<li>列表分区：按职业、学历分区</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Data Warehouse</category>
-        <category>Big Data</category>
-      </categories>
-      <tags>
-        <tag>Data Warehouse</tag>
-        <tag>Big Data</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Chapter 01：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/DataMining-1/</url>
+    <url>/2022/09/30/1%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%A6%82%E8%BF%B0/</url>
     <content><![CDATA[<h1 id="数据仓库与数据挖掘概述"><a href="#数据仓库与数据挖掘概述" class="headerlink" title="数据仓库与数据挖掘概述"></a>数据仓库与数据挖掘概述</h1><h2 id="数据仓库的兴起"><a href="#数据仓库的兴起" class="headerlink" title="数据仓库的兴起"></a>数据仓库的兴起</h2><h3 id="数据仓库产生原因"><a href="#数据仓库产生原因" class="headerlink" title="数据仓库产生原因"></a>数据仓库产生原因</h3><p>A、 数据的大量积累</p>
 <p>B、 关系数据库的局限（操作型数据库）</p>
 <p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
@@ -104,7 +42,7 @@
   </entry>
   <entry>
     <title>Chapter 02：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/DataMining-2/</url>
+    <url>/2022/09/30/2%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<h1 id="数据仓库原理"><a href="#数据仓库原理" class="headerlink" title="数据仓库原理"></a>数据仓库原理</h1><h2 id="数据仓库系统结构"><a href="#数据仓库系统结构" class="headerlink" title="数据仓库系统结构"></a>数据仓库系统结构</h2><h3 id="数据库与数据仓库对比"><a href="#数据库与数据仓库对比" class="headerlink" title="数据库与数据仓库对比"></a>数据库与数据仓库对比</h3><table>
 <thead>
 <tr>
@@ -302,8 +240,70 @@
       </tags>
   </entry>
   <entry>
+    <title>Chapter 03：Data Warehouse and Data Mining</title>
+    <url>/2022/09/30/3%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h1 id="数据仓库设计与开发"><a href="#数据仓库设计与开发" class="headerlink" title="数据仓库设计与开发"></a>数据仓库设计与开发</h1><h2 id="数据仓库设计"><a href="#数据仓库设计" class="headerlink" title="数据仓库设计"></a>数据仓库设计</h2><h3 id="系统设计差异"><a href="#系统设计差异" class="headerlink" title="系统设计差异"></a>系统设计差异</h3><table>
+<thead>
+<tr>
+<th><strong>操作型数据库</strong></th>
+<th><strong>数据仓库</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>面向应用</td>
+<td>面向分析</td>
+</tr>
+<tr>
+<td>确定的应用需求</td>
+<td>不确定的分析需求</td>
+</tr>
+<tr>
+<td>事务处理性能</td>
+<td>数据的全局一致性</td>
+</tr>
+<tr>
+<td>数据来自组织外部</td>
+<td>数据来自系统内部</td>
+</tr>
+</tbody></table>
+<h3 id="数据仓库设计原则"><a href="#数据仓库设计原则" class="headerlink" title="数据仓库设计原则"></a>数据仓库设计原则</h3><p>面向主题原则、数据驱动原则、原型法设计原则</p>
+<h3 id="数据仓库设计步骤"><a href="#数据仓库设计步骤" class="headerlink" title="数据仓库设计步骤"></a>数据仓库设计步骤</h3><p>​           1、明确主题</p>
+<p>​           2、概念模型设计</p>
+<p>​           3、技术准备</p>
+<p>​           4、逻辑模型设计</p>
+<p>​           5、物理模型设计</p>
+<p>​           6、数据仓库生成</p>
+<p>​           7、数据仓库的运行与维护</p>
+<h3 id="数据仓库设计方法论"><a href="#数据仓库设计方法论" class="headerlink" title="数据仓库设计方法论"></a>数据仓库设计方法论</h3><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
+<p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
+<h2 id="数据仓库开发"><a href="#数据仓库开发" class="headerlink" title="数据仓库开发"></a>数据仓库开发</h2><h3 id="数据粒度"><a href="#数据粒度" class="headerlink" title="数据粒度"></a>数据粒度</h3><p>粒度：数据综合程度高低的一个度量</p>
+<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
+<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
+<p>年（粗）–&gt;月–&gt;日（细）</p>
+<h3 id="分割（分区）"><a href="#分割（分区）" class="headerlink" title="分割（分区）"></a>分割（分区）</h3><p>划分方式：水平划分和垂直划分</p>
+<p>分区类别：:</p>
+<ul>
+<li>范围分区：按时间分割，按单位分割。（分布式数据库）</li>
+</ul>
+<ul>
+<li>哈希分区：（polarDB-X数据库）</li>
+</ul>
+<ul>
+<li>列表分区：按职业、学历分区</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Data Warehouse</category>
+        <category>Big Data</category>
+      </categories>
+      <tags>
+        <tag>Data Warehouse</tag>
+        <tag>Big Data</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Chapter 04：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/DataMining-4/</url>
+    <url>/2022/09/30/4%E3%80%81%E8%81%94%E6%9C%BA%E5%88%86%E6%9E%90%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<h1 id="联机分析处理"><a href="#联机分析处理" class="headerlink" title="联机分析处理"></a>联机分析处理</h1><h2 id="OLAP的概念"><a href="#OLAP的概念" class="headerlink" title="OLAP的概念"></a>OLAP的概念</h2><h3 id="联机分析处理（OLAP）"><a href="#联机分析处理（OLAP）" class="headerlink" title="联机分析处理（OLAP）"></a>联机分析处理（OLAP）</h3><p>A、交互性：联机</p>
 <p>B、维（dimension）：分析数据的角度 </p>
 <p>立方体（超过三维的立方体称为超立方体或多维空间）</p>
@@ -418,7 +418,7 @@
   </entry>
   <entry>
     <title>Chapter 05：Data Warehouse and Data Mining</title>
-    <url>/2022/10/11/DataMining-5/</url>
+    <url>/2022/10/11/5%E3%80%81%E6%95%B0%E6%8D%AE%E7%AB%8B%E6%96%B9%E4%BD%93%E5%92%8C%E5%95%86%E7%AB%8B%E6%96%B9%E4%BD%93/</url>
     <content><![CDATA[<h1 id="数据立方体和商立方体"><a href="#数据立方体和商立方体" class="headerlink" title="数据立方体和商立方体"></a>数据立方体和商立方体</h1><h2 id="物化视图选择"><a href="#物化视图选择" class="headerlink" title="物化视图选择"></a>物化视图选择</h2><h3 id="Greedy-Algorithm-贪心算法"><a href="#Greedy-Algorithm-贪心算法" class="headerlink" title="Greedy Algorithm(贪心算法)"></a>Greedy Algorithm(贪心算法)</h3><ul>
 <li><p>k = number of views to be materialized</p>
 </li>
