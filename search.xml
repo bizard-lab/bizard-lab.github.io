@@ -27,8 +27,8 @@
         <category>Data Warehouse</category>
       </categories>
       <tags>
-        <tag>Big Data</tag>
         <tag>Data Warehouse</tag>
+        <tag>Big Data</tag>
       </tags>
   </entry>
   <entry>
@@ -66,8 +66,8 @@
         <category>Data Warehouse</category>
       </categories>
       <tags>
-        <tag>Big Data</tag>
         <tag>Data Warehouse</tag>
+        <tag>Big Data</tag>
       </tags>
   </entry>
   <entry>
@@ -149,12 +149,15 @@
 </ul>
 </li>
 </ul>
-<img src="../images/DataMining/image-20221015114905013.png" style="zoom:50%;float:left;" />
+<img src="../images/DataMining/image-20221015114905013.png" style="zoom: 67%; float: left;" />
 
 <h2 id="国产数据库示例"><a href="#国产数据库示例" class="headerlink" title="国产数据库示例"></a>国产数据库示例</h2><h3 id="PolarDB-X数据库"><a href="#PolarDB-X数据库" class="headerlink" title="PolarDB-X数据库"></a>PolarDB-X数据库</h3><p>结构框架：</p>
 <p><img src="../images/DataMining/image-20221005102013310-16657435018695.png" alt="image-20221005102013310"></p>
 <h3 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h3><p><img src="../images/DataMining/image-20221015121820341.png" alt="image-20221015121820341"></p>
-<h3 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h3><p><img src="../images/DataMining/3.png" alt="image-202210152"></p>
+<h3 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h3><img src="../images/DataMining/image-20221019192403264.png" alt="image-20221019192403264" style="zoom: 67%;" />
+
+
+
 <h2 id="数据立方体和商立方体"><a href="#数据立方体和商立方体" class="headerlink" title="数据立方体和商立方体"></a>数据立方体和商立方体</h2><h3 id="物化视图选择"><a href="#物化视图选择" class="headerlink" title="物化视图选择"></a>物化视图选择</h3><h4 id="Greedy-Algorithm-贪心算法"><a href="#Greedy-Algorithm-贪心算法" class="headerlink" title="Greedy Algorithm(贪心算法)"></a>Greedy Algorithm(贪心算法)</h4><ul>
 <li><p>k = number of views to be materialized</p>
 </li>
@@ -257,8 +260,8 @@
         <category>Big Data</category>
       </categories>
       <tags>
-        <tag>Big Data</tag>
         <tag>Data Warehouse</tag>
+        <tag>Big Data</tag>
       </tags>
   </entry>
   <entry>
@@ -319,8 +322,8 @@
         <category>Big Data</category>
       </categories>
       <tags>
-        <tag>Big Data</tag>
         <tag>Data Warehouse</tag>
+        <tag>Big Data</tag>
       </tags>
   </entry>
   <entry>
@@ -518,8 +521,8 @@
         <category>Data Warehouse</category>
       </categories>
       <tags>
-        <tag>Big Data</tag>
         <tag>Data Warehouse</tag>
+        <tag>Big Data</tag>
       </tags>
   </entry>
   <entry>
@@ -558,8 +561,8 @@
         <category>Big Data</category>
       </categories>
       <tags>
-        <tag>Big Data</tag>
         <tag>Data Warehouse</tag>
+        <tag>Big Data</tag>
       </tags>
   </entry>
 </search>
