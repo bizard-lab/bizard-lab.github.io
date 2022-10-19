@@ -1,43 +1,326 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Chapter 01：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/1%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<h1 id="数据仓库与数据挖掘概述"><a href="#数据仓库与数据挖掘概述" class="headerlink" title="数据仓库与数据挖掘概述"></a>数据仓库与数据挖掘概述</h1><h2 id="数据仓库的兴起"><a href="#数据仓库的兴起" class="headerlink" title="数据仓库的兴起"></a>数据仓库的兴起</h2><h3 id="数据仓库产生原因"><a href="#数据仓库产生原因" class="headerlink" title="数据仓库产生原因"></a>数据仓库产生原因</h3><p>A、 数据的大量积累</p>
-<p>B、 关系数据库的局限（操作型数据库）</p>
-<p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
-<p>C、 异构数据源共享问题（各类数据库产品增加导致异构环境数据增加）</p>
-<h3 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h3><p>一、 数据仓库</p>
-<p><img src="../images/DataMining/image-20221015105608879.png" alt="image-20221015105608879"></p>
-<p>二、联邦数据库</p>
-<p><img src="../images/DataMining/image-20221015105635006.png" alt="image-20221015105635006"></p>
-<h3 id="数据仓库与联邦数据库的区别"><a href="#数据仓库与联邦数据库的区别" class="headerlink" title="数据仓库与联邦数据库的区别"></a>数据仓库与联邦数据库的区别</h3><p>数据仓库：</p>
-<ul>
-<li>优：查询速度快   </li>
-<li>缺：空间占用大，安全性一般，实时更新一般</li>
+    <title>Chapter 06：Data Warehouse and Data Mining</title>
+    <url>/2022/10/19/6%E3%80%81%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99/</url>
+    <content><![CDATA[<h1 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a>关联规则</h1><h2 id="关联规则的挖掘原理"><a href="#关联规则的挖掘原理" class="headerlink" title="关联规则的挖掘原理"></a>关联规则的挖掘原理</h2><h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><h4 id="项集（Itemset）"><a href="#项集（Itemset）" class="headerlink" title="项集（Itemset）"></a>项集（Itemset）</h4><p>项（Item）的集合</p>
+<h4 id="关联规则-1"><a href="#关联规则-1" class="headerlink" title="关联规则"></a>关联规则</h4><p>$$<br>A\subseteq I，B\subseteq I，A\cap B=\Phi，则A\to B称为关联规则<br>$$</p>
+<h4 id="支持度（supp"><a href="#支持度（supp" class="headerlink" title="支持度（supp)"></a>支持度（supp)</h4><p>$$<br>S(A\to B)=P(AB)=\frac{|AB|}{|D|}<br>$$</p>
+<p>其中，|D|表示事务数据库D的事务个数</p>
+<h4 id="置信度（conf）"><a href="#置信度（conf）" class="headerlink" title="置信度（conf）"></a>置信度（conf）</h4><p>$$<br>C(A\to B)=P(B|A)=\frac{|AB|}{|A|}<br>$$</p>
+<p>其中，|A|表示数据库中包含项集A的事务个数</p>
+<h4 id="阈值"><a href="#阈值" class="headerlink" title="阈值"></a>阈值</h4><ul>
+<li>最小支持度（min_supp)</li>
+<li>最小置信度（min_conf)</li>
 </ul>
-<p>联邦数据库：</p>
+<h4 id="频繁项集（Frequent-Itemset）"><a href="#频繁项集（Frequent-Itemset）" class="headerlink" title="频繁项集（Frequent Itemset）"></a>频繁项集（Frequent Itemset）</h4><p>项集满足最小支持度，即：<br>$$<br>S(A\to B)\ge min.supp<br>$$<br>性质：</p>
 <ul>
-<li>优：隐私保护性好，空间占用小，实时更新较好</li>
-<li>缺：查询处理复杂，速度慢</li>
+<li>频繁项集的子集必是频繁项集</li>
+<li>非频繁项集的超集一定是非频繁的</li>
 </ul>
-<h2 id="数据仓库的概念"><a href="#数据仓库的概念" class="headerlink" title="数据仓库的概念"></a>数据仓库的概念</h2><h3 id="数据仓库的特点"><a href="#数据仓库的特点" class="headerlink" title="数据仓库的特点"></a>数据仓库的特点</h3><p>一个面向主题的、集成的、时变的、非易失的数据集合。</p>
-<p>A、面向主题的：与主题相关的数据导入数据仓库，由异构转换为同构；</p>
-<p>B、集成的：集成的主要方法：</p>
+<h4 id="强关联规则"><a href="#强关联规则" class="headerlink" title="强关联规则"></a>强关联规则</h4><p>同时满足最小支持度（min_supp）和最小置信度（min_conf）的规则称之为强关联规则，即<br>$$<br>给定事务数据库D，满足A\subseteq I,B\subseteq I,A\cap B=\Phi,以及S(A\to B)\ge min.supp且C(A\to B)\ge min.conf<br>$$</p>
+<h2 id="Apriori算法"><a href="#Apriori算法" class="headerlink" title="Apriori算法"></a>Apriori算法</h2><p>min_supp=2</p>
+<p><img src="../images/DataMining/image-20221019140559395.png" alt="image-20221019140559395"></p>
+]]></content>
+      <categories>
+        <category>Big Data</category>
+        <category>Data Warehouse</category>
+      </categories>
+      <tags>
+        <tag>Big Data</tag>
+        <tag>Data Warehouse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chapter 05：Data Warehouse and Data Mining</title>
+    <url>/2022/10/19/5%E3%80%81%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<h1 id="数据挖掘原理"><a href="#数据挖掘原理" class="headerlink" title="数据挖掘原理"></a>数据挖掘原理</h1><h2 id="知识发现过程"><a href="#知识发现过程" class="headerlink" title="知识发现过程"></a>知识发现过程</h2><h3 id="知识发现过程定义"><a href="#知识发现过程定义" class="headerlink" title="知识发现过程定义"></a>知识发现过程定义</h3><ul>
+<li><p>知识发现（KDD）：从数据中发现有用知识的整个过程。</p>
+</li>
+<li><p>数据挖掘（DM） ：KDD过程中的一个特定步骤，它用专门算法从数据中抽取模式。</p>
+</li>
+</ul>
+<p><img src="../images/DataMining/image-20221019130231010.png" alt="image-20221019130231010"></p>
+<h2 id="数据挖掘方法和技术概述"><a href="#数据挖掘方法和技术概述" class="headerlink" title="数据挖掘方法和技术概述"></a>数据挖掘方法和技术概述</h2><h3 id="数据挖掘常用技术"><a href="#数据挖掘常用技术" class="headerlink" title="数据挖掘常用技术"></a>数据挖掘常用技术</h3><ul>
+<li><p>关联分析</p>
+</li>
+<li><p>分类</p>
+</li>
+<li><p>聚类</p>
+</li>
+<li><p>人工神经网络等</p>
+</li>
+</ul>
+<h3 id="关联分析"><a href="#关联分析" class="headerlink" title="关联分析"></a>关联分析</h3><p>若两个或多个数据项的取值之间重复出现且概率很高时，它就存在某种关联，可以建立起这些数据项的关联规则。</p>
+<p>一般用“支持度”和“可信度”两个阈值来淘汰无用的关联规则。</p>
+<h3 id="数据挖掘工具"><a href="#数据挖掘工具" class="headerlink" title="数据挖掘工具"></a>数据挖掘工具</h3><ul>
+<li>SAS Enterprise Miner</li>
+<li>SPSS Clementine </li>
+<li>IBM Intelligent Miner </li>
+<li>Oracle Data Miner</li>
+<li>SSAS、SSIS、SSRS</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Big Data</category>
+        <category>Data Warehouse</category>
+      </categories>
+      <tags>
+        <tag>Big Data</tag>
+        <tag>Data Warehouse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chapter 04：Data Warehouse and Data Mining</title>
+    <url>/2022/09/30/4%E3%80%81%E8%81%94%E6%9C%BA%E5%88%86%E6%9E%90%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h1 id="联机分析处理"><a href="#联机分析处理" class="headerlink" title="联机分析处理"></a>联机分析处理</h1><h2 id="OLAP的概念"><a href="#OLAP的概念" class="headerlink" title="OLAP的概念"></a>OLAP的概念</h2><h3 id="联机分析处理（OLAP）"><a href="#联机分析处理（OLAP）" class="headerlink" title="联机分析处理（OLAP）"></a>联机分析处理（OLAP）</h3><p>A、交互性：联机</p>
+<p>B、维（dimension）：分析数据的角度 </p>
+<p>立方体（超过三维的立方体称为超立方体或多维空间）</p>
+<h3 id="维的层次（hierarchy）"><a href="#维的层次（hierarchy）" class="headerlink" title="维的层次（hierarchy）"></a>维的层次（hierarchy）</h3><p>例.时间维：       </p>
+<p>​       年-季度-月-天</p>
+<p>​       年-学期-周   （每一层称为 <strong>级别（level）</strong>）</p>
+<h3 id="维的成员（member）"><a href="#维的成员（member）" class="headerlink" title="维的成员（member）"></a>维的成员（member）</h3><p>维的一个取值</p>
+<h3 id="多维数组（多维空间）"><a href="#多维数组（多维空间）" class="headerlink" title="多维数组（多维空间）"></a>多维数组（多维空间）</h3><p>维和度量的组合</p>
+<p><img src="../images/DataMining/image-20221015120755730.png" alt="image-20221015120755730"></p>
+<h3 id="数据单元（单元格）"><a href="#数据单元（单元格）" class="headerlink" title="数据单元（单元格）"></a>数据单元（单元格）</h3><p>多维数组的一个取值</p>
+<p>如果查询结果保存起来，则称该查询视图物化</p>
+<h2 id="OLAP的多维数据分析"><a href="#OLAP的多维数据分析" class="headerlink" title="OLAP的多维数据分析"></a>OLAP的多维数据分析</h2><h3 id="多维分析"><a href="#多维分析" class="headerlink" title="多维分析"></a>多维分析</h3><h4 id="切片（slice）-切块（dice）"><a href="#切片（slice）-切块（dice）" class="headerlink" title="切片（slice）/切块（dice）"></a>切片（slice）/切块（dice）</h4><p>切片：单个维度分析</p>
+<p>切块：两个或以上维度分析</p>
+<h4 id="钻取"><a href="#钻取" class="headerlink" title="钻取"></a>钻取</h4><p>向下钻取（Drill-down）下钻：粗粒度—–&gt;细粒度分析</p>
+<p>向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
+<h4 id="旋转（pivot）"><a href="#旋转（pivot）" class="headerlink" title="旋转（pivot）"></a>旋转（pivot）</h4><p>不同维度的置换</p>
+<p>求不同城市的总销售量</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(sale_unit) <span class="keyword">from</span> sale</span><br><span class="line"><span class="keyword">join</span> <span class="type">time</span> <span class="keyword">on</span> time.Q <span class="operator">=</span> sale.Q</span><br><span class="line"><span class="keyword">join</span> city <span class="keyword">on</span> city.C <span class="operator">=</span> sale.C</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> city.C;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="OLAP的存储模型"><a href="#OLAP的存储模型" class="headerlink" title="OLAP的存储模型"></a>OLAP的存储模型</h2><h3 id="OLAP实现架构"><a href="#OLAP实现架构" class="headerlink" title="OLAP实现架构"></a>OLAP实现架构</h3><p>ROLAP：关系表 —–&gt;存储空间更小</p>
+<p>MOLAP：多维数组—–&gt;查询效率高</p>
+<p>Eg.sale(产品)(季度)(城市)——-&gt;value</p>
+<table>
+<thead>
+<tr>
+<th align="center">产品</th>
+<th align="center">季度</th>
+<th align="center">城市</th>
+<th align="center">value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TV</td>
+<td align="center">Q1</td>
+<td align="center">北京</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">CD</td>
+<td align="center">Q2</td>
+<td align="center">上海</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">PC</td>
+<td align="center">Q3</td>
+<td align="center">广州</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">ALL</td>
+<td align="center">ALL</td>
+<td align="center">ALL</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>实现框架：</p>
+<p>1、<u>R</u>OLAP：基于关系表，存储空间效率高，利用关系数据库特性</p>
+<p>​      Relational</p>
+<p>2、<u>M</u>OLAP：基于多维数组，查询效率高</p>
+<p>​      Multi-dimensional</p>
+<p>3、<u>H</u>OLAP：包含综合数据（MOLAP）和详细数据（ROLAP）</p>
+<p>​      Hybrid</p>
+<h2 id="HTAP"><a href="#HTAP" class="headerlink" title="HTAP"></a>HTAP</h2><p>事务型数据库：OLTP，以写为主，行存</p>
+<p>分析型数据库：OLAP，以读为主，列存</p>
+<p>混合事务分析型数据库：HTAP</p>
 <ul>
-<li>统一：消除不一致的现象（数据清洗）</li>
-<li>综合：对原有数据进行综合和计算</li>
+<li>TP、AP资源物理分离</li>
+<li>TP、AP数据一致性：<ul>
+<li>强一致性</li>
+<li>弱一致性</li>
 </ul>
-<p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
-<p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
+</li>
+</ul>
+<img src="../images/DataMining/image-20221015114905013.png" style="zoom:50%;float:left;" />
+
+<h2 id="国产数据库示例"><a href="#国产数据库示例" class="headerlink" title="国产数据库示例"></a>国产数据库示例</h2><h3 id="PolarDB-X数据库"><a href="#PolarDB-X数据库" class="headerlink" title="PolarDB-X数据库"></a>PolarDB-X数据库</h3><p>结构框架：</p>
+<p><img src="../images/DataMining/image-20221005102013310-16657435018695.png" alt="image-20221005102013310"></p>
+<h3 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h3><p><img src="../images/DataMining/image-20221015121820341.png" alt="image-20221015121820341"></p>
+<h3 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h3><p><img src="../images/DataMining/3.png" alt="image-202210152"></p>
+<h2 id="数据立方体和商立方体"><a href="#数据立方体和商立方体" class="headerlink" title="数据立方体和商立方体"></a>数据立方体和商立方体</h2><h3 id="物化视图选择"><a href="#物化视图选择" class="headerlink" title="物化视图选择"></a>物化视图选择</h3><h4 id="Greedy-Algorithm-贪心算法"><a href="#Greedy-Algorithm-贪心算法" class="headerlink" title="Greedy Algorithm(贪心算法)"></a>Greedy Algorithm(贪心算法)</h4><ul>
+<li><p>k = number of views to be materialized</p>
+</li>
+<li><p>Given</p>
+<ul>
+<li><p>v is a view</p>
+</li>
+<li><p>S is a set of views which are selected to be materialized</p>
+</li>
+</ul>
+</li>
+<li><p>Define the benefit of selecting v for materialization as</p>
+<ul>
+<li>B(v, S) = Gain(S U v, S) </li>
+</ul>
+</li>
+<li><p>S &lt;–{top view};</p>
+</li>
+<li><p>For i = 1 to k do </p>
+<ul>
+<li><p>Select that view v not in S such that B(v, S) is maximized;</p>
+</li>
+<li><p>S &lt;– S U {v}</p>
+</li>
+</ul>
+</li>
+<li><p>Resulting S is the greedy selection</p>
+</li>
+</ul>
+<p><img src="../images/DataMining/image-20221011210827373.png" alt="image-20221011210827373"></p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">1st Choice(M)</th>
+<th align="center">2nd Choice(M)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">pc</td>
+<td align="center">(6-6)*3 = 0</td>
+<td align="center">(6-6)*2 = 0</td>
+</tr>
+<tr>
+<td align="center">ps</td>
+<td align="center">(6-0.8)*3 = 15.6</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">sc</td>
+<td align="center">(6-6)*3 = 0</td>
+<td align="center">(6-6)*2 = 0</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td align="center">(6-0.2)*1 = 5.8</td>
+<td align="center">(0.8-0.2)*1=0.6</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">(6-0.01)*1 = 5.99</td>
+<td align="center">(0.8-0.01)*1 = 0.79</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td align="center">(6-0.1)*1 = 5.9</td>
+<td align="center">(6-0.1)*1 = 5.9</td>
+</tr>
+</tbody></table>
+<p>Two views to be materialized are</p>
+<p>1、ps     2、c</p>
+<p>V = {ps, c}</p>
+<p>Gain(V U {top view}, {top view})</p>
+<p>= 15.6 + 5.9 = 21.5</p>
+<h3 id="数据立方体"><a href="#数据立方体" class="headerlink" title="数据立方体"></a>数据立方体</h3><p><img src="../images/DataMining/image-20221011212714894.png" alt="image-20221011212714894"></p>
+<h3 id="商立方体"><a href="#商立方体" class="headerlink" title="商立方体"></a>商立方体</h3><p><img src="../images/DataMining/image-20221011213423839.png" alt="image-20221011213423839"></p>
+<h2 id="习题讲解"><a href="#习题讲解" class="headerlink" title="习题讲解"></a>习题讲解</h2><p>数据转换一般可以分为：</p>
+<ul>
+<li><p>工具转换</p>
+</li>
+<li><p>人工转换</p>
+</li>
+</ul>
+<p>事实表的特点：</p>
+<ul>
+<li>数据量大</li>
+<li>表中行数多</li>
+<li>表中数据常进行追加</li>
+</ul>
+<p>数据集市的特点：</p>
+<ul>
+<li>主题少</li>
+<li>数据少</li>
+<li>建设周期短</li>
+<li>风险小</li>
+</ul>
 ]]></content>
       <categories>
         <category>Data Warehouse</category>
         <category>Big Data</category>
       </categories>
       <tags>
-        <tag>Data Warehouse</tag>
         <tag>Big Data</tag>
+        <tag>Data Warehouse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chapter 03：Data Warehouse and Data Mining</title>
+    <url>/2022/09/30/3%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h1 id="数据仓库设计与开发"><a href="#数据仓库设计与开发" class="headerlink" title="数据仓库设计与开发"></a>数据仓库设计与开发</h1><h2 id="数据仓库设计"><a href="#数据仓库设计" class="headerlink" title="数据仓库设计"></a>数据仓库设计</h2><h3 id="系统设计差异"><a href="#系统设计差异" class="headerlink" title="系统设计差异"></a>系统设计差异</h3><table>
+<thead>
+<tr>
+<th><strong>操作型数据库</strong></th>
+<th><strong>数据仓库</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>面向应用</td>
+<td>面向分析</td>
+</tr>
+<tr>
+<td>确定的应用需求</td>
+<td>不确定的分析需求</td>
+</tr>
+<tr>
+<td>事务处理性能</td>
+<td>数据的全局一致性</td>
+</tr>
+<tr>
+<td>数据来自组织外部</td>
+<td>数据来自系统内部</td>
+</tr>
+</tbody></table>
+<h3 id="数据仓库设计原则"><a href="#数据仓库设计原则" class="headerlink" title="数据仓库设计原则"></a>数据仓库设计原则</h3><p>面向主题原则、数据驱动原则、原型法设计原则</p>
+<h3 id="数据仓库设计步骤"><a href="#数据仓库设计步骤" class="headerlink" title="数据仓库设计步骤"></a>数据仓库设计步骤</h3><p>​           1、明确主题</p>
+<p>​           2、概念模型设计</p>
+<p>​           3、技术准备</p>
+<p>​           4、逻辑模型设计</p>
+<p>​           5、物理模型设计</p>
+<p>​           6、数据仓库生成</p>
+<p>​           7、数据仓库的运行与维护</p>
+<h3 id="数据仓库设计方法论"><a href="#数据仓库设计方法论" class="headerlink" title="数据仓库设计方法论"></a>数据仓库设计方法论</h3><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
+<p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
+<h2 id="数据仓库开发"><a href="#数据仓库开发" class="headerlink" title="数据仓库开发"></a>数据仓库开发</h2><h3 id="数据粒度"><a href="#数据粒度" class="headerlink" title="数据粒度"></a>数据粒度</h3><p>粒度：数据综合程度高低的一个度量</p>
+<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
+<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
+<p>年（粗）–&gt;月–&gt;日（细）</p>
+<h3 id="分割（分区）"><a href="#分割（分区）" class="headerlink" title="分割（分区）"></a>分割（分区）</h3><p>划分方式：水平划分和垂直划分</p>
+<p>分区类别：:</p>
+<ul>
+<li>范围分区：按时间分割，按单位分割。（分布式数据库）</li>
+</ul>
+<ul>
+<li>哈希分区：（polarDB-X数据库）</li>
+</ul>
+<ul>
+<li>列表分区：按职业、学历分区</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Data Warehouse</category>
+        <category>Big Data</category>
+      </categories>
+      <tags>
+        <tag>Big Data</tag>
+        <tag>Data Warehouse</tag>
       </tags>
   </entry>
   <entry>
@@ -235,275 +518,48 @@
         <category>Data Warehouse</category>
       </categories>
       <tags>
-        <tag>Data Warehouse</tag>
         <tag>Big Data</tag>
+        <tag>Data Warehouse</tag>
       </tags>
   </entry>
   <entry>
-    <title>Chapter 03：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/3%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h1 id="数据仓库设计与开发"><a href="#数据仓库设计与开发" class="headerlink" title="数据仓库设计与开发"></a>数据仓库设计与开发</h1><h2 id="数据仓库设计"><a href="#数据仓库设计" class="headerlink" title="数据仓库设计"></a>数据仓库设计</h2><h3 id="系统设计差异"><a href="#系统设计差异" class="headerlink" title="系统设计差异"></a>系统设计差异</h3><table>
-<thead>
-<tr>
-<th><strong>操作型数据库</strong></th>
-<th><strong>数据仓库</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>面向应用</td>
-<td>面向分析</td>
-</tr>
-<tr>
-<td>确定的应用需求</td>
-<td>不确定的分析需求</td>
-</tr>
-<tr>
-<td>事务处理性能</td>
-<td>数据的全局一致性</td>
-</tr>
-<tr>
-<td>数据来自组织外部</td>
-<td>数据来自系统内部</td>
-</tr>
-</tbody></table>
-<h3 id="数据仓库设计原则"><a href="#数据仓库设计原则" class="headerlink" title="数据仓库设计原则"></a>数据仓库设计原则</h3><p>面向主题原则、数据驱动原则、原型法设计原则</p>
-<h3 id="数据仓库设计步骤"><a href="#数据仓库设计步骤" class="headerlink" title="数据仓库设计步骤"></a>数据仓库设计步骤</h3><p>​           1、明确主题</p>
-<p>​           2、概念模型设计</p>
-<p>​           3、技术准备</p>
-<p>​           4、逻辑模型设计</p>
-<p>​           5、物理模型设计</p>
-<p>​           6、数据仓库生成</p>
-<p>​           7、数据仓库的运行与维护</p>
-<h3 id="数据仓库设计方法论"><a href="#数据仓库设计方法论" class="headerlink" title="数据仓库设计方法论"></a>数据仓库设计方法论</h3><p>DM（数据集市） –&gt; DW（数据仓库） （自底向上）（成本小，收益大）</p>
-<p>DW（数据仓库） –&gt;DM（数据集市） （自顶向下）（成本大，收益小）</p>
-<h2 id="数据仓库开发"><a href="#数据仓库开发" class="headerlink" title="数据仓库开发"></a>数据仓库开发</h2><h3 id="数据粒度"><a href="#数据粒度" class="headerlink" title="数据粒度"></a>数据粒度</h3><p>粒度：数据综合程度高低的一个度量</p>
-<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
-<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
-<p>年（粗）–&gt;月–&gt;日（细）</p>
-<h3 id="分割（分区）"><a href="#分割（分区）" class="headerlink" title="分割（分区）"></a>分割（分区）</h3><p>划分方式：水平划分和垂直划分</p>
-<p>分区类别：:</p>
+    <title>Chapter 01：Data Warehouse and Data Mining</title>
+    <url>/2022/09/30/1%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h1 id="数据仓库与数据挖掘概述"><a href="#数据仓库与数据挖掘概述" class="headerlink" title="数据仓库与数据挖掘概述"></a>数据仓库与数据挖掘概述</h1><h2 id="数据仓库的兴起"><a href="#数据仓库的兴起" class="headerlink" title="数据仓库的兴起"></a>数据仓库的兴起</h2><h3 id="数据仓库产生原因"><a href="#数据仓库产生原因" class="headerlink" title="数据仓库产生原因"></a>数据仓库产生原因</h3><p>A、 数据的大量积累</p>
+<p>B、 关系数据库的局限（操作型数据库）</p>
+<p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
+<p>C、 异构数据源共享问题（各类数据库产品增加导致异构环境数据增加）</p>
+<h3 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h3><p>一、 数据仓库</p>
+<p><img src="../images/DataMining/image-20221015105608879.png" alt="image-20221015105608879"></p>
+<p>二、联邦数据库</p>
+<p><img src="../images/DataMining/image-20221015105635006.png" alt="image-20221015105635006"></p>
+<h3 id="数据仓库与联邦数据库的区别"><a href="#数据仓库与联邦数据库的区别" class="headerlink" title="数据仓库与联邦数据库的区别"></a>数据仓库与联邦数据库的区别</h3><p>数据仓库：</p>
 <ul>
-<li>范围分区：按时间分割，按单位分割。（分布式数据库）</li>
+<li>优：查询速度快   </li>
+<li>缺：空间占用大，安全性一般，实时更新一般</li>
 </ul>
+<p>联邦数据库：</p>
 <ul>
-<li>哈希分区：（polarDB-X数据库）</li>
+<li>优：隐私保护性好，空间占用小，实时更新较好</li>
+<li>缺：查询处理复杂，速度慢</li>
 </ul>
+<h2 id="数据仓库的概念"><a href="#数据仓库的概念" class="headerlink" title="数据仓库的概念"></a>数据仓库的概念</h2><h3 id="数据仓库的特点"><a href="#数据仓库的特点" class="headerlink" title="数据仓库的特点"></a>数据仓库的特点</h3><p>一个面向主题的、集成的、时变的、非易失的数据集合。</p>
+<p>A、面向主题的：与主题相关的数据导入数据仓库，由异构转换为同构；</p>
+<p>B、集成的：集成的主要方法：</p>
 <ul>
-<li>列表分区：按职业、学历分区</li>
+<li>统一：消除不一致的现象（数据清洗）</li>
+<li>综合：对原有数据进行综合和计算</li>
 </ul>
+<p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
+<p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
 ]]></content>
       <categories>
         <category>Data Warehouse</category>
         <category>Big Data</category>
       </categories>
       <tags>
-        <tag>Data Warehouse</tag>
         <tag>Big Data</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Chapter 04：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/4%E3%80%81%E8%81%94%E6%9C%BA%E5%88%86%E6%9E%90%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<h1 id="联机分析处理"><a href="#联机分析处理" class="headerlink" title="联机分析处理"></a>联机分析处理</h1><h2 id="OLAP的概念"><a href="#OLAP的概念" class="headerlink" title="OLAP的概念"></a>OLAP的概念</h2><h3 id="联机分析处理（OLAP）"><a href="#联机分析处理（OLAP）" class="headerlink" title="联机分析处理（OLAP）"></a>联机分析处理（OLAP）</h3><p>A、交互性：联机</p>
-<p>B、维（dimension）：分析数据的角度 </p>
-<p>立方体（超过三维的立方体称为超立方体或多维空间）</p>
-<h3 id="维的层次（hierarchy）"><a href="#维的层次（hierarchy）" class="headerlink" title="维的层次（hierarchy）"></a>维的层次（hierarchy）</h3><p>例.时间维：       </p>
-<p>​       年-季度-月-天</p>
-<p>​       年-学期-周   （每一层称为 <strong>级别（level）</strong>）</p>
-<h3 id="维的成员（member）"><a href="#维的成员（member）" class="headerlink" title="维的成员（member）"></a>维的成员（member）</h3><p>维的一个取值</p>
-<h3 id="多维数组（多维空间）"><a href="#多维数组（多维空间）" class="headerlink" title="多维数组（多维空间）"></a>多维数组（多维空间）</h3><p>维和度量的组合</p>
-<p><img src="../images/DataMining/image-20221015120755730.png" alt="image-20221015120755730"></p>
-<h3 id="数据单元（单元格）"><a href="#数据单元（单元格）" class="headerlink" title="数据单元（单元格）"></a>数据单元（单元格）</h3><p>多维数组的一个取值</p>
-<p>如果查询结果保存起来，则称该查询视图物化</p>
-<h2 id="OLAP的多维数据分析"><a href="#OLAP的多维数据分析" class="headerlink" title="OLAP的多维数据分析"></a>OLAP的多维数据分析</h2><h3 id="多维分析"><a href="#多维分析" class="headerlink" title="多维分析"></a>多维分析</h3><h4 id="切片（slice）-切块（dice）"><a href="#切片（slice）-切块（dice）" class="headerlink" title="切片（slice）/切块（dice）"></a>切片（slice）/切块（dice）</h4><p>切片：单个维度分析</p>
-<p>切块：两个或以上维度分析</p>
-<h4 id="钻取"><a href="#钻取" class="headerlink" title="钻取"></a>钻取</h4><p>向下钻取（Drill-down）下钻：粗粒度—–&gt;细粒度分析</p>
-<p>向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
-<h4 id="旋转（pivot）"><a href="#旋转（pivot）" class="headerlink" title="旋转（pivot）"></a>旋转（pivot）</h4><p>不同维度的置换</p>
-<p>求不同城市的总销售量</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(sale_unit) <span class="keyword">from</span> sale</span><br><span class="line"><span class="keyword">join</span> <span class="type">time</span> <span class="keyword">on</span> time.Q <span class="operator">=</span> sale.Q</span><br><span class="line"><span class="keyword">join</span> city <span class="keyword">on</span> city.C <span class="operator">=</span> sale.C</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> city.C;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="OLAP的存储模型"><a href="#OLAP的存储模型" class="headerlink" title="OLAP的存储模型"></a>OLAP的存储模型</h2><h3 id="OLAP实现架构"><a href="#OLAP实现架构" class="headerlink" title="OLAP实现架构"></a>OLAP实现架构</h3><p>ROLAP：关系表 —–&gt;存储空间更小</p>
-<p>MOLAP：多维数组—–&gt;查询效率高</p>
-<p>Eg.sale(产品)(季度)(城市)——-&gt;value</p>
-<table>
-<thead>
-<tr>
-<th align="center">产品</th>
-<th align="center">季度</th>
-<th align="center">城市</th>
-<th align="center">value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">TV</td>
-<td align="center">Q1</td>
-<td align="center">北京</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">CD</td>
-<td align="center">Q2</td>
-<td align="center">上海</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">PC</td>
-<td align="center">Q3</td>
-<td align="center">广州</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">ALL</td>
-<td align="center">ALL</td>
-<td align="center">ALL</td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<p>实现框架：</p>
-<p>1、<u>R</u>OLAP：基于关系表，存储空间效率高，利用关系数据库特性</p>
-<p>​      Relational</p>
-<p>2、<u>M</u>OLAP：基于多维数组，查询效率高</p>
-<p>​      Multi-dimensional</p>
-<p>3、<u>H</u>OLAP：包含综合数据（MOLAP）和详细数据（ROLAP）</p>
-<p>​      Hybrid</p>
-<h2 id="HTAP"><a href="#HTAP" class="headerlink" title="HTAP"></a>HTAP</h2><p>事务型数据库：OLTP，以写为主，行存</p>
-<p>分析型数据库：OLAP，以读为主，列存</p>
-<p>混合事务分析型数据库：HTAP</p>
-<ul>
-<li>TP、AP资源物理分离</li>
-<li>TP、AP数据一致性：<ul>
-<li>强一致性</li>
-<li>弱一致性</li>
-</ul>
-</li>
-</ul>
-<img src="../images/DataMining/image-20221015114905013.png" style="zoom:50%;float:left;" />
-
-<h2 id="国产数据库示例"><a href="#国产数据库示例" class="headerlink" title="国产数据库示例"></a>国产数据库示例</h2><h3 id="PolarDB-X数据库"><a href="#PolarDB-X数据库" class="headerlink" title="PolarDB-X数据库"></a>PolarDB-X数据库</h3><p>结构框架：</p>
-<p><img src="../images/DataMining/image-20221005102013310-16657435018695.png" alt="image-20221005102013310"></p>
-<h3 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h3><p><img src="../images/DataMining/image-20221015121820341.png" alt="image-20221015121820341"></p>
-<h3 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h3><p><img src="../images/DataMining/3.png" alt="image-202210152"></p>
-<h2 id="习题讲解"><a href="#习题讲解" class="headerlink" title="习题讲解"></a>习题讲解</h2><p>数据转换一般可以分为：</p>
-<ul>
-<li><p>工具转换</p>
-</li>
-<li><p>人工转换</p>
-</li>
-</ul>
-<p>事实表的特点：</p>
-<ul>
-<li>数据量大</li>
-<li>表中行数多</li>
-<li>表中数据常进行追加</li>
-</ul>
-<p>数据集市的特点：</p>
-<ul>
-<li>主题少</li>
-<li>数据少</li>
-<li>建设周期短</li>
-<li>风险小</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Data Warehouse</category>
-        <category>Big Data</category>
-      </categories>
-      <tags>
         <tag>Data Warehouse</tag>
-        <tag>Big Data</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Chapter 05：Data Warehouse and Data Mining</title>
-    <url>/2022/10/11/5%E3%80%81%E6%95%B0%E6%8D%AE%E7%AB%8B%E6%96%B9%E4%BD%93%E5%92%8C%E5%95%86%E7%AB%8B%E6%96%B9%E4%BD%93/</url>
-    <content><![CDATA[<h1 id="数据立方体和商立方体"><a href="#数据立方体和商立方体" class="headerlink" title="数据立方体和商立方体"></a>数据立方体和商立方体</h1><h2 id="物化视图选择"><a href="#物化视图选择" class="headerlink" title="物化视图选择"></a>物化视图选择</h2><h3 id="Greedy-Algorithm-贪心算法"><a href="#Greedy-Algorithm-贪心算法" class="headerlink" title="Greedy Algorithm(贪心算法)"></a>Greedy Algorithm(贪心算法)</h3><ul>
-<li><p>k = number of views to be materialized</p>
-</li>
-<li><p>Given</p>
-<ul>
-<li><p>v is a view</p>
-</li>
-<li><p>S is a set of views which are selected to be materialized</p>
-</li>
-</ul>
-</li>
-<li><p>Define the benefit of selecting v for materialization as</p>
-<ul>
-<li>B(v, S) = Gain(S U v, S) </li>
-</ul>
-</li>
-<li><p>S &lt;–{top view};</p>
-</li>
-<li><p>For i = 1 to k do </p>
-<ul>
-<li><p>Select that view v not in S such that B(v, S) is maximized;</p>
-</li>
-<li><p>S &lt;– S U {v}</p>
-</li>
-</ul>
-</li>
-<li><p>Resulting S is the greedy selection</p>
-</li>
-</ul>
-<p><img src="../images/DataMining/image-20221011210827373.png" alt="image-20221011210827373"></p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">1st Choice(M)</th>
-<th align="center">2nd Choice(M)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">pc</td>
-<td align="center">(6-6)*3 = 0</td>
-<td align="center">(6-6)*2 = 0</td>
-</tr>
-<tr>
-<td align="center">ps</td>
-<td align="center">(6-0.8)*3 = 15.6</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">sc</td>
-<td align="center">(6-6)*3 = 0</td>
-<td align="center">(6-6)*2 = 0</td>
-</tr>
-<tr>
-<td align="center">p</td>
-<td align="center">(6-0.2)*1 = 5.8</td>
-<td align="center">(0.8-0.2)*1=0.6</td>
-</tr>
-<tr>
-<td align="center">s</td>
-<td align="center">(6-0.01)*1 = 5.99</td>
-<td align="center">(0.8-0.01)*1 = 0.79</td>
-</tr>
-<tr>
-<td align="center">c</td>
-<td align="center">(6-0.1)*1 = 5.9</td>
-<td align="center">(6-0.1)*1 = 5.9</td>
-</tr>
-</tbody></table>
-<p>Two views to be materialized are</p>
-<p>1、ps     2、c</p>
-<p>V = {ps, c}</p>
-<p>Gain(V U {top view}, {top view})</p>
-<p>= 15.6 + 5.9 = 21.5</p>
-<h2 id="数据立方体"><a href="#数据立方体" class="headerlink" title="数据立方体"></a>数据立方体</h2><p><img src="../images/DataMining/image-20221011212714894.png" alt="image-20221011212714894"></p>
-<h2 id="商立方体"><a href="#商立方体" class="headerlink" title="商立方体"></a>商立方体</h2><p><img src="../images/DataMining/image-20221011213423839.png" alt="image-20221011213423839"></p>
-<p><img src="../images/DataMining/image-20221011213108994.png" alt="image-20221011213108994"></p>
-]]></content>
-      <categories>
-        <category>Big Data</category>
-        <category>Data Warehouse</category>
-      </categories>
-      <tags>
-        <tag>Data Warehouse</tag>
-        <tag>Big Data</tag>
       </tags>
   </entry>
 </search>
