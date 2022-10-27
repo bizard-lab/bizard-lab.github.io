@@ -1,39 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Chapter 01：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/1%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<h1 id="数据仓库与数据挖掘概述"><a href="#数据仓库与数据挖掘概述" class="headerlink" title="数据仓库与数据挖掘概述"></a>数据仓库与数据挖掘概述</h1><h2 id="数据仓库的兴起"><a href="#数据仓库的兴起" class="headerlink" title="数据仓库的兴起"></a>数据仓库的兴起</h2><h3 id="数据仓库产生原因"><a href="#数据仓库产生原因" class="headerlink" title="数据仓库产生原因"></a>数据仓库产生原因</h3><p>A、 数据的大量积累</p>
-<p>B、 关系数据库的局限（操作型数据库）</p>
-<p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
-<p>C、 异构数据源共享问题（各类数据库产品增加导致异构环境数据增加）</p>
-<h3 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h3><p>一、 数据仓库</p>
-<p><img src="../images/DataMining/image-20221015105608879.png" alt="image-20221015105608879"></p>
-<p>二、联邦数据库</p>
-<p><img src="../images/DataMining/image-20221015105635006.png" alt="image-20221015105635006"></p>
-<h3 id="数据仓库与联邦数据库的区别"><a href="#数据仓库与联邦数据库的区别" class="headerlink" title="数据仓库与联邦数据库的区别"></a>数据仓库与联邦数据库的区别</h3><p>数据仓库：</p>
+    <title>Chapter 07：Data Warehouse and Data Mining</title>
+    <url>/2022/10/26/7%E3%80%81%E5%86%B3%E7%AD%96%E6%A0%91/</url>
+    <content><![CDATA[<h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h2 id="决策树分类"><a href="#决策树分类" class="headerlink" title="决策树分类"></a>决策树分类</h2><h3 id="决策树的概念"><a href="#决策树的概念" class="headerlink" title="决策树的概念"></a>决策树的概念</h3><p>是一种类似于流程图的树结构</p>
 <ul>
-<li>优：查询速度快   </li>
-<li>缺：空间占用大，安全性一般，实时更新一般</li>
+<li><p>其中，每个内部结点表示在一个属性上的测试，每个分枝代表一个测试输出</p>
+</li>
+<li><p>每个树叶结点存放一个类标签</p>
+</li>
 </ul>
-<p>联邦数据库：</p>
-<ul>
-<li>优：隐私保护性好，空间占用小，实时更新较好</li>
-<li>缺：查询处理复杂，速度慢</li>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>张（被介绍）：多大年纪了？</p>
+<p>王（介绍）：25。</p>
+<p>张：长的帅不帅？</p>
+<p>王：挺帅的。</p>
+<p>张：收入高不？</p>
+<p>王：不算很高，中等情况。</p>
+<p>张：是公务员不？</p>
+<p>王：是，在税务局上班呢。</p>
+<p>张：那好，我去见见。</p>
+<img src="../images/DataMining/image-20221026141318967.png" alt="image-20221026141318967" style="zoom: 67%;" />
+
+<h2 id="决策树分类ID3方法"><a href="#决策树分类ID3方法" class="headerlink" title="决策树分类ID3方法"></a>决策树分类ID3方法</h2><h3 id="熵（Entropy）"><a href="#熵（Entropy）" class="headerlink" title="熵（Entropy）"></a>熵（Entropy）</h3><p>信息熵<br>$$<br>I(p)=-(p_1<em>\log(p_1)+p_2</em>\log(p_2)+ … +p_n<em>\log(p_n))=-\sum_{i=1}^n(p_i</em>\log(p_i))<br>$$</p>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><table>
+<thead>
+<tr>
+<th align="center">Race</th>
+<th align="center">Income</th>
+<th align="center">Child</th>
+<th align="center">Insurance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">black</td>
+<td align="center">high</td>
+<td align="center">no</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="center">white</td>
+<td align="center">high</td>
+<td align="center">yes</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="center">white</td>
+<td align="center">low</td>
+<td align="center">yes</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="center">white</td>
+<td align="center">low</td>
+<td align="center">yes</td>
+<td align="center">yes</td>
+</tr>
+<tr>
+<td align="center">black</td>
+<td align="center">low</td>
+<td align="center">no</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="center">black</td>
+<td align="center">low</td>
+<td align="center">no</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="center">black</td>
+<td align="center">low</td>
+<td align="center">no</td>
+<td align="center">no</td>
+</tr>
+<tr>
+<td align="center">white</td>
+<td align="center">low</td>
+<td align="center">no</td>
+<td align="center">no</td>
+</tr>
+</tbody></table>
+<p>$$<br>Info(T)=- \frac{1}{2} \log(\frac{1}{2})- \frac{1}{2} \log(\frac{1}{2})=1<br>$$</p>
+<p>计算Race属性<br>$$<br>Info(T_{black})=- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})=0.8113<br>$$</p>
+<p>$$<br>Info(T_{white})=- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})=0.8113<br>$$</p>
+<p>$$<br>Info(Race,T)=\frac{1}{2}*Info(T_{black})+\frac{1}{2}*Info(T_{white})=0.8113<br>$$</p>
+<p>$$<br>Gain(Race,T)=Info(T)-Info(Race,T)=1-0.8113=0.1887<br>$$</p>
+<p>计算Income属性<br>$$<br>Info(T_{high})=- 1 \log(1)- 0 \log(0)=0<br>$$</p>
+<p>$$<br>Info(T_{low})=- \frac{1}{3} \log(\frac{1}{3})- \frac{2}{3} \log(\frac{2}{3})=0.9183<br>$$</p>
+<p>$$<br>Info(Income,T)=\frac{1}{4}*Info(T_{high})+\frac{3}{4}*Info(T_{low})=0.6887<br>$$</p>
+<p>$$<br>Gain(Income,T)=Info(T)-Info(Income,T)=1-0.6887=0.3113<br>$$</p>
+<p>计算Child属性<br>$$<br>Info(T_{yes})=- 1 \log(1)- 0 \log(0)=0<br>$$</p>
+<p>$$<br>Info(T_{no})=- \frac{1}{5} \log(\frac{1}{5})- \frac{4}{5} \log(\frac{4}{5})=0.7219<br>$$</p>
+<p>$$<br>Info(Child,T)=\frac{3}{8}*Info(T_{yes})+\frac{5}{8}*Info(T_{no})=0.4512<br>$$</p>
+<p>$$<br>Gain(Child,T)=Info(T)-Info(Child,T)=1-0.4512=0.5488<br>$$</p>
+<p>选择Child属性后<br>$$<br>Info(T)=- \frac{1}{5} \log(\frac{1}{5})- \frac{4}{5} \log(\frac{4}{5})=0.7219<br>$$<br>计算Race属性<br>$$<br>Info(T_{black})=- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})=0.8113<br>$$</p>
+<p>$$<br>Info(T_{white})=- 0 \log(0)- 1 \log(1)=0<br>$$</p>
+<p>$$<br>Info(Race,T)=\frac{4}{5}*Info(T_{black})+\frac{1}{5}*Info(T_{white})=0.6490<br>$$</p>
+<p>$$<br>Gain(Race,T)=Info(T)-Info(Race,T)=0.7219-0.6490=0.0729<br>$$</p>
+<p>计算Income属性<br>$$<br>Info(T_{high})=- 1 \log(1)- 0 \log(0)=0<br>$$</p>
+<p>$$<br>Info(T_{low})=- 0 \log(0)- 1 \log(1)=0<br>$$</p>
+<p>$$<br>Info(Income,T)=\frac{1}{5}*Info(T_{high})+\frac{4}{5}*Info(T_{low})=0<br>$$</p>
+<p>$$<br>Gain(Income,T)=Info(T)-Info(Income,T)=0.7219-0=0.7219<br>$$</p>
+<p>选择Income属性</p>
+<h3 id="ID3算法缺点"><a href="#ID3算法缺点" class="headerlink" title="ID3算法缺点"></a>ID3算法缺点</h3><ul>
+<li>倾向于选择更多不同属性值的特征属性</li>
+<li>适合于处理离散属性，连续属性需要离散化</li>
 </ul>
-<h2 id="数据仓库的概念"><a href="#数据仓库的概念" class="headerlink" title="数据仓库的概念"></a>数据仓库的概念</h2><h3 id="数据仓库的特点"><a href="#数据仓库的特点" class="headerlink" title="数据仓库的特点"></a>数据仓库的特点</h3><p>一个面向主题的、集成的、时变的、非易失的数据集合。</p>
-<p>A、面向主题的：与主题相关的数据导入数据仓库，由异构转换为同构；</p>
-<p>B、集成的：集成的主要方法：</p>
-<ul>
-<li>统一：消除不一致的现象（数据清洗）</li>
-<li>综合：对原有数据进行综合和计算</li>
-</ul>
-<p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
-<p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
+<h2 id="CART"><a href="#CART" class="headerlink" title="CART"></a>CART</h2><h3 id="Gini"><a href="#Gini" class="headerlink" title="Gini"></a>Gini</h3><p>$$<br>I(p)=1-\sum_jP_j^2<br>$$</p>
 ]]></content>
       <categories>
-        <category>Data Warehouse</category>
         <category>Big Data</category>
+        <category>Data Warehouse</category>
       </categories>
       <tags>
         <tag>Data Warehouse</tag>
@@ -41,194 +118,26 @@
       </tags>
   </entry>
   <entry>
-    <title>Chapter 02：Data Warehouse and Data Mining</title>
-    <url>/2022/09/30/2%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<h1 id="数据仓库原理"><a href="#数据仓库原理" class="headerlink" title="数据仓库原理"></a>数据仓库原理</h1><h2 id="数据仓库系统结构"><a href="#数据仓库系统结构" class="headerlink" title="数据仓库系统结构"></a>数据仓库系统结构</h2><h3 id="数据库与数据仓库对比"><a href="#数据库与数据仓库对比" class="headerlink" title="数据库与数据仓库对比"></a>数据库与数据仓库对比</h3><table>
-<thead>
-<tr>
-<th><strong>数据库</strong></th>
-<th><strong>数据仓库</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>细节的</td>
-<td>综合或提炼的</td>
-</tr>
-<tr>
-<td>在存取时准确的</td>
-<td>代表过去的数据</td>
-</tr>
-<tr>
-<td>可更新的</td>
-<td>不更新</td>
-</tr>
-<tr>
-<td>一次操作数据量小</td>
-<td>一次操作数据量大</td>
-</tr>
-<tr>
-<td>面向应用</td>
-<td>面向分析</td>
-</tr>
-<tr>
-<td>支持管理</td>
-<td>支持决策</td>
-</tr>
-<tr>
-<td>用于事务处理</td>
-<td>主要用于分析数据</td>
-</tr>
-</tbody></table>
-<h3 id="数据仓库与数据库的区别"><a href="#数据仓库与数据库的区别" class="headerlink" title="数据仓库与数据库的区别"></a>数据仓库与数据库的区别</h3><p>本质上主要为异构和同构的差别</p>
-<p>事务型数据库（操作型）：TP事务处理，以写为主</p>
-<p>分析型数据库：AP分析处理，以读为主</p>
-<h3 id="DW、ODS、DM属性"><a href="#DW、ODS、DM属性" class="headerlink" title="DW、ODS、DM属性"></a>DW、ODS、DM属性</h3><table>
-<thead>
-<tr>
-<th><strong>DW</strong>（数据仓库）（侧重于计算能力）</th>
-<th>ODS（操作型数据存储）（能够实时报表分析）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>A、面向主题的</td>
-<td>A、面向主题的</td>
-</tr>
-<tr>
-<td>B、集成的</td>
-<td>B、集成的</td>
-</tr>
-<tr>
-<td>C、时变的</td>
-<td>C、当前的</td>
-</tr>
-<tr>
-<td>D、非易失的/稳定的</td>
-<td>D、易失的</td>
-</tr>
-</tbody></table>
-<h3 id="DM（数据集市）"><a href="#DM（数据集市）" class="headerlink" title="DM（数据集市）"></a>DM（数据集市）</h3><p>（Data Mart）</p>
-<p>1、独立的数据集市   </p>
-<p>2、从属的数据集市：</p>
-<ul>
-<li>面向部门的数据仓库 </li>
+    <title>Chapter 06：Data Warehouse and Data Mining</title>
+    <url>/2022/10/19/6%E3%80%81%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99/</url>
+    <content><![CDATA[<h1 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a>关联规则</h1><h2 id="关联规则的挖掘原理"><a href="#关联规则的挖掘原理" class="headerlink" title="关联规则的挖掘原理"></a>关联规则的挖掘原理</h2><h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><h4 id="项集（Itemset）"><a href="#项集（Itemset）" class="headerlink" title="项集（Itemset）"></a>项集（Itemset）</h4><p>项（Item）的集合</p>
+<h4 id="关联规则-1"><a href="#关联规则-1" class="headerlink" title="关联规则"></a>关联规则</h4><p>$$<br>A\subseteq I，B\subseteq I，A\cap B=\Phi，则A\to B称为关联规则<br>$$</p>
+<h4 id="支持度（supp"><a href="#支持度（supp" class="headerlink" title="支持度（supp)"></a>支持度（supp)</h4><p>$$<br>S(A\to B)=P(AB)=\frac{|AB|}{|D|}<br>$$</p>
+<p>其中，|D|表示事务数据库D的事务个数</p>
+<h4 id="置信度（conf）"><a href="#置信度（conf）" class="headerlink" title="置信度（conf）"></a>置信度（conf）</h4><p>$$<br>C(A\to B)=P(B|A)=\frac{|AB|}{|A|}<br>$$</p>
+<p>其中，|A|表示数据库中包含项集A的事务个数</p>
+<h4 id="阈值"><a href="#阈值" class="headerlink" title="阈值"></a>阈值</h4><ul>
+<li>最小支持度（min_supp)</li>
+<li>最小置信度（min_conf)</li>
 </ul>
+<h4 id="频繁项集（Frequent-Itemset）"><a href="#频繁项集（Frequent-Itemset）" class="headerlink" title="频繁项集（Frequent Itemset）"></a>频繁项集（Frequent Itemset）</h4><p>项集满足最小支持度，即：<br>$$<br>S(A\to B)\ge min.supp<br>$$<br>性质：</p>
 <ul>
-<li>为满足用户特定需求而创建的数据仓库</li>
+<li>频繁项集的子集必是频繁项集</li>
+<li>非频繁项集的超集一定是非频繁的</li>
 </ul>
-<ul>
-<li>数据仓库的子集</li>
-</ul>
-<h3 id="Data-Lake（数据湖）"><a href="#Data-Lake（数据湖）" class="headerlink" title="Data Lake（数据湖）"></a>Data Lake（数据湖）</h3><p>（侧重于数据存储能力）</p>
-<p>A、 保存原始的、细节的数据</p>
-<p>B、 结构化数据、非结构化数据均存在（多模态）</p>
-<h3 id="发展趋势"><a href="#发展趋势" class="headerlink" title="发展趋势"></a>发展趋势</h3><p>1、 一体化：比如湖仓一体（Lakehouse）：融合了数据湖的存储能力和数据仓库的计算能力</p>
-<p>2、多模态：既能处理关系表数据，也能处理时序数据、图数据</p>
-<p>3、云原生：数据库迁移到云上（提升数据库存储和计算的拓展性）</p>
-<h2 id="数据仓库的数据模型"><a href="#数据仓库的数据模型" class="headerlink" title="数据仓库的数据模型"></a>数据仓库的数据模型</h2><h3 id="数据仓库模型和数据库模型对比"><a href="#数据仓库模型和数据库模型对比" class="headerlink" title="数据仓库模型和数据库模型对比"></a>数据仓库模型和数据库模型对比</h3><table>
-<thead>
-<tr>
-<th><strong>数据仓库模型</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>A</strong>、概念模型：分析主题（边界、主题、维度、类别、指标、事实）</td>
-</tr>
-<tr>
-<td><strong>B</strong>、逻辑模型：星型模型、雪花模型、星座模型</td>
-</tr>
-<tr>
-<td><strong>C</strong>、物理模型：</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th><strong>数据库模型</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>A、</strong>概念模型：ER（实体关系模型）</td>
-</tr>
-<tr>
-<td><strong>B</strong>、逻辑模型：关系模型、网状模型、层次模型</td>
-</tr>
-<tr>
-<td><strong>C</strong>、物理模型：</td>
-</tr>
-</tbody></table>
-<h3 id="数据仓库模型"><a href="#数据仓库模型" class="headerlink" title="数据仓库模型"></a>数据仓库模型</h3><p>销售分析的概念模型</p>
-<p>信息包：    <u>销售分析</u>  </p>
-<table>
-<thead>
-<tr>
-<th>日期</th>
-<th>销售地点</th>
-<th>销售产品</th>
-<th>年龄组别</th>
-<th>性别</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>年（10）</td>
-<td>国家（15）</td>
-<td>产品类（6）</td>
-<td>年龄组（8）</td>
-<td>性别组（2）</td>
-</tr>
-<tr>
-<td>季度（40）</td>
-<td>区域（45）</td>
-<td>产品组（48）</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>月（120）</td>
-<td>城市（280）</td>
-<td>产品（240）</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>区（880）</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>商店（2000）</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>度量和事实：</strong>  <strong>预测销售量、实际销售量、预测误差</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>销售分析的逻辑模型（星型模型）</p>
-<p><img src="../images/DataMining/1.png" alt="20221015"></p>
-<h2 id="数据抽取、转换和装载"><a href="#数据抽取、转换和装载" class="headerlink" title="数据抽取、转换和装载"></a>数据抽取、转换和装载</h2><h3 id="ETL"><a href="#ETL" class="headerlink" title="ETL"></a>ETL</h3><p>（Extraction、Transformation、Loading）</p>
-<p>数据抽取、数据清洗、数据转换、数据加载、数据更新。</p>
-<p>数据更新：</p>
-<ul>
-<li>全量更新：数据库建立时期</li>
-<li>增量更新：数据库维护</li>
-</ul>
-<h2 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h2><p>用来描述数据的数据，包含业务元数据和技术元数据</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="../images/DataMining/1-16658031339742.png" alt="image-202210151"></p>
-<h3 id="销售质量"><a href="#销售质量" class="headerlink" title="销售质量"></a>销售质量</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact;</span><br></pre></td></tr></table></figure>
-
-<h3 id="不同年份的销售量"><a href="#不同年份的销售量" class="headerlink" title="不同年份的销售量"></a>不同年份的销售量</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact</span><br><span class="line"><span class="keyword">join</span> time_dim <span class="keyword">on</span> sales_fact.time_key <span class="operator">=</span> time_dim.time_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_dim.year;</span><br></pre></td></tr></table></figure>
-
-<h3 id="不同年份不同商品项的销售额"><a href="#不同年份不同商品项的销售额" class="headerlink" title="不同年份不同商品项的销售额"></a>不同年份不同商品项的销售额</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> city <span class="keyword">as</span> 城市,item_names <span class="keyword">as</span> 商品项,<span class="built_in">sum</span>(dollars_sold) <span class="keyword">as</span> 销售额</span><br><span class="line"><span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> geo_dim b</span><br><span class="line"><span class="keyword">on</span> a.location_key <span class="operator">=</span> b.location_key</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> item_dim c</span><br><span class="line"><span class="keyword">on</span> a.item_key <span class="operator">=</span> c.item_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> b.city,c.item_name;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2021年1-8月份各月平均销售"><a href="#2021年1-8月份各月平均销售" class="headerlink" title="2021年1~8月份各月平均销售"></a>2021年1~8月份各月平均销售</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(avg_sales) <span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">join</span> time_dim b <span class="keyword">on</span> a.time_key <span class="operator">=</span> b.time_key</span><br><span class="line"><span class="keyword">where</span> mouth <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">and</span> mouth <span class="operator">&lt;=</span> <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="强关联规则"><a href="#强关联规则" class="headerlink" title="强关联规则"></a>强关联规则</h4><p>同时满足最小支持度（min_supp）和最小置信度（min_conf）的规则称之为强关联规则，即<br>$$<br>给定事务数据库D，满足A\subseteq I,B\subseteq I,A\cap B=\Phi,以及S(A\to B)\ge min.supp且C(A\to B)\ge min.conf<br>$$</p>
+<h2 id="Apriori算法"><a href="#Apriori算法" class="headerlink" title="Apriori算法"></a>Apriori算法</h2><p>min_supp=2</p>
+<p><img src="../images/DataMining/image-20221019140559395.png" alt="image-20221019140559395"></p>
 ]]></content>
       <categories>
         <category>Big Data</category>
@@ -268,37 +177,6 @@
 <li>Oracle Data Miner</li>
 <li>SSAS、SSIS、SSRS</li>
 </ul>
-]]></content>
-      <categories>
-        <category>Big Data</category>
-        <category>Data Warehouse</category>
-      </categories>
-      <tags>
-        <tag>Data Warehouse</tag>
-        <tag>Big Data</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Chapter 06：Data Warehouse and Data Mining</title>
-    <url>/2022/10/19/6%E3%80%81%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99/</url>
-    <content><![CDATA[<h1 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a>关联规则</h1><h2 id="关联规则的挖掘原理"><a href="#关联规则的挖掘原理" class="headerlink" title="关联规则的挖掘原理"></a>关联规则的挖掘原理</h2><h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><h4 id="项集（Itemset）"><a href="#项集（Itemset）" class="headerlink" title="项集（Itemset）"></a>项集（Itemset）</h4><p>项（Item）的集合</p>
-<h4 id="关联规则-1"><a href="#关联规则-1" class="headerlink" title="关联规则"></a>关联规则</h4><p>$$<br>A\subseteq I，B\subseteq I，A\cap B=\Phi，则A\to B称为关联规则<br>$$</p>
-<h4 id="支持度（supp"><a href="#支持度（supp" class="headerlink" title="支持度（supp)"></a>支持度（supp)</h4><p>$$<br>S(A\to B)=P(AB)=\frac{|AB|}{|D|}<br>$$</p>
-<p>其中，|D|表示事务数据库D的事务个数</p>
-<h4 id="置信度（conf）"><a href="#置信度（conf）" class="headerlink" title="置信度（conf）"></a>置信度（conf）</h4><p>$$<br>C(A\to B)=P(B|A)=\frac{|AB|}{|A|}<br>$$</p>
-<p>其中，|A|表示数据库中包含项集A的事务个数</p>
-<h4 id="阈值"><a href="#阈值" class="headerlink" title="阈值"></a>阈值</h4><ul>
-<li>最小支持度（min_supp)</li>
-<li>最小置信度（min_conf)</li>
-</ul>
-<h4 id="频繁项集（Frequent-Itemset）"><a href="#频繁项集（Frequent-Itemset）" class="headerlink" title="频繁项集（Frequent Itemset）"></a>频繁项集（Frequent Itemset）</h4><p>项集满足最小支持度，即：<br>$$<br>S(A\to B)\ge min.supp<br>$$<br>性质：</p>
-<ul>
-<li>频繁项集的子集必是频繁项集</li>
-<li>非频繁项集的超集一定是非频繁的</li>
-</ul>
-<h4 id="强关联规则"><a href="#强关联规则" class="headerlink" title="强关联规则"></a>强关联规则</h4><p>同时满足最小支持度（min_supp）和最小置信度（min_conf）的规则称之为强关联规则，即<br>$$<br>给定事务数据库D，满足A\subseteq I,B\subseteq I,A\cap B=\Phi,以及S(A\to B)\ge min.supp且C(A\to B)\ge min.conf<br>$$</p>
-<h2 id="Apriori算法"><a href="#Apriori算法" class="headerlink" title="Apriori算法"></a>Apriori算法</h2><p>min_supp=2</p>
-<p><img src="../images/DataMining/image-20221019140559395.png" alt="image-20221019140559395"></p>
 ]]></content>
       <categories>
         <category>Big Data</category>
@@ -568,116 +446,238 @@
       </tags>
   </entry>
   <entry>
-    <title>Chapter 07：Data Warehouse and Data Mining</title>
-    <url>/2022/10/26/7%E3%80%81%E5%86%B3%E7%AD%96%E6%A0%91/</url>
-    <content><![CDATA[<h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h2 id="决策树分类"><a href="#决策树分类" class="headerlink" title="决策树分类"></a>决策树分类</h2><h3 id="决策树的概念"><a href="#决策树的概念" class="headerlink" title="决策树的概念"></a>决策树的概念</h3><p>是一种类似于流程图的树结构</p>
-<ul>
-<li><p>其中，每个内部结点表示在一个属性上的测试，每个分枝代表一个测试输出</p>
-</li>
-<li><p>每个树叶结点存放一个类标签</p>
-</li>
-</ul>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>张（被介绍）：多大年纪了？</p>
-<p>王（介绍）：25。</p>
-<p>张：长的帅不帅？</p>
-<p>王：挺帅的。</p>
-<p>张：收入高不？</p>
-<p>王：不算很高，中等情况。</p>
-<p>张：是公务员不？</p>
-<p>王：是，在税务局上班呢。</p>
-<p>张：那好，我去见见。</p>
-<img src="../images/DataMining/image-20221026141318967.png" alt="image-20221026141318967" style="zoom: 67%;" />
-
-<h2 id="决策树分类ID3方法"><a href="#决策树分类ID3方法" class="headerlink" title="决策树分类ID3方法"></a>决策树分类ID3方法</h2><h3 id="熵（Entropy）"><a href="#熵（Entropy）" class="headerlink" title="熵（Entropy）"></a>熵（Entropy）</h3><p>信息熵<br>$$<br>I(p)=-(p_1<em>\log(p_1)+p_2</em>\log(p_2)+ … +p_n<em>\log(p_n))=-\sum_{i=1}^n(p_i</em>\log(p_i))<br>$$</p>
-<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><table>
+    <title>Chapter 02：Data Warehouse and Data Mining</title>
+    <url>/2022/09/30/2%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<h1 id="数据仓库原理"><a href="#数据仓库原理" class="headerlink" title="数据仓库原理"></a>数据仓库原理</h1><h2 id="数据仓库系统结构"><a href="#数据仓库系统结构" class="headerlink" title="数据仓库系统结构"></a>数据仓库系统结构</h2><h3 id="数据库与数据仓库对比"><a href="#数据库与数据仓库对比" class="headerlink" title="数据库与数据仓库对比"></a>数据库与数据仓库对比</h3><table>
 <thead>
 <tr>
-<th align="center">Race</th>
-<th align="center">Income</th>
-<th align="center">Child</th>
-<th align="center">Insurance</th>
+<th><strong>数据库</strong></th>
+<th><strong>数据仓库</strong></th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">black</td>
-<td align="center">high</td>
-<td align="center">no</td>
-<td align="center">yes</td>
+<td>细节的</td>
+<td>综合或提炼的</td>
 </tr>
 <tr>
-<td align="center">white</td>
-<td align="center">high</td>
-<td align="center">yes</td>
-<td align="center">yes</td>
+<td>在存取时准确的</td>
+<td>代表过去的数据</td>
 </tr>
 <tr>
-<td align="center">white</td>
-<td align="center">low</td>
-<td align="center">yes</td>
-<td align="center">yes</td>
+<td>可更新的</td>
+<td>不更新</td>
 </tr>
 <tr>
-<td align="center">white</td>
-<td align="center">low</td>
-<td align="center">yes</td>
-<td align="center">yes</td>
+<td>一次操作数据量小</td>
+<td>一次操作数据量大</td>
 </tr>
 <tr>
-<td align="center">black</td>
-<td align="center">low</td>
-<td align="center">no</td>
-<td align="center">no</td>
+<td>面向应用</td>
+<td>面向分析</td>
 </tr>
 <tr>
-<td align="center">black</td>
-<td align="center">low</td>
-<td align="center">no</td>
-<td align="center">no</td>
+<td>支持管理</td>
+<td>支持决策</td>
 </tr>
 <tr>
-<td align="center">black</td>
-<td align="center">low</td>
-<td align="center">no</td>
-<td align="center">no</td>
-</tr>
-<tr>
-<td align="center">white</td>
-<td align="center">low</td>
-<td align="center">no</td>
-<td align="center">no</td>
+<td>用于事务处理</td>
+<td>主要用于分析数据</td>
 </tr>
 </tbody></table>
-<p>$$<br>Info(T)=- \frac{1}{2} \log(\frac{1}{2})- \frac{1}{2} \log(\frac{1}{2})=1<br>$$</p>
-<p>计算Race属性<br>$$<br>Info(T_{black})=- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})=0.8113<br>$$</p>
-<p>$$<br>Info(T_{white})=- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})=0.8113<br>$$</p>
-<p>$$<br>Info(Race,T)=\frac{1}{2}*Info(T_{black})+\frac{1}{2}*Info(T_{white})=0.8113<br>$$</p>
-<p>$$<br>Gain(Race,T)=Info(T)-Info(Race,T)=1-0.8113=0.1887<br>$$</p>
-<p>计算Income属性<br>$$<br>Info(T_{high})=- 1 \log(1)- 0 \log(0)=0<br>$$</p>
-<p>$$<br>Info(T_{low})=- \frac{1}{3} \log(\frac{1}{3})- \frac{2}{3} \log(\frac{2}{3})=0.9183<br>$$</p>
-<p>$$<br>Info(Income,T)=\frac{1}{4}*Info(T_{high})+\frac{3}{4}*Info(T_{low})=0.6887<br>$$</p>
-<p>$$<br>Gain(Income,T)=Info(T)-Info(Income,T)=1-0.6887=0.3113<br>$$</p>
-<p>计算Child属性<br>$$<br>Info(T_{yes})=- 1 \log(1)- 0 \log(0)=0<br>$$</p>
-<p>$$<br>Info(T_{no})=- \frac{1}{5} \log(\frac{1}{5})- \frac{4}{5} \log(\frac{4}{5})=0.7219<br>$$</p>
-<p>$$<br>Info(Child,T)=\frac{3}{8}*Info(T_{yes})+\frac{5}{8}*Info(T_{no})=0.4512<br>$$</p>
-<p>$$<br>Gain(Child,T)=Info(T)-Info(Child,T)=1-0.4512=0.5488<br>$$</p>
-<p>选择Child属性后<br>$$<br>Info(T)=- \frac{1}{5} \log(\frac{1}{5})- \frac{4}{5} \log(\frac{4}{5})=0.7219<br>$$<br>计算Race属性<br>$$<br>Info(T_{black})=- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})=0.8113<br>$$</p>
-<p>$$<br>Info(T_{white})=- 0 \log(0)- 1 \log(1)=0<br>$$</p>
-<p>$$<br>Info(Race,T)=\frac{4}{5}*Info(T_{black})+\frac{1}{5}*Info(T_{white})=0.6490<br>$$</p>
-<p>$$<br>Gain(Race,T)=Info(T)-Info(Race,T)=0.7219-0.6490=0.0729<br>$$</p>
-<p>计算Income属性<br>$$<br>Info(T_{high})=- 1 \log(1)- 0 \log(0)=0<br>$$</p>
-<p>$$<br>Info(T_{low})=- 0 \log(0)- 1 \log(1)=0<br>$$</p>
-<p>$$<br>Info(Income,T)=\frac{1}{5}*Info(T_{high})+\frac{4}{5}*Info(T_{low})=0<br>$$</p>
-<p>$$<br>Gain(Income,T)=Info(T)-Info(Income,T)=0.7219-0=0.7219<br>$$</p>
-<p>选择Income属性</p>
-<h3 id="ID3算法缺点"><a href="#ID3算法缺点" class="headerlink" title="ID3算法缺点"></a>ID3算法缺点</h3><ul>
-<li>倾向于选择更多不同属性值的特征属性</li>
-<li>适合于处理离散属性，连续属性需要离散化</li>
+<h3 id="数据仓库与数据库的区别"><a href="#数据仓库与数据库的区别" class="headerlink" title="数据仓库与数据库的区别"></a>数据仓库与数据库的区别</h3><p>本质上主要为异构和同构的差别</p>
+<p>事务型数据库（操作型）：TP事务处理，以写为主</p>
+<p>分析型数据库：AP分析处理，以读为主</p>
+<h3 id="DW、ODS、DM属性"><a href="#DW、ODS、DM属性" class="headerlink" title="DW、ODS、DM属性"></a>DW、ODS、DM属性</h3><table>
+<thead>
+<tr>
+<th><strong>DW</strong>（数据仓库）（侧重于计算能力）</th>
+<th>ODS（操作型数据存储）（能够实时报表分析）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A、面向主题的</td>
+<td>A、面向主题的</td>
+</tr>
+<tr>
+<td>B、集成的</td>
+<td>B、集成的</td>
+</tr>
+<tr>
+<td>C、时变的</td>
+<td>C、当前的</td>
+</tr>
+<tr>
+<td>D、非易失的/稳定的</td>
+<td>D、易失的</td>
+</tr>
+</tbody></table>
+<h3 id="DM（数据集市）"><a href="#DM（数据集市）" class="headerlink" title="DM（数据集市）"></a>DM（数据集市）</h3><p>（Data Mart）</p>
+<p>1、独立的数据集市   </p>
+<p>2、从属的数据集市：</p>
+<ul>
+<li>面向部门的数据仓库 </li>
 </ul>
-<h2 id="CART"><a href="#CART" class="headerlink" title="CART"></a>CART</h2><h3 id="Gini"><a href="#Gini" class="headerlink" title="Gini"></a>Gini</h3><p>$$<br>I(p)=1-\sum_jP_j^2<br>$$</p>
+<ul>
+<li>为满足用户特定需求而创建的数据仓库</li>
+</ul>
+<ul>
+<li>数据仓库的子集</li>
+</ul>
+<h3 id="Data-Lake（数据湖）"><a href="#Data-Lake（数据湖）" class="headerlink" title="Data Lake（数据湖）"></a>Data Lake（数据湖）</h3><p>（侧重于数据存储能力）</p>
+<p>A、 保存原始的、细节的数据</p>
+<p>B、 结构化数据、非结构化数据均存在（多模态）</p>
+<h3 id="发展趋势"><a href="#发展趋势" class="headerlink" title="发展趋势"></a>发展趋势</h3><p>1、 一体化：比如湖仓一体（Lakehouse）：融合了数据湖的存储能力和数据仓库的计算能力</p>
+<p>2、多模态：既能处理关系表数据，也能处理时序数据、图数据</p>
+<p>3、云原生：数据库迁移到云上（提升数据库存储和计算的拓展性）</p>
+<h2 id="数据仓库的数据模型"><a href="#数据仓库的数据模型" class="headerlink" title="数据仓库的数据模型"></a>数据仓库的数据模型</h2><h3 id="数据仓库模型和数据库模型对比"><a href="#数据仓库模型和数据库模型对比" class="headerlink" title="数据仓库模型和数据库模型对比"></a>数据仓库模型和数据库模型对比</h3><table>
+<thead>
+<tr>
+<th><strong>数据仓库模型</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A</strong>、概念模型：分析主题（边界、主题、维度、类别、指标、事实）</td>
+</tr>
+<tr>
+<td><strong>B</strong>、逻辑模型：星型模型、雪花模型、星座模型</td>
+</tr>
+<tr>
+<td><strong>C</strong>、物理模型：</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>数据库模型</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A、</strong>概念模型：ER（实体关系模型）</td>
+</tr>
+<tr>
+<td><strong>B</strong>、逻辑模型：关系模型、网状模型、层次模型</td>
+</tr>
+<tr>
+<td><strong>C</strong>、物理模型：</td>
+</tr>
+</tbody></table>
+<h3 id="数据仓库模型"><a href="#数据仓库模型" class="headerlink" title="数据仓库模型"></a>数据仓库模型</h3><p>销售分析的概念模型</p>
+<p>信息包：    <u>销售分析</u>  </p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>销售地点</th>
+<th>销售产品</th>
+<th>年龄组别</th>
+<th>性别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年（10）</td>
+<td>国家（15）</td>
+<td>产品类（6）</td>
+<td>年龄组（8）</td>
+<td>性别组（2）</td>
+</tr>
+<tr>
+<td>季度（40）</td>
+<td>区域（45）</td>
+<td>产品组（48）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>月（120）</td>
+<td>城市（280）</td>
+<td>产品（240）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>区（880）</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>商店（2000）</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>度量和事实：</strong>  <strong>预测销售量、实际销售量、预测误差</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>销售分析的逻辑模型（星型模型）</p>
+<p><img src="../images/DataMining/1.png" alt="20221015"></p>
+<h2 id="数据抽取、转换和装载"><a href="#数据抽取、转换和装载" class="headerlink" title="数据抽取、转换和装载"></a>数据抽取、转换和装载</h2><h3 id="ETL"><a href="#ETL" class="headerlink" title="ETL"></a>ETL</h3><p>（Extraction、Transformation、Loading）</p>
+<p>数据抽取、数据清洗、数据转换、数据加载、数据更新。</p>
+<p>数据更新：</p>
+<ul>
+<li>全量更新：数据库建立时期</li>
+<li>增量更新：数据库维护</li>
+</ul>
+<h2 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h2><p>用来描述数据的数据，包含业务元数据和技术元数据</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="../images/DataMining/1-16658031339742.png" alt="image-202210151"></p>
+<h3 id="销售质量"><a href="#销售质量" class="headerlink" title="销售质量"></a>销售质量</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact;</span><br></pre></td></tr></table></figure>
+
+<h3 id="不同年份的销售量"><a href="#不同年份的销售量" class="headerlink" title="不同年份的销售量"></a>不同年份的销售量</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact</span><br><span class="line"><span class="keyword">join</span> time_dim <span class="keyword">on</span> sales_fact.time_key <span class="operator">=</span> time_dim.time_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_dim.year;</span><br></pre></td></tr></table></figure>
+
+<h3 id="不同年份不同商品项的销售额"><a href="#不同年份不同商品项的销售额" class="headerlink" title="不同年份不同商品项的销售额"></a>不同年份不同商品项的销售额</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> city <span class="keyword">as</span> 城市,item_names <span class="keyword">as</span> 商品项,<span class="built_in">sum</span>(dollars_sold) <span class="keyword">as</span> 销售额</span><br><span class="line"><span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> geo_dim b</span><br><span class="line"><span class="keyword">on</span> a.location_key <span class="operator">=</span> b.location_key</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> item_dim c</span><br><span class="line"><span class="keyword">on</span> a.item_key <span class="operator">=</span> c.item_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> b.city,c.item_name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2021年1-8月份各月平均销售"><a href="#2021年1-8月份各月平均销售" class="headerlink" title="2021年1~8月份各月平均销售"></a>2021年1~8月份各月平均销售</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(avg_sales) <span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">join</span> time_dim b <span class="keyword">on</span> a.time_key <span class="operator">=</span> b.time_key</span><br><span class="line"><span class="keyword">where</span> mouth <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">and</span> mouth <span class="operator">&lt;=</span> <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Big Data</category>
         <category>Data Warehouse</category>
+      </categories>
+      <tags>
+        <tag>Data Warehouse</tag>
+        <tag>Big Data</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Chapter 01：Data Warehouse and Data Mining</title>
+    <url>/2022/09/30/1%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h1 id="数据仓库与数据挖掘概述"><a href="#数据仓库与数据挖掘概述" class="headerlink" title="数据仓库与数据挖掘概述"></a>数据仓库与数据挖掘概述</h1><h2 id="数据仓库的兴起"><a href="#数据仓库的兴起" class="headerlink" title="数据仓库的兴起"></a>数据仓库的兴起</h2><h3 id="数据仓库产生原因"><a href="#数据仓库产生原因" class="headerlink" title="数据仓库产生原因"></a>数据仓库产生原因</h3><p>A、 数据的大量积累</p>
+<p>B、 关系数据库的局限（操作型数据库）</p>
+<p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
+<p>C、 异构数据源共享问题（各类数据库产品增加导致异构环境数据增加）</p>
+<h3 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h3><p>一、 数据仓库</p>
+<p><img src="../images/DataMining/image-20221015105608879.png" alt="image-20221015105608879"></p>
+<p>二、联邦数据库</p>
+<p><img src="../images/DataMining/image-20221015105635006.png" alt="image-20221015105635006"></p>
+<h3 id="数据仓库与联邦数据库的区别"><a href="#数据仓库与联邦数据库的区别" class="headerlink" title="数据仓库与联邦数据库的区别"></a>数据仓库与联邦数据库的区别</h3><p>数据仓库：</p>
+<ul>
+<li>优：查询速度快   </li>
+<li>缺：空间占用大，安全性一般，实时更新一般</li>
+</ul>
+<p>联邦数据库：</p>
+<ul>
+<li>优：隐私保护性好，空间占用小，实时更新较好</li>
+<li>缺：查询处理复杂，速度慢</li>
+</ul>
+<h2 id="数据仓库的概念"><a href="#数据仓库的概念" class="headerlink" title="数据仓库的概念"></a>数据仓库的概念</h2><h3 id="数据仓库的特点"><a href="#数据仓库的特点" class="headerlink" title="数据仓库的特点"></a>数据仓库的特点</h3><p>一个面向主题的、集成的、时变的、非易失的数据集合。</p>
+<p>A、面向主题的：与主题相关的数据导入数据仓库，由异构转换为同构；</p>
+<p>B、集成的：集成的主要方法：</p>
+<ul>
+<li>统一：消除不一致的现象（数据清洗）</li>
+<li>综合：对原有数据进行综合和计算</li>
+</ul>
+<p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
+<p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
+]]></content>
+      <categories>
+        <category>Data Warehouse</category>
+        <category>Big Data</category>
       </categories>
       <tags>
         <tag>Data Warehouse</tag>
