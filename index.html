@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-27 16:10:06" itemprop="dateModified" datetime="2022-10-27T16:10:06+08:00">2022-10-27</time>
+                <time title="修改时间：2022-10-27 16:38:17" itemprop="dateModified" datetime="2022-10-27T16:38:17+08:00">2022-10-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
 <p>张：那好，我去见见。</p>
 <img src="../images/DataMining/image-20221026141318967.png" alt="image-20221026141318967" style="zoom: 67%;" />
 
-<h2 id="决策树分类ID3方法"><a href="#决策树分类ID3方法" class="headerlink" title="决策树分类ID3方法"></a>决策树分类ID3方法</h2><h3 id="熵（Entropy）"><a href="#熵（Entropy）" class="headerlink" title="熵（Entropy）"></a>熵（Entropy）</h3><p>信息熵<br>$$<br>I(p)=-(p_1<em>\log(p_1)+p_2</em>\log(p_2)+ … +p_n<em>\log(p_n))=-\sum_{i=1}^n(p_i</em>\log(p_i))<br>$$</p>
+<h2 id="决策树分类ID3方法"><a href="#决策树分类ID3方法" class="headerlink" title="决策树分类ID3方法"></a>决策树分类ID3方法</h2><h3 id="熵（Entropy）"><a href="#熵（Entropy）" class="headerlink" title="熵（Entropy）"></a>熵（Entropy）</h3><p>信息熵<br>$$<br>I(p)&#x3D;-(p_1<em>\log(p_1)+p_2</em>\log(p_2)+ … +p_n<em>\log(p_n))&#x3D;-\sum_{i&#x3D;1}^n(p_i</em>\log(p_i))<br>$$</p>
 <h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><table>
 <thead>
 <tr>
@@ -329,33 +329,33 @@
 <td align="center">no</td>
 </tr>
 </tbody></table>
-<p>$$<br>Info(T)=- \frac{1}{2} \log(\frac{1}{2})- \frac{1}{2} \log(\frac{1}{2})=1<br>$$</p>
-<p>计算Race属性<br>$$<br>Info(T_{black})=- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})=0.8113<br>$$</p>
-<p>$$<br>Info(T_{white})=- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})=0.8113<br>$$</p>
-<p>$$<br>Info(Race,T)=\frac{1}{2}*Info(T_{black})+\frac{1}{2}*Info(T_{white})=0.8113<br>$$</p>
-<p>$$<br>Gain(Race,T)=Info(T)-Info(Race,T)=1-0.8113=0.1887<br>$$</p>
-<p>计算Income属性<br>$$<br>Info(T_{high})=- 1 \log(1)- 0 \log(0)=0<br>$$</p>
-<p>$$<br>Info(T_{low})=- \frac{1}{3} \log(\frac{1}{3})- \frac{2}{3} \log(\frac{2}{3})=0.9183<br>$$</p>
-<p>$$<br>Info(Income,T)=\frac{1}{4}*Info(T_{high})+\frac{3}{4}*Info(T_{low})=0.6887<br>$$</p>
-<p>$$<br>Gain(Income,T)=Info(T)-Info(Income,T)=1-0.6887=0.3113<br>$$</p>
-<p>计算Child属性<br>$$<br>Info(T_{yes})=- 1 \log(1)- 0 \log(0)=0<br>$$</p>
-<p>$$<br>Info(T_{no})=- \frac{1}{5} \log(\frac{1}{5})- \frac{4}{5} \log(\frac{4}{5})=0.7219<br>$$</p>
-<p>$$<br>Info(Child,T)=\frac{3}{8}*Info(T_{yes})+\frac{5}{8}*Info(T_{no})=0.4512<br>$$</p>
-<p>$$<br>Gain(Child,T)=Info(T)-Info(Child,T)=1-0.4512=0.5488<br>$$</p>
-<p>选择Child属性后<br>$$<br>Info(T)=- \frac{1}{5} \log(\frac{1}{5})- \frac{4}{5} \log(\frac{4}{5})=0.7219<br>$$<br>计算Race属性<br>$$<br>Info(T_{black})=- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})=0.8113<br>$$</p>
-<p>$$<br>Info(T_{white})=- 0 \log(0)- 1 \log(1)=0<br>$$</p>
-<p>$$<br>Info(Race,T)=\frac{4}{5}*Info(T_{black})+\frac{1}{5}*Info(T_{white})=0.6490<br>$$</p>
-<p>$$<br>Gain(Race,T)=Info(T)-Info(Race,T)=0.7219-0.6490=0.0729<br>$$</p>
-<p>计算Income属性<br>$$<br>Info(T_{high})=- 1 \log(1)- 0 \log(0)=0<br>$$</p>
-<p>$$<br>Info(T_{low})=- 0 \log(0)- 1 \log(1)=0<br>$$</p>
-<p>$$<br>Info(Income,T)=\frac{1}{5}*Info(T_{high})+\frac{4}{5}*Info(T_{low})=0<br>$$</p>
-<p>$$<br>Gain(Income,T)=Info(T)-Info(Income,T)=0.7219-0=0.7219<br>$$</p>
+<p>$$<br>Info(T)&#x3D;- \frac{1}{2} \log(\frac{1}{2})- \frac{1}{2} \log(\frac{1}{2})&#x3D;1<br>$$</p>
+<p>计算Race属性<br>$$<br>Info(T_{black})&#x3D;- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})&#x3D;0.8113<br>$$</p>
+<p>$$<br>Info(T_{white})&#x3D;- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})&#x3D;0.8113<br>$$</p>
+<p>$$<br>Info(Race,T)&#x3D;\frac{1}{2}*Info(T_{black})+\frac{1}{2}*Info(T_{white})&#x3D;0.8113<br>$$</p>
+<p>$$<br>Gain(Race,T)&#x3D;Info(T)-Info(Race,T)&#x3D;1-0.8113&#x3D;0.1887<br>$$</p>
+<p>计算Income属性<br>$$<br>Info(T_{high})&#x3D;- 1 \log(1)- 0 \log(0)&#x3D;0<br>$$</p>
+<p>$$<br>Info(T_{low})&#x3D;- \frac{1}{3} \log(\frac{1}{3})- \frac{2}{3} \log(\frac{2}{3})&#x3D;0.9183<br>$$</p>
+<p>$$<br>Info(Income,T)&#x3D;\frac{1}{4}*Info(T_{high})+\frac{3}{4}*Info(T_{low})&#x3D;0.6887<br>$$</p>
+<p>$$<br>Gain(Income,T)&#x3D;Info(T)-Info(Income,T)&#x3D;1-0.6887&#x3D;0.3113<br>$$</p>
+<p>计算Child属性<br>$$<br>Info(T_{yes})&#x3D;- 1 \log(1)- 0 \log(0)&#x3D;0<br>$$</p>
+<p>$$<br>Info(T_{no})&#x3D;- \frac{1}{5} \log(\frac{1}{5})- \frac{4}{5} \log(\frac{4}{5})&#x3D;0.7219<br>$$</p>
+<p>$$<br>Info(Child,T)&#x3D;\frac{3}{8}*Info(T_{yes})+\frac{5}{8}*Info(T_{no})&#x3D;0.4512<br>$$</p>
+<p>$$<br>Gain(Child,T)&#x3D;Info(T)-Info(Child,T)&#x3D;1-0.4512&#x3D;0.5488<br>$$</p>
+<p>选择Child属性后<br>$$<br>Info(T)&#x3D;- \frac{1}{5} \log(\frac{1}{5})- \frac{4}{5} \log(\frac{4}{5})&#x3D;0.7219<br>$$<br>计算Race属性<br>$$<br>Info(T_{black})&#x3D;- \frac{3}{4} \log(\frac{3}{4})- \frac{1}{4} \log(\frac{1}{4})&#x3D;0.8113<br>$$</p>
+<p>$$<br>Info(T_{white})&#x3D;- 0 \log(0)- 1 \log(1)&#x3D;0<br>$$</p>
+<p>$$<br>Info(Race,T)&#x3D;\frac{4}{5}*Info(T_{black})+\frac{1}{5}*Info(T_{white})&#x3D;0.6490<br>$$</p>
+<p>$$<br>Gain(Race,T)&#x3D;Info(T)-Info(Race,T)&#x3D;0.7219-0.6490&#x3D;0.0729<br>$$</p>
+<p>计算Income属性<br>$$<br>Info(T_{high})&#x3D;- 1 \log(1)- 0 \log(0)&#x3D;0<br>$$</p>
+<p>$$<br>Info(T_{low})&#x3D;- 0 \log(0)- 1 \log(1)&#x3D;0<br>$$</p>
+<p>$$<br>Info(Income,T)&#x3D;\frac{1}{5}*Info(T_{high})+\frac{4}{5}*Info(T_{low})&#x3D;0<br>$$</p>
+<p>$$<br>Gain(Income,T)&#x3D;Info(T)-Info(Income,T)&#x3D;0.7219-0&#x3D;0.7219<br>$$</p>
 <p>选择Income属性</p>
 <h3 id="ID3算法缺点"><a href="#ID3算法缺点" class="headerlink" title="ID3算法缺点"></a>ID3算法缺点</h3><ul>
 <li>倾向于选择更多不同属性值的特征属性</li>
 <li>适合于处理离散属性，连续属性需要离散化</li>
 </ul>
-<h2 id="CART"><a href="#CART" class="headerlink" title="CART"></a>CART</h2><h3 id="Gini"><a href="#Gini" class="headerlink" title="Gini"></a>Gini</h3><p>$$<br>I(p)=1-\sum_jP_j^2<br>$$</p>
+<h2 id="CART"><a href="#CART" class="headerlink" title="CART"></a>CART</h2><h3 id="Gini"><a href="#Gini" class="headerlink" title="Gini"></a>Gini</h3><p>$$<br>I(p)&#x3D;1-\sum_jP_j^2<br>$$</p>
 
       
     </div>
@@ -434,10 +434,10 @@
 
       
           <h1 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a>关联规则</h1><h2 id="关联规则的挖掘原理"><a href="#关联规则的挖掘原理" class="headerlink" title="关联规则的挖掘原理"></a>关联规则的挖掘原理</h2><h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><h4 id="项集（Itemset）"><a href="#项集（Itemset）" class="headerlink" title="项集（Itemset）"></a>项集（Itemset）</h4><p>项（Item）的集合</p>
-<h4 id="关联规则-1"><a href="#关联规则-1" class="headerlink" title="关联规则"></a>关联规则</h4><p>$$<br>A\subseteq I，B\subseteq I，A\cap B=\Phi，则A\to B称为关联规则<br>$$</p>
-<h4 id="支持度（supp"><a href="#支持度（supp" class="headerlink" title="支持度（supp)"></a>支持度（supp)</h4><p>$$<br>S(A\to B)=P(AB)=\frac{|AB|}{|D|}<br>$$</p>
+<h4 id="关联规则-1"><a href="#关联规则-1" class="headerlink" title="关联规则"></a>关联规则</h4><p>$$<br>A\subseteq I，B\subseteq I，A\cap B&#x3D;\Phi，则A\to B称为关联规则<br>$$</p>
+<h4 id="支持度（supp"><a href="#支持度（supp" class="headerlink" title="支持度（supp)"></a>支持度（supp)</h4><p>$$<br>S(A\to B)&#x3D;P(AB)&#x3D;\frac{|AB|}{|D|}<br>$$</p>
 <p>其中，|D|表示事务数据库D的事务个数</p>
-<h4 id="置信度（conf）"><a href="#置信度（conf）" class="headerlink" title="置信度（conf）"></a>置信度（conf）</h4><p>$$<br>C(A\to B)=P(B|A)=\frac{|AB|}{|A|}<br>$$</p>
+<h4 id="置信度（conf）"><a href="#置信度（conf）" class="headerlink" title="置信度（conf）"></a>置信度（conf）</h4><p>$$<br>C(A\to B)&#x3D;P(B|A)&#x3D;\frac{|AB|}{|A|}<br>$$</p>
 <p>其中，|A|表示数据库中包含项集A的事务个数</p>
 <h4 id="阈值"><a href="#阈值" class="headerlink" title="阈值"></a>阈值</h4><ul>
 <li>最小支持度（min_supp)</li>
@@ -448,9 +448,9 @@
 <li>频繁项集的子集必是频繁项集</li>
 <li>非频繁项集的超集一定是非频繁的</li>
 </ul>
-<h4 id="强关联规则"><a href="#强关联规则" class="headerlink" title="强关联规则"></a>强关联规则</h4><p>同时满足最小支持度（min_supp）和最小置信度（min_conf）的规则称之为强关联规则，即<br>$$<br>给定事务数据库D，满足A\subseteq I,B\subseteq I,A\cap B=\Phi,以及S(A\to B)\ge min.supp且C(A\to B)\ge min.conf<br>$$</p>
-<h2 id="Apriori算法"><a href="#Apriori算法" class="headerlink" title="Apriori算法"></a>Apriori算法</h2><p>min_supp=2</p>
-<p><img src="../images/DataMining/image-20221019140559395.png" alt="image-20221019140559395"></p>
+<h4 id="强关联规则"><a href="#强关联规则" class="headerlink" title="强关联规则"></a>强关联规则</h4><p>同时满足最小支持度（min_supp）和最小置信度（min_conf）的规则称之为强关联规则，即<br>$$<br>给定事务数据库D，满足A\subseteq I,B\subseteq I,A\cap B&#x3D;\Phi,以及S(A\to B)\ge min.supp且C(A\to B)\ge min.conf<br>$$</p>
+<h2 id="Apriori算法"><a href="#Apriori算法" class="headerlink" title="Apriori算法"></a>Apriori算法</h2><p>min_supp&#x3D;2</p>
+<p><img src="/../images/DataMining/image-20221019140559395.png" alt="image-20221019140559395"></p>
 
       
     </div>
@@ -528,7 +528,7 @@
 <li><p>数据挖掘（DM） ：KDD过程中的一个特定步骤，它用专门算法从数据中抽取模式。</p>
 </li>
 </ul>
-<p><img src="../images/DataMining/image-20221019130231010.png" alt="image-20221019130231010"></p>
+<p><img src="/../images/DataMining/image-20221019130231010.png" alt="image-20221019130231010"></p>
 <h2 id="数据挖掘方法和技术概述"><a href="#数据挖掘方法和技术概述" class="headerlink" title="数据挖掘方法和技术概述"></a>数据挖掘方法和技术概述</h2><h3 id="数据挖掘常用技术"><a href="#数据挖掘常用技术" class="headerlink" title="数据挖掘常用技术"></a>数据挖掘常用技术</h3><ul>
 <li><p>关联分析</p>
 </li>
@@ -633,10 +633,10 @@
 <p>​       年-学期-周   （每一层称为 <strong>级别（level）</strong>）</p>
 <h3 id="维的成员（member）"><a href="#维的成员（member）" class="headerlink" title="维的成员（member）"></a>维的成员（member）</h3><p>维的一个取值</p>
 <h3 id="多维数组（多维空间）"><a href="#多维数组（多维空间）" class="headerlink" title="多维数组（多维空间）"></a>多维数组（多维空间）</h3><p>维和度量的组合</p>
-<p><img src="../images/DataMining/image-20221015120755730.png" alt="image-20221015120755730"></p>
+<p><img src="/../images/DataMining/image-20221015120755730.png" alt="image-20221015120755730"></p>
 <h3 id="数据单元（单元格）"><a href="#数据单元（单元格）" class="headerlink" title="数据单元（单元格）"></a>数据单元（单元格）</h3><p>多维数组的一个取值</p>
 <p>如果查询结果保存起来，则称该查询视图物化</p>
-<h2 id="OLAP的多维数据分析"><a href="#OLAP的多维数据分析" class="headerlink" title="OLAP的多维数据分析"></a>OLAP的多维数据分析</h2><h3 id="多维分析"><a href="#多维分析" class="headerlink" title="多维分析"></a>多维分析</h3><h4 id="切片（slice）-切块（dice）"><a href="#切片（slice）-切块（dice）" class="headerlink" title="切片（slice）/切块（dice）"></a>切片（slice）/切块（dice）</h4><p>切片：单个维度分析</p>
+<h2 id="OLAP的多维数据分析"><a href="#OLAP的多维数据分析" class="headerlink" title="OLAP的多维数据分析"></a>OLAP的多维数据分析</h2><h3 id="多维分析"><a href="#多维分析" class="headerlink" title="多维分析"></a>多维分析</h3><h4 id="切片（slice）-x2F-切块（dice）"><a href="#切片（slice）-x2F-切块（dice）" class="headerlink" title="切片（slice）&#x2F;切块（dice）"></a>切片（slice）&#x2F;切块（dice）</h4><p>切片：单个维度分析</p>
 <p>切块：两个或以上维度分析</p>
 <h4 id="钻取"><a href="#钻取" class="headerlink" title="钻取"></a>钻取</h4><p>向下钻取（Drill-down）下钻：粗粒度—–&gt;细粒度分析</p>
 <p>向上钻取（Roll-up）上卷：细粒度—–&gt;粗粒度分析</p>
@@ -706,14 +706,14 @@
 
 
 <h2 id="国产数据库示例"><a href="#国产数据库示例" class="headerlink" title="国产数据库示例"></a>国产数据库示例</h2><h3 id="PolarDB-X数据库"><a href="#PolarDB-X数据库" class="headerlink" title="PolarDB-X数据库"></a>PolarDB-X数据库</h3><p>结构框架：</p>
-<p><img src="../images/DataMining/image-20221005102013310-16657435018695.png" alt="image-20221005102013310"></p>
-<h3 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h3><p><img src="../images/DataMining/image-20221015121820341.png" alt="image-20221015121820341"></p>
+<p><img src="/../images/DataMining/image-20221005102013310-16657435018695.png" alt="image-20221005102013310"></p>
+<h3 id="下推"><a href="#下推" class="headerlink" title="下推"></a>下推</h3><p><img src="/../images/DataMining/image-20221015121820341.png" alt="image-20221015121820341"></p>
 <h3 id="BI"><a href="#BI" class="headerlink" title="BI"></a>BI</h3><img src="../images/DataMining/image-20221019192403264.png" alt="image-20221019192403264" style="zoom: 67%;" />
 
 
 
 <h2 id="数据立方体和商立方体"><a href="#数据立方体和商立方体" class="headerlink" title="数据立方体和商立方体"></a>数据立方体和商立方体</h2><h3 id="物化视图选择"><a href="#物化视图选择" class="headerlink" title="物化视图选择"></a>物化视图选择</h3><h4 id="Greedy-Algorithm-贪心算法"><a href="#Greedy-Algorithm-贪心算法" class="headerlink" title="Greedy Algorithm(贪心算法)"></a>Greedy Algorithm(贪心算法)</h4><ul>
-<li><p>k = number of views to be materialized</p>
+<li><p>k &#x3D; number of views to be materialized</p>
 </li>
 <li><p>Given</p>
 <ul>
@@ -725,12 +725,12 @@
 </li>
 <li><p>Define the benefit of selecting v for materialization as</p>
 <ul>
-<li>B(v, S) = Gain(S U v, S) </li>
+<li>B(v, S) &#x3D; Gain(S U v, S)</li>
 </ul>
 </li>
 <li><p>S &lt;–{top view};</p>
 </li>
-<li><p>For i = 1 to k do </p>
+<li><p>For i &#x3D; 1 to k do </p>
 <ul>
 <li><p>Select that view v not in S such that B(v, S) is maximized;</p>
 </li>
@@ -741,7 +741,7 @@
 <li><p>Resulting S is the greedy selection</p>
 </li>
 </ul>
-<p><img src="../images/DataMining/image-20221011210827373.png" alt="image-20221011210827373"></p>
+<p><img src="/../images/DataMining/image-20221011210827373.png" alt="image-20221011210827373"></p>
 <table>
 <thead>
 <tr>
@@ -752,42 +752,42 @@
 </thead>
 <tbody><tr>
 <td align="center">pc</td>
-<td align="center">(6-6)*3 = 0</td>
-<td align="center">(6-6)*2 = 0</td>
+<td align="center">(6-6)*3 &#x3D; 0</td>
+<td align="center">(6-6)*2 &#x3D; 0</td>
 </tr>
 <tr>
 <td align="center">ps</td>
-<td align="center">(6-0.8)*3 = 15.6</td>
+<td align="center">(6-0.8)*3 &#x3D; 15.6</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">sc</td>
-<td align="center">(6-6)*3 = 0</td>
-<td align="center">(6-6)*2 = 0</td>
+<td align="center">(6-6)*3 &#x3D; 0</td>
+<td align="center">(6-6)*2 &#x3D; 0</td>
 </tr>
 <tr>
 <td align="center">p</td>
-<td align="center">(6-0.2)*1 = 5.8</td>
-<td align="center">(0.8-0.2)*1=0.6</td>
+<td align="center">(6-0.2)*1 &#x3D; 5.8</td>
+<td align="center">(0.8-0.2)*1&#x3D;0.6</td>
 </tr>
 <tr>
 <td align="center">s</td>
-<td align="center">(6-0.01)*1 = 5.99</td>
-<td align="center">(0.8-0.01)*1 = 0.79</td>
+<td align="center">(6-0.01)*1 &#x3D; 5.99</td>
+<td align="center">(0.8-0.01)*1 &#x3D; 0.79</td>
 </tr>
 <tr>
 <td align="center">c</td>
-<td align="center">(6-0.1)*1 = 5.9</td>
-<td align="center">(6-0.1)*1 = 5.9</td>
+<td align="center">(6-0.1)*1 &#x3D; 5.9</td>
+<td align="center">(6-0.1)*1 &#x3D; 5.9</td>
 </tr>
 </tbody></table>
 <p>Two views to be materialized are</p>
 <p>1、ps     2、c</p>
-<p>V = {ps, c}</p>
+<p>V &#x3D; {ps, c}</p>
 <p>Gain(V U {top view}, {top view})</p>
-<p>= 15.6 + 5.9 = 21.5</p>
-<h3 id="数据立方体"><a href="#数据立方体" class="headerlink" title="数据立方体"></a>数据立方体</h3><p><img src="../images/DataMining/image-20221011212714894.png" alt="image-20221011212714894"></p>
-<h3 id="商立方体"><a href="#商立方体" class="headerlink" title="商立方体"></a>商立方体</h3><p><img src="../images/DataMining/image-20221011213423839.png" alt="image-20221011213423839"></p>
+<p>&#x3D; 15.6 + 5.9 &#x3D; 21.5</p>
+<h3 id="数据立方体"><a href="#数据立方体" class="headerlink" title="数据立方体"></a>数据立方体</h3><p><img src="/../images/DataMining/image-20221011212714894.png" alt="image-20221011212714894"></p>
+<h3 id="商立方体"><a href="#商立方体" class="headerlink" title="商立方体"></a>商立方体</h3><p><img src="/../images/DataMining/image-20221011213423839.png" alt="image-20221011213423839"></p>
 <h2 id="习题讲解"><a href="#习题讲解" class="headerlink" title="习题讲解"></a>习题讲解</h2><p>数据转换一般可以分为：</p>
 <ul>
 <li><p>工具转换</p>
@@ -926,13 +926,12 @@
 <h3 id="分割（分区）"><a href="#分割（分区）" class="headerlink" title="分割（分区）"></a>分割（分区）</h3><p>划分方式：水平划分和垂直划分</p>
 <p>分区类别：:</p>
 <ul>
-<li>范围分区：按时间分割，按单位分割。（分布式数据库）</li>
-</ul>
-<ul>
-<li>哈希分区：（polarDB-X数据库）</li>
-</ul>
-<ul>
-<li>列表分区：按职业、学历分区</li>
+<li><p>范围分区：按时间分割，按单位分割。（分布式数据库）</p>
+</li>
+<li><p>哈希分区：（polarDB-X数据库）</p>
+</li>
+<li><p>列表分区：按职业、学历分区</p>
+</li>
 </ul>
 
       
@@ -1070,7 +1069,7 @@
 <td>C、当前的</td>
 </tr>
 <tr>
-<td>D、非易失的/稳定的</td>
+<td>D、非易失的&#x2F;稳定的</td>
 <td>D、易失的</td>
 </tr>
 </tbody></table>
@@ -1078,13 +1077,12 @@
 <p>1、独立的数据集市   </p>
 <p>2、从属的数据集市：</p>
 <ul>
-<li>面向部门的数据仓库 </li>
-</ul>
-<ul>
-<li>为满足用户特定需求而创建的数据仓库</li>
-</ul>
-<ul>
-<li>数据仓库的子集</li>
+<li><p>面向部门的数据仓库 </p>
+</li>
+<li><p>为满足用户特定需求而创建的数据仓库</p>
+</li>
+<li><p>数据仓库的子集</p>
+</li>
 </ul>
 <h3 id="Data-Lake（数据湖）"><a href="#Data-Lake（数据湖）" class="headerlink" title="Data Lake（数据湖）"></a>Data Lake（数据湖）</h3><p>（侧重于数据存储能力）</p>
 <p>A、 保存原始的、细节的数据</p>
@@ -1180,7 +1178,7 @@
 </tr>
 </tbody></table>
 <p>销售分析的逻辑模型（星型模型）</p>
-<p><img src="../images/DataMining/1.png" alt="20221015"></p>
+<p><img src="/../images/DataMining/1.png" alt="20221015"></p>
 <h2 id="数据抽取、转换和装载"><a href="#数据抽取、转换和装载" class="headerlink" title="数据抽取、转换和装载"></a>数据抽取、转换和装载</h2><h3 id="ETL"><a href="#ETL" class="headerlink" title="ETL"></a>ETL</h3><p>（Extraction、Transformation、Loading）</p>
 <p>数据抽取、数据清洗、数据转换、数据加载、数据更新。</p>
 <p>数据更新：</p>
@@ -1189,7 +1187,7 @@
 <li>增量更新：数据库维护</li>
 </ul>
 <h2 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h2><p>用来描述数据的数据，包含业务元数据和技术元数据</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="../images/DataMining/1-16658031339742.png" alt="image-202210151"></p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><img src="/../images/DataMining/1-16658031339742.png" alt="image-202210151"></p>
 <h3 id="销售质量"><a href="#销售质量" class="headerlink" title="销售质量"></a>销售质量</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact;</span><br></pre></td></tr></table></figure>
 
 <h3 id="不同年份的销售量"><a href="#不同年份的销售量" class="headerlink" title="不同年份的销售量"></a>不同年份的销售量</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact</span><br><span class="line"><span class="keyword">join</span> time_dim <span class="keyword">on</span> sales_fact.time_key <span class="operator">=</span> time_dim.time_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_dim.year;</span><br></pre></td></tr></table></figure>
@@ -1279,9 +1277,9 @@
 <p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
 <p>C、 异构数据源共享问题（各类数据库产品增加导致异构环境数据增加）</p>
 <h3 id="异构数据源解决方案"><a href="#异构数据源解决方案" class="headerlink" title="异构数据源解决方案"></a>异构数据源解决方案</h3><p>一、 数据仓库</p>
-<p><img src="../images/DataMining/image-20221015105608879.png" alt="image-20221015105608879"></p>
+<p><img src="/../images/DataMining/image-20221015105608879.png" alt="image-20221015105608879"></p>
 <p>二、联邦数据库</p>
-<p><img src="../images/DataMining/image-20221015105635006.png" alt="image-20221015105635006"></p>
+<p><img src="/../images/DataMining/image-20221015105635006.png" alt="image-20221015105635006"></p>
 <h3 id="数据仓库与联邦数据库的区别"><a href="#数据仓库与联邦数据库的区别" class="headerlink" title="数据仓库与联邦数据库的区别"></a>数据仓库与联邦数据库的区别</h3><p>数据仓库：</p>
 <ul>
 <li>优：查询速度快   </li>
@@ -1299,7 +1297,7 @@
 <li>统一：消除不一致的现象（数据清洗）</li>
 <li>综合：对原有数据进行综合和计算</li>
 </ul>
-<p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
+<p>C、时变的：数据仓库保存长期的字段、显&#x2F;隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
 <p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
 
       
@@ -1483,6 +1481,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
