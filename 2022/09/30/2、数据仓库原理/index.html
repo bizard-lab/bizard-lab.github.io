@@ -1,695 +1,37 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"bizard-lab.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="数据仓库原理 数据仓库系统结构 数据库与数据仓库对比    数据库 数据仓库     细节的 综合或提炼的   在存取时准确的 代表过去的数据   可更新的 不更新   一次操作数据量小 一次操作数据量大   面向应用 面向分析   支持管理 支持决策   用于事务处理 主要用于分析数据    数据仓库与数据库的区别">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Chapter 02：Data Warehouse and Data Mining">
-<meta property="og:url" content="https://bizard-lab.github.io/2022/09/30/2%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%8E%9F%E7%90%86/index.html">
-<meta property="og:site_name" content="大数据浪潮">
-<meta property="og:description" content="数据仓库原理 数据仓库系统结构 数据库与数据仓库对比    数据库 数据仓库     细节的 综合或提炼的   在存取时准确的 代表过去的数据   可更新的 不更新   一次操作数据量小 一次操作数据量大   面向应用 面向分析   支持管理 支持决策   用于事务处理 主要用于分析数据    数据仓库与数据库的区别">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/1.png">
-<meta property="og:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/1-16658031339742.png">
-<meta property="article:published_time" content="2022-09-30T13:24:32.000Z">
-<meta property="article:modified_time" content="2022-10-15T03:06:12.811Z">
-<meta property="article:author" content="Bizard-Lab">
-<meta property="article:tag" content="Data Warehouse">
-<meta property="article:tag" content="Big Data">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bizard-lab.github.io/2022/09/30/images/DataMining/1.png">
-
-<link rel="canonical" href="https://bizard-lab.github.io/2022/09/30/2%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%8E%9F%E7%90%86/">
+{% block page_class %}page-post-detail{% endblock %}
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
+{% block content %}
 
-  <title>Chapter 02：Data Warehouse and Data Mining | 大数据浪潮</title>
-  
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">大数据浪潮</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">站在大数据之巅</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/09/30/2%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Bizard-Lab">
-      <meta itemprop="description" content="本站立足于大数据、数据仓库、数据挖掘的知识分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大数据浪潮">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Chapter 02：Data Warehouse and Data Mining
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-09-30 21:24:32" itemprop="dateCreated datePublished" datetime="2022-09-30T21:24:32+08:00">2022-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-15 11:06:12" itemprop="dateModified" datetime="2022-10-15T11:06:12+08:00">2022-10-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Big-Data/Data-Warehouse/" itemprop="url" rel="index"><span itemprop="name">Data Warehouse</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h1 id="数据仓库原理">数据仓库原理</h1>
-<h2 id="数据仓库系统结构">数据仓库系统结构</h2>
-<h3 id="数据库与数据仓库对比">数据库与数据仓库对比</h3>
-<table>
-<thead>
-<tr class="header">
-<th><strong>数据库</strong></th>
-<th><strong>数据仓库</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>细节的</td>
-<td>综合或提炼的</td>
-</tr>
-<tr class="even">
-<td>在存取时准确的</td>
-<td>代表过去的数据</td>
-</tr>
-<tr class="odd">
-<td>可更新的</td>
-<td>不更新</td>
-</tr>
-<tr class="even">
-<td>一次操作数据量小</td>
-<td>一次操作数据量大</td>
-</tr>
-<tr class="odd">
-<td>面向应用</td>
-<td>面向分析</td>
-</tr>
-<tr class="even">
-<td>支持管理</td>
-<td>支持决策</td>
-</tr>
-<tr class="odd">
-<td>用于事务处理</td>
-<td>主要用于分析数据</td>
-</tr>
-</tbody>
-</table>
-<h3 id="数据仓库与数据库的区别">数据仓库与数据库的区别</h3>
-<p>本质上主要为异构和同构的差别</p>
-<p>事务型数据库（操作型）：TP事务处理，以写为主</p>
-<p>分析型数据库：AP分析处理，以读为主</p>
-<h3 id="dwodsdm属性">DW、ODS、DM属性</h3>
-<table>
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 53%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>DW</strong>（数据仓库）（侧重于计算能力）</th>
-<th>ODS（操作型数据存储）（能够实时报表分析）</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>A、面向主题的</td>
-<td>A、面向主题的</td>
-</tr>
-<tr class="even">
-<td>B、集成的</td>
-<td>B、集成的</td>
-</tr>
-<tr class="odd">
-<td>C、时变的</td>
-<td>C、当前的</td>
-</tr>
-<tr class="even">
-<td>D、非易失的/稳定的</td>
-<td>D、易失的</td>
-</tr>
-</tbody>
-</table>
-<h3 id="dm数据集市">DM（数据集市）</h3>
-<p>（Data Mart）</p>
-<p>1、独立的数据集市</p>
-<p>2、从属的数据集市：</p>
-<ul>
-<li><p>面向部门的数据仓库</p></li>
-<li><p>为满足用户特定需求而创建的数据仓库</p></li>
-<li><p>数据仓库的子集</p></li>
-</ul>
-<h3 id="data-lake数据湖">Data Lake（数据湖）</h3>
-<p>（侧重于数据存储能力）</p>
-<p>A、 保存原始的、细节的数据</p>
-<p>B、 结构化数据、非结构化数据均存在（多模态）</p>
-<h3 id="发展趋势">发展趋势</h3>
-<p>1、
-一体化：比如湖仓一体（Lakehouse）：融合了数据湖的存储能力和数据仓库的计算能力</p>
-<p>2、多模态：既能处理关系表数据，也能处理时序数据、图数据</p>
-<p>3、云原生：数据库迁移到云上（提升数据库存储和计算的拓展性）</p>
-<h2 id="数据仓库的数据模型">数据仓库的数据模型</h2>
-<h3 id="数据仓库模型和数据库模型对比">数据仓库模型和数据库模型对比</h3>
-<table>
-<thead>
-<tr class="header">
-<th><strong>数据仓库模型</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>A</strong>、概念模型：分析主题（边界、主题、维度、类别、指标、事实）</td>
-</tr>
-<tr class="even">
-<td><strong>B</strong>、逻辑模型：星型模型、雪花模型、星座模型</td>
-</tr>
-<tr class="odd">
-<td><strong>C</strong>、物理模型：</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th><strong>数据库模型</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>A、</strong>概念模型：ER（实体关系模型）</td>
-</tr>
-<tr class="even">
-<td><strong>B</strong>、逻辑模型：关系模型、网状模型、层次模型</td>
-</tr>
-<tr class="odd">
-<td><strong>C</strong>、物理模型：</td>
-</tr>
-</tbody>
-</table>
-<h3 id="数据仓库模型">数据仓库模型</h3>
-<p>销售分析的概念模型</p>
-<p>信息包： <u>销售分析</u></p>
-<table>
-<colgroup>
-<col style="width: 54%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>日期</th>
-<th>销售地点</th>
-<th>销售产品</th>
-<th>年龄组别</th>
-<th>性别</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>年（10）</td>
-<td>国家（15）</td>
-<td>产品类（6）</td>
-<td>年龄组（8）</td>
-<td>性别组（2）</td>
-</tr>
-<tr class="even">
-<td>季度（40）</td>
-<td>区域（45）</td>
-<td>产品组（48）</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>月（120）</td>
-<td>城市（280）</td>
-<td>产品（240）</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>区（880）</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>商店（2000）</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><strong>度量和事实：</strong>
-<strong>预测销售量、实际销售量、预测误差</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>销售分析的逻辑模型（星型模型）</p>
-<figure>
-<img src="../images/DataMining/1.png" alt="20221015" />
-<figcaption aria-hidden="true">20221015</figcaption>
-</figure>
-<h2 id="数据抽取转换和装载">数据抽取、转换和装载</h2>
-<h3 id="etl">ETL</h3>
-<p>（Extraction、Transformation、Loading）</p>
-<p>数据抽取、数据清洗、数据转换、数据加载、数据更新。</p>
-<p>数据更新：</p>
-<ul>
-<li>全量更新：数据库建立时期</li>
-<li>增量更新：数据库维护</li>
-</ul>
-<h2 id="元数据">元数据</h2>
-<p>用来描述数据的数据，包含业务元数据和技术元数据</p>
-<h2 id="例题">例题</h2>
-<figure>
-<img src="../images/DataMining/1-16658031339742.png"
-alt="image-202210151" />
-<figcaption aria-hidden="true">image-202210151</figcaption>
-</figure>
-<h3 id="销售质量">销售质量</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact;</span><br></pre></td></tr></table></figure>
-<h3 id="不同年份的销售量">不同年份的销售量</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact</span><br><span class="line"><span class="keyword">join</span> time_dim <span class="keyword">on</span> sales_fact.time_key <span class="operator">=</span> time_dim.time_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_dim.year;</span><br></pre></td></tr></table></figure>
-<h3 id="不同年份不同商品项的销售额">不同年份不同商品项的销售额</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> city <span class="keyword">as</span> 城市,item_names <span class="keyword">as</span> 商品项,<span class="built_in">sum</span>(dollars_sold) <span class="keyword">as</span> 销售额</span><br><span class="line"><span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> geo_dim b</span><br><span class="line"><span class="keyword">on</span> a.location_key <span class="operator">=</span> b.location_key</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> item_dim c</span><br><span class="line"><span class="keyword">on</span> a.item_key <span class="operator">=</span> c.item_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> b.city,c.item_name;</span><br></pre></td></tr></table></figure>
-<h3 id="年18月份各月平均销售">2021年1~8月份各月平均销售</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(avg_sales) <span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">join</span> time_dim b <span class="keyword">on</span> a.time_key <span class="operator">=</span> b.time_key</span><br><span class="line"><span class="keyword">where</span> mouth <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">and</span> mouth <span class="operator">&lt;=</span> <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/Data-Warehouse/" rel="tag"><i class="fa fa-tag"></i> Data Warehouse</a>
-              <a href="/tags/Big-Data/" rel="tag"><i class="fa fa-tag"></i> Big Data</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/09/30/4%E3%80%81%E8%81%94%E6%9C%BA%E5%88%86%E6%9E%90%E5%A4%84%E7%90%86/" rel="prev" title="Chapter 04：Data Warehouse and Data Mining">
-      <i class="fa fa-chevron-left"></i> Chapter 04：Data Warehouse and Data Mining
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/09/30/1%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%A6%82%E8%BF%B0/" rel="next" title="Chapter 01：Data Warehouse and Data Mining">
-      Chapter 01：Data Warehouse and Data Mining <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">数据仓库原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">数据仓库系统结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%AF%B9%E6%AF%94"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据库与数据仓库对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.1.2.</span> <span class="nav-text">数据仓库与数据库的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dwodsdm%E5%B1%9E%E6%80%A7"><span class="nav-number">1.1.3.</span> <span class="nav-text">DW、ODS、DM属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dm%E6%95%B0%E6%8D%AE%E9%9B%86%E5%B8%82"><span class="nav-number">1.1.4.</span> <span class="nav-text">DM（数据集市）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data-lake%E6%95%B0%E6%8D%AE%E6%B9%96"><span class="nav-number">1.1.5.</span> <span class="nav-text">Data Lake（数据湖）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF"><span class="nav-number">1.1.6.</span> <span class="nav-text">发展趋势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">数据仓库的数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据仓库模型和数据库模型对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据仓库模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E5%8F%96%E8%BD%AC%E6%8D%A2%E5%92%8C%E8%A3%85%E8%BD%BD"><span class="nav-number">1.3.</span> <span class="nav-text">数据抽取、转换和装载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etl"><span class="nav-number">1.3.1.</span> <span class="nav-text">ETL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE"><span class="nav-number">1.4.</span> <span class="nav-text">元数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">1.5.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%80%E5%94%AE%E8%B4%A8%E9%87%8F"><span class="nav-number">1.5.1.</span> <span class="nav-text">销售质量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E5%B9%B4%E4%BB%BD%E7%9A%84%E9%94%80%E5%94%AE%E9%87%8F"><span class="nav-number">1.5.2.</span> <span class="nav-text">不同年份的销售量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E5%B9%B4%E4%BB%BD%E4%B8%8D%E5%90%8C%E5%95%86%E5%93%81%E9%A1%B9%E7%9A%84%E9%94%80%E5%94%AE%E9%A2%9D"><span class="nav-number">1.5.3.</span> <span class="nav-text">不同年份不同商品项的销售额</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B418%E6%9C%88%E4%BB%BD%E5%90%84%E6%9C%88%E5%B9%B3%E5%9D%87%E9%94%80%E5%94%AE"><span class="nav-number">1.5.4.</span> <span class="nav-text">2021年1~8月份各月平均销售</span></a></li></ol></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Bizard-Lab</p>
-  <div class="site-description" itemprop="description">本站立足于大数据、数据仓库、数据挖掘的知识分享</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">7</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Bizard-Lab</span>
-</div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-<script src="/js/bookmark.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-</body>
-</html>
+{% endblock %}
+
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
+
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}
