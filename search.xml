@@ -307,18 +307,10 @@
 <h2 id="国产数据库示例">国产数据库示例</h2>
 <h3 id="polardb-x数据库">PolarDB-X数据库</h3>
 <p>结构框架：</p>
-<figure>
-<img
-src="../images/DataMining/image-20221005102013310-16657435018695.png"
-alt="image-20221005102013310" />
-<figcaption aria-hidden="true">image-20221005102013310</figcaption>
-</figure>
+<p><img
+src="../images/DataMining/image-20221005102013310-16657435018695.png" /></p>
 <h3 id="下推">下推</h3>
-<figure>
-<img src="../images/DataMining/image-20221015121820341.png"
-alt="image-20221015121820341" />
-<figcaption aria-hidden="true">image-20221015121820341</figcaption>
-</figure>
+<p><img src="../images/DataMining/image-20221015121820341.png" /></p>
 <h3 id="bi">BI</h3>
 <p><img src="../images/DataMining/image-20221019192403264.png" alt="image-20221019192403264" style="zoom: 67%;" /></p>
 <h2 id="数据立方体和商立方体">数据立方体和商立方体</h2>
@@ -345,11 +337,7 @@ maximized;</p></li>
 </ul></li>
 <li><p>Resulting S is the greedy selection</p></li>
 </ul>
-<figure>
-<img src="../images/DataMining/image-20221011210827373.png"
-alt="image-20221011210827373" />
-<figcaption aria-hidden="true">image-20221011210827373</figcaption>
-</figure>
+<p><img src="../images/DataMining/image-20221011210827373.png" /></p>
 <table>
 <thead>
 <tr class="header">
@@ -397,17 +385,9 @@ alt="image-20221011210827373" />
 <p>Gain(V U {top view}, {top view})</p>
 <p>= 15.6 + 5.9 = 21.5</p>
 <h3 id="数据立方体">数据立方体</h3>
-<figure>
-<img src="../images/DataMining/image-20221011212714894.png"
-alt="image-20221011212714894" />
-<figcaption aria-hidden="true">image-20221011212714894</figcaption>
-</figure>
+<p><img src="../images/DataMining/image-20221011212714894.png" /></p>
 <h3 id="商立方体">商立方体</h3>
-<figure>
-<img src="../images/DataMining/image-20221011213423839.png"
-alt="image-20221011213423839" />
-<figcaption aria-hidden="true">image-20221011213423839</figcaption>
-</figure>
+<p><img src="../images/DataMining/image-20221011213423839.png" /></p>
 <h2 id="习题讲解">习题讲解</h2>
 <p>数据转换一般可以分为：</p>
 <ul>
