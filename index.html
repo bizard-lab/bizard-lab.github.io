@@ -232,17 +232,17 @@ mjx-container[display="true"] + br {
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">15</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -302,6 +302,317 @@ mjx-container[display="true"] + br {
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/11/12/8%E3%80%81WordCount-src/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Bizard-Lab">
+      <meta itemprop="description" content="本站立足于大数据、数据仓库、数据挖掘的知识分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大数据浪潮">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/12/8%E3%80%81WordCount-src/" class="post-title-link" itemprop="url">8、WordCount-src</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-12 20:55:52 / 修改时间：21:42:19" itemprop="dateCreated datePublished" datetime="2022-11-12T20:55:52+08:00">2022-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/" itemprop="url" rel="index"><span itemprop="name">Cloud Computing</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Following sample is adopted from original wordcount sample from </span><br><span class="line"> * http://wiki.apache.org/hadoop/WordCount. </span><br><span class="line"> */</span><br><span class="line">package chapter1;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line">import org.apache.hadoop.conf.Configuration;</span><br><span class="line">import org.apache.hadoop.fs.Path;</span><br><span class="line">import org.apache.hadoop.io.IntWritable;</span><br><span class="line">import org.apache.hadoop.io.Text;</span><br><span class="line">import org.apache.hadoop.mapred.JobConf;</span><br><span class="line">import org.apache.hadoop.mapreduce.Job;</span><br><span class="line">import org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line">import org.apache.hadoop.mapreduce.Reducer;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line">import org.apache.hadoop.util.GenericOptionsParser;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * &lt;p&gt;The word count sample counts the number of word occurrences within a set of input documents </span><br><span class="line"> * using MapReduce. The code has three parts: mapper, reducer, and the main program.&lt;/p&gt;</span><br><span class="line"> * @author Srinath Perera (srinath@wso2.com)</span><br><span class="line"> */</span><br><span class="line">public class WordCount &#123;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * &lt;p&gt;</span><br><span class="line">   * The mapper extends from the org.apache.hadoop.mapreduce.Mapper interface. When Hadoop runs, </span><br><span class="line">   * it receives each new line in the input files as an input to the mapper. The  map  function </span><br><span class="line">   * tokenize the line, and for each token (word) emits (word,1) as the output.  &lt;/p&gt;</span><br><span class="line">   */</span><br><span class="line">  public static class TokenizerMapper </span><br><span class="line">       extends Mapper&lt;Object, Text, Text, IntWritable&gt;&#123;</span><br><span class="line">    </span><br><span class="line">    private final static IntWritable one = new IntWritable(1);</span><br><span class="line">    private Text word = new Text();</span><br><span class="line">      </span><br><span class="line">    public void map(Object key, Text value, Context context</span><br><span class="line">                    ) throws IOException, InterruptedException &#123;</span><br><span class="line">      StringTokenizer itr = new StringTokenizer(value.toString());</span><br><span class="line">      while (itr.hasMoreTokens()) &#123;</span><br><span class="line">        word.set(itr.nextToken());</span><br><span class="line">        context.write(word, one);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  /**</span><br><span class="line">   * &lt;p&gt;Reduce function receives all the values that has the same key as the input, and it output the key </span><br><span class="line">   * and the number of occurrences of the key as the output.&lt;/p&gt;  </span><br><span class="line">   */</span><br><span class="line">  public static class IntSumReducer </span><br><span class="line">       extends Reducer&lt;Text,IntWritable,Text,IntWritable&gt; &#123;</span><br><span class="line">    private IntWritable result = new IntWritable();</span><br><span class="line"></span><br><span class="line">    public void reduce(Text key, Iterable&lt;IntWritable&gt; values, </span><br><span class="line">                       Context context</span><br><span class="line">                       ) throws IOException, InterruptedException &#123;</span><br><span class="line">      int sum = 0;</span><br><span class="line">      for (IntWritable val : values) &#123;</span><br><span class="line">        sum += val.get();</span><br><span class="line">      &#125;</span><br><span class="line">      result.set(sum);</span><br><span class="line">      context.write(key, result);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * &lt;p&gt; As input this program takes any text file. Create a folder called input in HDFS (or in local directory if you are running this locally)</span><br><span class="line">   * &lt;ol&gt;</span><br><span class="line">   * &lt;li&gt;Option1: You can compile the sample by ant from sample directory.  To do this, you need to have Apache Ant installed in your system. </span><br><span class="line">   * Otherwise, you can use the complied jar included with the source code. hange directory to HADOOP_HOME, and copy the hadoop-cookbook.jar to the HADOOP_HOME. </span><br><span class="line">   * Then run the command &gt; bin/hadoop jar hadoop-cookbook.jar chapter1.WordCount input output.&lt;/li&gt; </span><br><span class="line">   * &lt;li&gt;As an optional step, copy the  input  directory to the top level of the IDE based project (eclipse project) that you created for samples. Now you can run </span><br><span class="line">   * the WordCount class directly from your IDE passing  input output  as arguments. This will run the sample same as before. Running MapReduce Jobs from IDE in this manner is very useful </span><br><span class="line">   * for debugging your MapReduce Jobs. &lt;/li&gt;</span><br><span class="line">   * &lt;/ol&gt; </span><br><span class="line">   * @param args</span><br><span class="line">   * @throws Exception</span><br><span class="line">   */</span><br><span class="line">  public static void main(String[] args) throws Exception &#123;</span><br><span class="line">      JobConf conf = new JobConf();</span><br><span class="line">    String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();</span><br><span class="line">    if (otherArgs.length != 2) &#123;</span><br><span class="line">      System.err.println(&quot;Usage: wordcount &lt;in&gt; &lt;out&gt;&quot;);</span><br><span class="line">      System.exit(2);</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    Job job = new Job(conf, &quot;word count&quot;);</span><br><span class="line">    job.setJarByClass(WordCount.class);</span><br><span class="line">    job.setMapperClass(TokenizerMapper.class);</span><br><span class="line">    //Uncomment this to </span><br><span class="line">    //job.setCombinerClass(IntSumReducer.class);</span><br><span class="line">    job.setReducerClass(IntSumReducer.class);</span><br><span class="line">    job.setOutputKeyClass(Text.class);</span><br><span class="line">    job.setOutputValueClass(IntWritable.class);</span><br><span class="line">    FileInputFormat.addInputPath(job, new Path(otherArgs[0]));</span><br><span class="line">    FileOutputFormat.setOutputPath(job, new Path(otherArgs[1]));</span><br><span class="line">    System.exit(job.waitForCompletion(true) ? 0 : 1);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/11/12/7%E3%80%81%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A5%E5%85%85lecture/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Bizard-Lab">
+      <meta itemprop="description" content="本站立足于大数据、数据仓库、数据挖掘的知识分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大数据浪潮">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/12/7%E3%80%81%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A5%E5%85%85lecture/" class="post-title-link" itemprop="url">7、大数据补充lecture</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-12 20:55:08 / 修改时间：21:40:03" itemprop="dateCreated datePublished" datetime="2022-11-12T20:55:08+08:00">2022-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/" itemprop="url" rel="index"><span itemprop="name">Cloud Computing</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="大数据补充">大数据补充</h1>
+<h2 id="大数据三种计算模式">大数据三种计算模式</h2>
+<ol type="1">
+<li>离线计算，小时级，批处理，机器学习，MapReduce，Spark</li>
+<li>在线计算，分钟级和秒级，交互分析和查询，Hive，Impala，Spark</li>
+<li>流计算，秒、毫秒级，实时分析，Storm，Flume，Spark</li>
+</ol>
+<h2 id="大数据分层结构">大数据分层结构</h2>
+<p>数据收集层：数据抽取、转换、加载（Extract，Transform，Load，ETL），代表技术平台或产品：Kettle，Kafka，Flume（日志收集），Sqoop
+数据存储层：分布式文件系统GFS/HDFS，半结构化/结构化数据分布式存储BigTable/HBase，NoSQL（键值、列、图、文档），NewSQL（关系数据库+云计算）
+数据分析层：分布式计算框架MapReduce，Spark，Hive（提供大数据类SQL查询接口），Impala，Storm，Mahout（大数据挖掘）
+数据应用层：</p>
+<h2 id="云计算特点">云计算特点</h2>
+<p>服务计算： 按需计算： 弹性计算：扩展、收缩
+虚拟化计算：磁盘存储、CPU计算、网络带宽进行集中和虚拟化 透明计算：</p>
+<h2 id="云计算分层结构">云计算分层结构</h2>
+<p>Iaas层（Infrastructure as a
+Service）：基础设施即服务，磁盘、CPU、网络带宽进行虚拟化，以服务形式提供
+PaaS层（Platform as a
+Service）：平台即服务，操作系统、存储、计算中间件服务 SaaS层（Software
+as a Service）：软件即服务，应用程序作为服务</p>
+<h2 id="云计算类型">云计算类型</h2>
+<p>公有云 私有云 混合云</p>
+<h2 id="hadoop">Hadoop</h2>
+<p>Apache 开源分布式存储与计算平台/框架
+包括分布式存储HDFS，分布式计算Hadoop
+MapReduce，CPU、内存等资源管理Yarn等三大组件
+主从架构：一主多从，主节点进行数据和计算任务的管理，从节点进行具体数据的存储和任务的计算</p>
+<h2 id="java语言">Java语言</h2>
+<p>一般是要安装在Linux操作系统（Ubuntu，CentOS），64位操作系统；
+实验一般要搭建一个小型的集群，即1台主机（主节点，master，名称节点name
+node）2台从机（从节点，slave，数据节点data node），e.g.
+4G内存，主机2G内存，从机1G内存 事实上的大数据标准</p>
+<h2 id="google老三大技术三驾马车">Google（老)三大技术（三驾马车）</h2>
+<p>GFS：Google File System，Google分布式文件存储系统
+MapReduce：Google分布式计算框架
+BigTable：Google半结构/结构化数据分布式存储</p>
+<h2 id="hadoop特点">Hadoop特点</h2>
+<ol type="1">
+<li><p>高扩展性：横向扩展（增加单机数量），传统的小型机等纵向扩展（增强单机性能）</p></li>
+<li><p>高容错性：三副本机制，热点数据请求卸载（offload）
+传统并行分布式计算技术MPI（消息传递机制）</p></li>
+<li><p>高易用性：提供了分布式存储和计算框架，将通用的分布式存储和计算任务（e.g.
+不同节点的通讯、任务或数据的划分、任务或数据的容错处理）进行实现，
+用户主要实现Map和Reduce函数</p></li>
+</ol>
+<h2 id="linux常用操作命令">Linux常用操作命令</h2>
+<h3 id="linux常用操作命令-1">Linux常用操作命令</h3>
+<p>（以Ubuntu为例，打开终端快捷键：ctrl+alt+t，如果设置的话）
+文件（夹）操作命令： ls：显示文件夹/目录内容，ll显示详细的内容信息
+cd：切换文件夹/目录 mkdir：创建文件夹/目录 cp：拷贝文件（夹）
+（参数：srcdir desdir） mv：移动文件（夹） rm：删除文件（夹）
+cat：查看文件内容 pwd：显示当前目录路径 vi/vim：Linux的命令方式的记事本
+gedit：Linux的窗口界面的记事本</p>
+<p>. 当前目录 .. 上级目录 ~ 用户主目录 / 根目录</p>
+<h3 id="权限管理命令">权限管理命令</h3>
+<p>chown：修改文件（夹）权限，文件（夹）权限：可读、可写、可执行
+sudo：临时提升到更高权限，例管理员或超级用户 su：切换用户
+ssh：远程访问命令，提供安全访问机制（公钥、私钥）；在Hadoop中用于保障安全下无需输入密码来远程启动集群节点的计算进程、数据访问</p>
+<h3 id="用户创建命令">用户创建命令</h3>
+<p>useradd：增加Linux操作系统用户 passwd：修改密码</p>
+<p>apt-get install：安装包</p>
+<p>sudo tar -zxf：压缩包解压</p>
+<p>hostname：查看机器名称 ifconfig：查看机器ip gedit
+/etc/hosts：修改机器名称与ip映射 （vi
+/etc/hosts：修改机器名称与ip映射）</p>
+<p>ping：ping对方机器</p>
+<p>exit：退出</p>
+<p>ssh-keygen：生成公钥和私钥</p>
+<h3 id="hadoop操作接口">Hadoop操作接口</h3>
+<ol type="1">
+<li>终端命令接口</li>
+<li>Web界面</li>
+</ol>
+<p>Hadoop解压后的主要配置文件： core-site.xml hdfs-site.xml
+mapred-site.xml</p>
+<p>Hadoop命令： hadoop namenode -format：HDFS 分布式文件系统格式化
+start-all.sh：Hadoop 启动所有进程 jps：显示所有Java进程，包括： Hadoop
+master的必要进程：NameNode，ResourceManager，SecondaryNameNode Hadoop
+slave的必要进程：DataNode，NodeManager</p>
+<p>stop-all.sh：Hadoop 关闭所有进程</p>
+<p>hadoop dfs：HDFS操作命令 e.g. hadoop dfs -ls / hadoop dfs -mkdir
+hadoop dfs -cat hadoop dfs -put：将本地文件上传到HDFS分布式文件系统中
+hadoop dfs -get：将HDFS分布式文件系统中文件下载到本地</p>
+<h2 id="hdfs系统结构">HDFS系统结构</h2>
+<h3 id="一主多从">一主多从</h3>
+<p>HDFS主节点，又称名称节点，NameNode，进行数据的划分以及位置等元数据（metadata，保存了文件、数据块和数据节点的映射关系）管理，并转发数据访问请求；
+HDFS从节点，又称数据节点，DataNode，进行具体数据的存储和访问；</p>
+<p>（HDFS第二主节点，又称HDFS第二名称节点）</p>
+<h3 id="hdfs特点">HDFS特点</h3>
+<p>流数据读写：适合顺序读写，而不是随机读写
+大容量数据读写：高吞吐量数据读写，而不是多个小文件读写</p>
+<p>HDFS默认数据块大小64MB，默认的数据块副本3个</p>
+<h3 id="hdfs操作接口">HDFS操作接口</h3>
+<ol type="1">
+<li>终端命令接口</li>
+<li>Web界面：http://master:50070</li>
+<li>编程接口API</li>
+</ol>
+<p>例子：假设有2个文件，共5个数据块，其id分别为1,2,3,4,5，2副本机制，分布式存储到3个数据节点，请设计相应的分布式存储方案。
+（满足1. 每个数据块2副本；2. 每个数据节点的数据块个数（几乎）相等 ）
+设计方案之一： 1：1，4，2，5 2：2，5，3 3：3，1，4</p>
+<h2 id="hadoop安装部署">Hadoop安装部署</h2>
+<p>（系统配置一般需要root用户权限，其它一般是hadoop用户，如zkpk用户）</p>
+<ol type="1">
+<li>安装或载入（Ubuntu）虚拟机，如果该虚拟机没有Hadoop打包文件，则需要下载并解压</li>
+<li>修改节点名称为好记的名称（hostname），e.g. master, slave,
+slave2</li>
+<li>配置/etc/hosts（gedit、vim进行编辑），可以ping从节点机器名称</li>
+<li>在主节点生成公钥和私钥（ssh-keygen，ssh-copy-id），将公钥拷贝到其它从节点机器，可以无密码ssh远程访问其它从节点机器</li>
+<li>配置/hadoop-2.5.2/etc/hadoop/slaves（gedit、vim进行编辑）</li>
+<li>如果需要，配置core-site.xml、hdfs-site.xml、mapred-site.xml（/hadoop-2.5.2/etc/hadoop路径下）</li>
+<li>在主节点启动Hadoop所有进程 start-all.sh</li>
+<li>jps查看进程，master有4个进程，slave有3个进程</li>
+<li>进行HDFS分布式文件系统命令操作，e.g. hadoop dfs -ls / , hadoop dfs
+-ls mkdir input-20211114, hadoop dfs -put</li>
+<li>进行MapReduce示例程序运行，hadoop jar wordcount.jar WordCount input
+output e.g. hadoop jar wordcount.jar org/zkpk/day0909/WordCount
+/input-20211114 /output-20211114</li>
+</ol>
+<p>以上步骤2、3、5、6要在每台虚拟机都需要操作。</p>
+<h2 id="mapreduce">MapReduce</h2>
+<h3
+id="mapreduce与传统并行编程框架的区别">MapReduce与传统并行编程框架的区别</h3>
+<p>MapReduce可扩展性好，容错性好、廉价、编程容易（数据划分、任务分发、数据通讯、负载均衡等通用任务自动处理）、数据密集型计算（不是计算密集型应用）、移动计算而不是移动数据</p>
+<p>MapReduce体系结构
+Client：客户端，提交分布式应用程序给主节点（的JobTracker）；
+JobTracker+Task
+Scheduler：在主节点运行的作业跟踪和调度（一个Job有多个Task，一个Task可以是Map计算任务或者Reduce计算任务）
+TaskTracker：在从节点运行的具体任务执行（通过CPU、内存资源槽（slot）来分配Map或Reduce计算任务）</p>
+<h3 id="mapreduce工作流程">MapReduce工作流程</h3>
+<p>主要分为四个阶段 （数据先上传到HDFS） 1）Split：对数据进行分片 -&gt;
+(key, value)；</p>
+<p>2）Map：每个数据分片上启动一个Map计算任务，计算该数据分片的数据；
+(key, value) -&gt; list(out_key, intermediate_value)</p>
+<p>3）Shuffle：对数据进行混排，类似group by； (out_key,
+intermediate_value) -&gt; (out_key, list(intermediate_value))</p>
+<p>（Combine：对相同out_key的值提前进行合并，即提前进行本地的Reduce，从而有效减少Shuffle的输出）</p>
+<p>4）Reduce：对混排后的数据进行聚集、约减 (out_key,
+list(intermediate_value)) -&gt; (out_key, out_value) (其中out_value =
+Agg(list(intermediate_value)) （最终结果HDFS文件系统）</p>
+<h3 id="mapreduce编程示例">MapReduce编程示例</h3>
+<p>输入： Hello World Bye World Hello Hadoop Bye Hadoop Bye Hadoop Hello
+Hadoop</p>
+<p>输出： &lt;Bye, 3&gt; &lt;Hello, 3&gt; &lt;World, 2&gt; &lt;Hadoop,
+4&gt;</p>
+<p>Map输入： [Hello World Bye World] [Hello Hadoop Bye Hadoop] [Bye
+Hadoop Hello Hadoop]</p>
+<p>Map输出： &lt;Hello, 1&gt; &lt;World,1&gt; &lt;Bye, 1&gt; &lt;World,
+1&gt;</p>
+<p>&lt;Hello, 1&gt; &lt;Hadoop, 1&gt; &lt;Bye, 1&gt; &lt;Hadoop,
+1&gt;</p>
+<p>&lt;Bye, 1&gt; &lt;Hadoop,1&gt; &lt;Hello, 1&gt; &lt;Hadoop,
+1&gt;</p>
+<p>Shuffle输入（=Map输出）： &lt;Hello, 1&gt; &lt;World,1&gt; &lt;Bye,
+1&gt; &lt;World, 1&gt;</p>
+<p>&lt;Hello, 1&gt; &lt;Hadoop, 1&gt; &lt;Bye, 1&gt; &lt;Hadoop,
+1&gt;</p>
+<p>&lt;Bye, 1&gt; &lt;Hadoop,1&gt; &lt;Hello, 1&gt; &lt;Hadoop,
+1&gt;</p>
+<p>Shuffle输出： &lt;Bye, &lt;1, 1, 1&gt;&gt; &lt;Hello,
+&lt;1,1,1&gt;&gt; &lt;World, &lt;1,1&gt;&gt; &lt;Hadoop,
+&lt;1,1,1,1&gt;&gt;</p>
+<p>Reduce输入（=Shuffle输出）： &lt;Bye, &lt;1, 1, 1&gt;&gt; &lt;Hello,
+&lt;1,1,1&gt;&gt; &lt;World, &lt;1,1&gt;&gt; &lt;Hadoop,
+&lt;1,1,1,1&gt;&gt;</p>
+<p>Reduce输出： &lt;Bye, 3&gt; &lt;Hello, 3&gt; &lt;World, 2&gt;
+&lt;Hadoop, 4&gt;</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -496,6 +807,118 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/11/12/6%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93Hive%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Bizard-Lab">
+      <meta itemprop="description" content="本站立足于大数据、数据仓库、数据挖掘的知识分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大数据浪潮">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/12/6%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93Hive%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">6、数据仓库Hive理论和实践</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-12 20:53:32 / 修改时间：21:33:23" itemprop="dateCreated datePublished" datetime="2022-11-12T20:53:32+08:00">2022-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/" itemprop="url" rel="index"><span itemprop="name">Cloud Computing</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="数据仓库hive理论和实践">数据仓库Hive理论和实践</h1>
+<h2 id="hive">Hive</h2>
+<p>查询接口，提供SQL -&gt; MapReduce的转换。
+Hive依托底层的HDFS进行分布式数据存储、MapReduce进行分布式数据处理或计算。</p>
+<p>数据仓库：将异构的来自不同应用的数据源进行抽取、转换、加载到中心数据库，以提供决策分析支持。</p>
+<p>数据仓库四大特色：面向主题、集成的、时变的、非易失的。</p>
+<p>传统的数据仓库面临的挑战：海量数据、数据类型多样、可扩展性有限</p>
+<h2 id="hive架构">Hive架构</h2>
+<p>Hive访问接口：命令行（CLI）、Web页面（HWI）、开放数据库连接接口（ODBC或JDBC）、Thrift
+Server</p>
+<p>Driver：SQL -&gt; MapReduce</p>
+<p>元数据：MetaStore，存储表的定义等元数据，这些元数据存储在Derby或MySQL等关系数据库中。</p>
+<p>Hive QL（Hive 语句） /etc/init.d/mysqld restart hive</p>
+<p>create database *** ; show databases;</p>
+<p>use database;</p>
+<p>create table [if not exists] ... [partitioned by ...] [row format
+delimited fields terminated by '] location ' '; e.g. create table
+student(id int, name string, age int) row format delimited fields
+terminated by ' location "/data";</p>
+<p>alter table *** add partition (...) location '...';</p>
+<p>show tables;</p>
+<p>load data [local] inpth '' overwrite into table *** ; e.g. load data
+local inpath 'student_data' overwrite into table student;</p>
+<p>insert overwrite table *** select *** from ... ;</p>
+<p>另一个例子（来自https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.3.4/bk_dataintegration/content/new-feature-insert-values-update-delete.html）：
+CREATE TABLE students (name VARCHAR(64), age INT, gpa DECIMAL(3,2))
+CLUSTERED BY (age) INTO 2 BUCKETS STORED AS ORC;</p>
+<p>INSERT INTO TABLE students VALUES ('fred flintstone', 35, 1.28),
+('barney rubble', 32, 2.32);</p>
+<p>CREATE TABLE pageviews (userid VARCHAR(64), link STRING, from STRING)
+PARTITIONED BY (datestamp STRING) CLUSTERED BY (userid) INTO 256 BUCKETS
+STORED AS ORC;</p>
+<p>INSERT INTO TABLE pageviews PARTITION (datestamp = '2014-09-23')
+VALUES ('jsmith', 'mail.com', 'sports.com'), ('jdoe', 'mail.com',
+null);</p>
+<p>INSERT INTO TABLE pageviews PARTITION (datestamp) VALUES ('tjohnson',
+'sports.com', 'finance.com', '2014-09-23'), ('tlee', 'finance.com',
+null, '2014-09-21');</p>
+<p>echo ... &gt; file.txt e.g. echo "Hello Hadoop!" &gt; westart.txt ...
+echo "Bye Hadoop!" &gt; wecomplete.txt</p>
+<p>hope every guy enjoys our special time ...</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/10/19/6%E3%80%81%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -603,6 +1026,126 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/11/12/5%E3%80%81MapReduce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Bizard-Lab">
+      <meta itemprop="description" content="本站立足于大数据、数据仓库、数据挖掘的知识分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大数据浪潮">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/12/5%E3%80%81MapReduce/" class="post-title-link" itemprop="url">5、MapReduce</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-12 20:52:23 / 修改时间：21:27:10" itemprop="dateCreated datePublished" datetime="2022-11-12T20:52:23+08:00">2022-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/" itemprop="url" rel="index"><span itemprop="name">Cloud Computing</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="mapreduce">MapReduce</h1>
+<h2
+id="mapreduce与传统并行编程框架的区别">MapReduce与传统并行编程框架的区别</h2>
+<p>MapReduce可扩展性好，容错性好、廉价、编程容易（数据划分、任务分发、数据通讯、负载均衡等通用任务自动处理）、数据密集型计算（不是计算密集型应用）、移动计算而不是移动数据</p>
+<p>补充：CPU、内存、磁盘的组合：共享内存（多个CPU共用一块内存）、共享磁盘（多个CPU共用一块磁盘）、非共享（每个CPU都独享内存和磁盘）、计算存储分离</p>
+<p>分布式并行编程框架 MPI（Message Passing
+Interface，消息传递接口）：多进程通讯标准，主要有6个标准函数；
+PThread：多线程并行编程框架； 编译制导：OpenMP</p>
+<p>MapReduce体系结构 一主多从
+Client：客户端，提交分布式应用程序给主节点（的JobTracker）；
+JobTracker+Task
+Scheduler：在主节点运行的作业跟踪和调度（一个Job有多个Task，一个Task可以是Map计算任务或者Reduce计算任务）
+TaskTracker：在从节点运行的具体任务执行（通过CPU、内存资源槽（slot）来分配Map或Reduce计算任务）</p>
+<h2 id="mapreduce工作流程">MapReduce工作流程</h2>
+<p>主要分为四个阶段 （数据先上传到HDFS） 1）Split：对数据进行分片 -&gt;
+(key, value)；</p>
+<p>2）Map：每个数据分片上启动一个Map计算任务，计算该数据分片的数据；
+(key, value) -&gt; list(out_key, intermediate_value)</p>
+<p>3）Shuffle：对数据进行混排，类似group by； (out_key,
+intermediate_value) -&gt; (out_key, list(intermediate_value))</p>
+<p>（Combine：
+对相同out_key的值提前进行合并，即提前进行本地的Reduce，从而有效减少Shuffle的输出
+Map之后，Shuffle之前进行的本地Reduce操作）</p>
+<p>4）Reduce：对混排后的数据进行聚集、约减 (out_key,
+list(intermediate_value)) -&gt; (out_key, out_value) (其中out_value =
+Agg(list(intermediate_value)) （最终结果HDFS文件系统）</p>
+<p>补充：分区一般分为：范围分区、哈希分区、列表分区
+Shuffle：计算-&gt;溢写（分区、排序、合并（combine））-&gt;合并（多个文件）</p>
+<p>Hadoop+Eclipse/IntelliJ
+IDEA（从而可以在IDE上用Java进行分布式计算应用程序开发，如：WordCount）</p>
+<h2 id="hadoop-mapreduce框架中的数据类型">Hadoop
+MapReduce框架中的数据类型</h2>
+<p>字符串：Text 整型：IntWritable （长整型：LongWritable）
+浮点型：FloatWritable, DoubleWritable 布尔型：BooleanWritable
+空类型：NullWritable</p>
+<p>Writable：需要序列化和反序列化</p>
+<p>序列化：A: object -&gt; byte -&gt; B: object ：反序列化</p>
+<p>如何用Java程序定义Wordcount的map和reduce的输入和输出，即它们的输入输出类型和含义分别是什么？
+map() 输入：&lt;Object row, Text value&gt; 输出：&lt;Text word,
+IntWritable one&gt;</p>
+<p>reduce() 输入：&lt;Text word, List(IntWritable value)&gt;
+输出：&lt;Text word, IntWritable count&gt;</p>
+<h2 id="wordcount部署">Wordcount部署</h2>
+<p>1）编译并打包（可用Eclipse的export打为jar包或命令行模式javac和jar进行编译和打包
+）； （编译需要的Hadoop jar包：hadoop-common-<strong><em>.jar,
+hadoop-mapreduce-core-</em></strong>.jar, commons-cli-**.jar）</p>
+<p>2）运行Hadoop Wordcount程序；（先要将数据上传到HDFS中）
+（运行命令：hadoop jar WordCount.jar WordCount input output）</p>
+<p>3）（到HDFS中）查看结果。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/10/19/5%E3%80%81%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -689,6 +1232,108 @@ mjx-container[display="true"] + br {
 <li>Oracle Data Miner</li>
 <li>SSAS、SSIS、SSRS</li>
 </ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/11/12/4%E3%80%81%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%90%86%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Bizard-Lab">
+      <meta itemprop="description" content="本站立足于大数据、数据仓库、数据挖掘的知识分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大数据浪潮">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/12/4%E3%80%81%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%90%86%E8%AE%BA/" class="post-title-link" itemprop="url">4、云数据库理论</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-12 20:51:49 / 修改时间：21:23:26" itemprop="dateCreated datePublished" datetime="2022-11-12T20:51:49+08:00">2022-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/" itemprop="url" rel="index"><span itemprop="name">Cloud Computing</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud-Computing/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="云数据库理论">云数据库理论</h1>
+<h2 id="云计算">云计算</h2>
+<p>云计算：通过对（硬件、平台、软件）资源的虚拟化提供按需服务。</p>
+<p>IaaS：基础设施即服务，存储、计算、网络等硬件资源通过虚拟化以服务形式提供，关键词：host；
+PaaS：平台即服务，开发平台和操作系统以服务的形式提供，关键词：build；
+SaaS：软件即服务，应用软件以服务形式提供，关键词：consume。</p>
+<h2 id="云数据库的特点">云数据库的特点</h2>
+<p>高可扩展性、高可用性、易用性、易维护、高性能、廉价、安全</p>
+<p>亚马逊云数据库（Database）： SimpleDB：键值数据库云服务
+DynamoDB：键值数据库云服务 RDS（Relational Database
+Service）：关系数据库云服务 ElastiCache：内存缓存云服务</p>
+<p>补充： Amazon 云计算服务AWS： IaaS（内容分发网络，边缘节点）
+Networking：Route 53 Compute：EC2（Elastic Compute Cloud），ELB（Elastic
+Load Balancing） Storage：S3（Simple Storage Service），EBS（Elastic
+Block Storage），Glacier</p>
+<h2 id="google云数据库">Google云数据库</h2>
+<p>Microsoft云数据库： Azure</p>
+<p>UMP（Unified MySQL Platform）：阿里云的云数据库产品 数据库：MySQL
+Mnesia：分布式数据管理系统、支持事务、数据分片管理等
+RabbitMQ：组件间异步消息传递和处理
+Zookeeper：分布式协调管理，例如：集群管理、统一命名服务，状态同步服务、分布式锁
+LVS（Linux Virtual
+Server）：负载均衡（IP负载均衡、内容请求均衡）、请求路由
+Controller：控制服务器，元数据（如集群成员、配置信息、状态信息、路由信息）管理，运行Mnesia
+Proxy：代理服务器，面向用户提供连接管理（认证、配额、转发等）
+Agent：运行在MySQL的节点上，管理MySQL实例（例如：MySQL数据库的创建、删除、备份等）
+愚公系统：基于bin-log分析进行不停机的数据增量复制和迁移
+其它：日志分析、信息统计、Web控制台</p>
+<p>补充： 消息传递：同步消息（面向连接）、异步消息（面向队列（小站？）
+QPS：Queries Per Second，IOPS：I/O Per Second</p>
+<p>全栈贯通技术人才：大数据系统人才、智能计算系统人才</p>
 
       
     </div>
@@ -979,7 +1624,7 @@ maximized;</p></li>
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/09/30/3%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/11/12/3%E3%80%81NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%90%86%E8%AE%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -993,7 +1638,7 @@ maximized;</p></li>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/09/30/3%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">Chapter 03：Data Warehouse and Data Mining</a>
+            <a href="/2022/11/12/3%E3%80%81NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%90%86%E8%AE%BA/" class="post-title-link" itemprop="url">3、NoSQL数据库理论</a>
         </h2>
 
         <div class="post-meta">
@@ -1002,27 +1647,21 @@ maximized;</p></li>
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-09-30 21:24:32" itemprop="dateCreated datePublished" datetime="2022-09-30T21:24:32+08:00">2022-09-30</time>
+              <time title="创建时间：2022-11-12 20:50:29 / 修改时间：21:16:50" itemprop="dateCreated datePublished" datetime="2022-11-12T20:50:29+08:00">2022-11-12</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-14 18:24:47" itemprop="dateModified" datetime="2022-10-14T18:24:47+08:00">2022-10-14</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Warehouse/" itemprop="url" rel="index"><span itemprop="name">Data Warehouse</span></a>
+                  <a href="/categories/Cloud-Computing/" itemprop="url" rel="index"><span itemprop="name">Cloud Computing</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Warehouse/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                  <a href="/categories/Cloud-Computing/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
                 </span>
             </span>
 
@@ -1037,474 +1676,46 @@ maximized;</p></li>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="数据仓库设计与开发">数据仓库设计与开发</h1>
-<h2 id="数据仓库设计">数据仓库设计</h2>
-<h3 id="系统设计差异">系统设计差异</h3>
-<table>
-<thead>
-<tr class="header">
-<th><strong>操作型数据库</strong></th>
-<th><strong>数据仓库</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>面向应用</td>
-<td>面向分析</td>
-</tr>
-<tr class="even">
-<td>确定的应用需求</td>
-<td>不确定的分析需求</td>
-</tr>
-<tr class="odd">
-<td>事务处理性能</td>
-<td>数据的全局一致性</td>
-</tr>
-<tr class="even">
-<td>数据来自组织外部</td>
-<td>数据来自系统内部</td>
-</tr>
-</tbody>
-</table>
-<h3 id="数据仓库设计原则">数据仓库设计原则</h3>
-<p>面向主题原则、数据驱动原则、原型法设计原则</p>
-<h3 id="数据仓库设计步骤">数据仓库设计步骤</h3>
-<p>​ 1、明确主题</p>
-<p>​ 2、概念模型设计</p>
-<p>​ 3、技术准备</p>
-<p>​ 4、逻辑模型设计</p>
-<p>​ 5、物理模型设计</p>
-<p>​ 6、数据仓库生成</p>
-<p>​ 7、数据仓库的运行与维护</p>
-<h3 id="数据仓库设计方法论">数据仓库设计方法论</h3>
-<p>DM（数据集市） --&gt; DW（数据仓库）
-（自底向上）（成本小，收益大）</p>
-<p>DW（数据仓库） --&gt;DM（数据集市）
-（自顶向下）（成本大，收益小）</p>
-<h2 id="数据仓库开发">数据仓库开发</h2>
-<h3 id="数据粒度">数据粒度</h3>
-<p>粒度：数据综合程度高低的一个度量</p>
-<p>粒度越粗，综合程度越高，存储空间越小，回答的查询种类越多，查询效率越高；</p>
-<p>粒度越细，综合程度越低，存储空间越大，回答的查询种类越少，查询效率越低。</p>
-<p>年（粗）--&gt;月--&gt;日（细）</p>
-<h3 id="分割分区">分割（分区）</h3>
-<p>划分方式：水平划分和垂直划分</p>
-<p>分区类别：:</p>
-<ul>
-<li><p>范围分区：按时间分割，按单位分割。（分布式数据库）</p></li>
-<li><p>哈希分区：（polarDB-X数据库）</p></li>
-<li><p>列表分区：按职业、学历分区</p></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/09/30/2%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Bizard-Lab">
-      <meta itemprop="description" content="本站立足于大数据、数据仓库、数据挖掘的知识分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大数据浪潮">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/30/2%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">Chapter 02：Data Warehouse and Data Mining</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-09-30 21:24:32" itemprop="dateCreated datePublished" datetime="2022-09-30T21:24:32+08:00">2022-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-31 12:29:31" itemprop="dateModified" datetime="2022-10-31T12:29:31+08:00">2022-10-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Big-Data/Data-Warehouse/" itemprop="url" rel="index"><span itemprop="name">Data Warehouse</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="数据仓库原理">数据仓库原理</h1>
-<h2 id="数据仓库系统结构">数据仓库系统结构</h2>
-<h3 id="数据库与数据仓库对比">数据库与数据仓库对比</h3>
-<table>
-<thead>
-<tr class="header">
-<th><strong>数据库</strong></th>
-<th><strong>数据仓库</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>细节的</td>
-<td>综合或提炼的</td>
-</tr>
-<tr class="even">
-<td>在存取时准确的</td>
-<td>代表过去的数据</td>
-</tr>
-<tr class="odd">
-<td>可更新的</td>
-<td>不更新</td>
-</tr>
-<tr class="even">
-<td>一次操作数据量小</td>
-<td>一次操作数据量大</td>
-</tr>
-<tr class="odd">
-<td>面向应用</td>
-<td>面向分析</td>
-</tr>
-<tr class="even">
-<td>支持管理</td>
-<td>支持决策</td>
-</tr>
-<tr class="odd">
-<td>用于事务处理</td>
-<td>主要用于分析数据</td>
-</tr>
-</tbody>
-</table>
-<h3 id="数据仓库与数据库的区别">数据仓库与数据库的区别</h3>
-<p>本质上主要为异构和同构的差别</p>
-<p>事务型数据库（操作型）：TP事务处理，以写为主</p>
-<p>分析型数据库：AP分析处理，以读为主</p>
-<h3 id="dwodsdm属性">DW、ODS、DM属性</h3>
-<table>
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 53%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>DW</strong>（数据仓库）（侧重于计算能力）</th>
-<th>ODS（操作型数据存储）（能够实时报表分析）</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>A、面向主题的</td>
-<td>A、面向主题的</td>
-</tr>
-<tr class="even">
-<td>B、集成的</td>
-<td>B、集成的</td>
-</tr>
-<tr class="odd">
-<td>C、时变的</td>
-<td>C、当前的</td>
-</tr>
-<tr class="even">
-<td>D、非易失的/稳定的</td>
-<td>D、易失的</td>
-</tr>
-</tbody>
-</table>
-<h3 id="dm数据集市">DM（数据集市）</h3>
-<p>（Data Mart）</p>
-<p>1、独立的数据集市</p>
-<p>2、从属的数据集市：</p>
-<ul>
-<li><p>面向部门的数据仓库</p></li>
-<li><p>为满足用户特定需求而创建的数据仓库</p></li>
-<li><p>数据仓库的子集</p></li>
-</ul>
-<h3 id="data-lake数据湖">Data Lake（数据湖）</h3>
-<p>（侧重于数据存储能力）</p>
-<p>A、 保存原始的、细节的数据</p>
-<p>B、 结构化数据、非结构化数据均存在（多模态）</p>
-<h3 id="发展趋势">发展趋势</h3>
-<p>1、
-一体化：比如湖仓一体（Lakehouse）：融合了数据湖的存储能力和数据仓库的计算能力</p>
-<p>2、多模态：既能处理关系表数据，也能处理时序数据、图数据</p>
-<p>3、云原生：数据库迁移到云上（提升数据库存储和计算的拓展性）</p>
-<h2 id="数据仓库的数据模型">数据仓库的数据模型</h2>
-<h3 id="数据仓库模型和数据库模型对比">数据仓库模型和数据库模型对比</h3>
-<table>
-<thead>
-<tr class="header">
-<th><strong>数据仓库模型</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>A</strong>、概念模型：分析主题（边界、主题、维度、类别、指标、事实）</td>
-</tr>
-<tr class="even">
-<td><strong>B</strong>、逻辑模型：星型模型、雪花模型、星座模型</td>
-</tr>
-<tr class="odd">
-<td><strong>C</strong>、物理模型：</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th><strong>数据库模型</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>A、</strong>概念模型：ER（实体关系模型）</td>
-</tr>
-<tr class="even">
-<td><strong>B</strong>、逻辑模型：关系模型、网状模型、层次模型</td>
-</tr>
-<tr class="odd">
-<td><strong>C</strong>、物理模型：</td>
-</tr>
-</tbody>
-</table>
-<h3 id="数据仓库模型">数据仓库模型</h3>
-<p>销售分析的概念模型</p>
-<p>信息包： <u>销售分析</u></p>
-<table>
-<colgroup>
-<col style="width: 54%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>日期</th>
-<th>销售地点</th>
-<th>销售产品</th>
-<th>年龄组别</th>
-<th>性别</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>年（10）</td>
-<td>国家（15）</td>
-<td>产品类（6）</td>
-<td>年龄组（8）</td>
-<td>性别组（2）</td>
-</tr>
-<tr class="even">
-<td>季度（40）</td>
-<td>区域（45）</td>
-<td>产品组（48）</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>月（120）</td>
-<td>城市（280）</td>
-<td>产品（240）</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>区（880）</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>商店（2000）</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><strong>度量和事实：</strong>
-<strong>预测销售量、实际销售量、预测误差</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>销售分析的逻辑模型（星型模型）</p>
-<p><img src="../images/DataMining/1.png" /></p>
-<h2 id="数据抽取转换和装载">数据抽取、转换和装载</h2>
-<h3 id="etl">ETL</h3>
-<p>（Extraction、Transformation、Loading）</p>
-<p>数据抽取、数据清洗、数据转换、数据加载、数据更新。</p>
-<p>数据更新：</p>
-<ul>
-<li>全量更新：数据库建立时期</li>
-<li>增量更新：数据库维护</li>
-</ul>
-<h2 id="元数据">元数据</h2>
-<p>用来描述数据的数据，包含业务元数据和技术元数据</p>
-<h2 id="例题">例题</h2>
-<p><img src="../images/DataMining/1-16658031339742.png" /></p>
-<h3 id="销售质量">销售质量</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact;</span><br></pre></td></tr></table></figure>
-<h3 id="不同年份的销售量">不同年份的销售量</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(units_sold) <span class="keyword">from</span> sales_fact</span><br><span class="line"><span class="keyword">join</span> time_dim <span class="keyword">on</span> sales_fact.time_key <span class="operator">=</span> time_dim.time_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_dim.year;</span><br></pre></td></tr></table></figure>
-<h3 id="不同年份不同商品项的销售额">不同年份不同商品项的销售额</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> city <span class="keyword">as</span> 城市,item_names <span class="keyword">as</span> 商品项,<span class="built_in">sum</span>(dollars_sold) <span class="keyword">as</span> 销售额</span><br><span class="line"><span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> geo_dim b</span><br><span class="line"><span class="keyword">on</span> a.location_key <span class="operator">=</span> b.location_key</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> item_dim c</span><br><span class="line"><span class="keyword">on</span> a.item_key <span class="operator">=</span> c.item_key</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> b.city,c.item_name;</span><br></pre></td></tr></table></figure>
-<h3 id="年18月份各月平均销售">2021年1~8月份各月平均销售</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(avg_sales) <span class="keyword">from</span> sales_fact a</span><br><span class="line"><span class="keyword">join</span> time_dim b <span class="keyword">on</span> a.time_key <span class="operator">=</span> b.time_key</span><br><span class="line"><span class="keyword">where</span> mouth <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">and</span> mouth <span class="operator">&lt;=</span> <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/09/30/1%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%A6%82%E8%BF%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Bizard-Lab">
-      <meta itemprop="description" content="本站立足于大数据、数据仓库、数据挖掘的知识分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="大数据浪潮">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/30/1%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">Chapter 01：Data Warehouse and Data Mining</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-09-30 21:24:32" itemprop="dateCreated datePublished" datetime="2022-09-30T21:24:32+08:00">2022-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-31 12:29:19" itemprop="dateModified" datetime="2022-10-31T12:29:19+08:00">2022-10-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Warehouse/" itemprop="url" rel="index"><span itemprop="name">Data Warehouse</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Warehouse/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="数据仓库与数据挖掘概述">数据仓库与数据挖掘概述</h1>
-<h2 id="数据仓库的兴起">数据仓库的兴起</h2>
-<h3 id="数据仓库产生原因">数据仓库产生原因</h3>
-<p>A、 数据的大量积累</p>
-<p>B、 关系数据库的局限（操作型数据库）</p>
-<p>局限：TP（存取频率高、时间短）、AP（消耗资源）特性不同、数据集成度不高、质量问题、数据面向应用而非主题</p>
-<p>C、 异构数据源共享问题（各类数据库产品增加导致异构环境数据增加）</p>
-<h3 id="异构数据源解决方案">异构数据源解决方案</h3>
-<p>一、 数据仓库</p>
-<p><img src="../images/DataMining/image-20221015105608879.png" /></p>
-<p>二、联邦数据库</p>
-<p><img src="../images/DataMining/image-20221015105635006.png" /></p>
-<h3 id="数据仓库与联邦数据库的区别">数据仓库与联邦数据库的区别</h3>
-<p>数据仓库：</p>
-<ul>
-<li>优：查询速度快<br />
-</li>
-<li>缺：空间占用大，安全性一般，实时更新一般</li>
-</ul>
-<p>联邦数据库：</p>
-<ul>
-<li>优：隐私保护性好，空间占用小，实时更新较好</li>
-<li>缺：查询处理复杂，速度慢</li>
-</ul>
-<h2 id="数据仓库的概念">数据仓库的概念</h2>
-<h3 id="数据仓库的特点">数据仓库的特点</h3>
-<p>一个面向主题的、集成的、时变的、非易失的数据集合。</p>
-<p>A、面向主题的：与主题相关的数据导入数据仓库，由异构转换为同构；</p>
-<p>B、集成的：集成的主要方法：</p>
-<ul>
-<li>统一：消除不一致的现象（数据清洗）</li>
-<li>综合：对原有数据进行综合和计算</li>
-</ul>
-<p>C、时变的：数据仓库保存长期的字段、显/隐式时间类型数据、历史数据，而操作型数据库保留当前数据。</p>
-<p>D、非易失的：以读为主，数据相对稳定，一般不执行“更新”操作，主要分析数据。</p>
+          <h1 id="nosql数据库理论">NoSQL数据库理论</h1>
+<h2 id="nosql">NoSQL</h2>
+<p>Not Only SQL</p>
+<p>可扩展性：
+纵向扩展（垂直扩展）：装备升级（成员不增加，提升单位成员的效率）
+横向扩展（水平扩展）：增加更多的成员（装备不一定升级；成员之间通讯增加，算力不是线性增长，近线性增长）</p>
+<p>为什么NoSQL： 1. 计算和存储可扩展性； 2.
+模式（schema）的可自定义；（模式指的是数据库中对象的集合，例如：表、视图、存储过程；元数据，对数据的描述）
+3. Web 2.0下关系数据库的事务、范式等特性可放宽。</p>
+<h2 id="nosql与数据库间的比较">NoSQL与数据库间的比较</h2>
+<ol type="1">
+<li>没有统一的数据模型；</li>
+<li>横向扩展；</li>
+<li>模式定义灵活；</li>
+<li>弱一致性（最终一致性）；</li>
+<li>没有标准的查询语言。</li>
+</ol>
+<h2 id="nosql数据库分类">NoSQL数据库分类</h2>
+<p>键值数据库：Redis、Amazon DynamoDB 列族数据库：HBase、Cassandra
+文档数据库：MongoDB； 图数据库：Neo4J</p>
+<p>自包含（self-contained）：数据和数据的定义在一起，数据与关联的数据也是在一起。（即无其它依赖项。）
+e.g. age:25, name:xiaoming sex:m age:28, name:xiaoli sex:f
+university:kmust</p>
+<h2 id="nosql数据库原理">NoSQL数据库原理</h2>
+<p>CAP：
+一致性（Consistency）：任何一个节点读到（或写到）的某个数据是相同的；
+可用性（Availability）：可快速读到（或写到）数据； 分区容忍性（Partition
+tolerance）：可分区，可容错</p>
+<p>e.g. CA：MySQL、SQL Server CP：HBase、Neo4J、MongoDB
+AP：DynamoDB、Cassandra</p>
+<p>BASE： Basically Avaible：基本可用，允许分布式系统一部分出错 Soft
+state：软状态，允许有一段时间数据是不一致的</p>
+<p>Eventually
+consistent：最终一致性，保证数据最终是一致的（弱一致性的特例）</p>
+<p>给定N（数据副本数）、W（写数据需要完成的节点数）、R（读数据需要完成的节点数）
+强一致性：W+R&gt;N，达到强一致性；e.g.HDFS、HBase
+弱一致性：W+R&lt;=N,达到弱一致性</p>
+<p>事务型应用：OldSQL（传统关系数据库） 互联网应用：NOSQL
+分析型应用：NewSQL（关系模型，强一致性、高可扩展性），e.g. Amazon RDS,
+Micsoft SQL Azure</p>
 
       
     </div>
@@ -1522,6 +1733,9 @@ maximized;</p></li>
 
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1586,20 +1800,20 @@ maximized;</p></li>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

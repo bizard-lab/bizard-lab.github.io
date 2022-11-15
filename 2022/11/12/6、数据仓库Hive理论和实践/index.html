@@ -20,23 +20,21 @@
     var CONFIG = {"hostname":"bizard-lab.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="数据挖掘原理 知识发现过程 知识发现过程定义  知识发现（KDD）：从数据中发现有用知识的整个过程。 数据挖掘（DM） ：KDD过程中的一个特定步骤，它用专门算法从数据中抽取模式。   数据挖掘方法和技术概述 数据挖掘常用技术  关联分析 分类 聚类 人工神经网络等  关联分析 若两个或多个数据项的取值之间重复出现且概率很高时，它就存在某种关联，可以建立起这些数">
+  <meta name="description" content="数据仓库Hive理论和实践 Hive 查询接口，提供SQL -&gt; MapReduce的转换。 Hive依托底层的HDFS进行分布式数据存储、MapReduce进行分布式数据处理或计算。 数据仓库：将异构的来自不同应用的数据源进行抽取、转换、加载到中心数据库，以提供决策分析支持。 数据仓库四大特色：面向主题、集成的、时变的、非易失的。 传统的数据仓库面临的挑战：海量数据、数据类型多">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Chapter 05：Data Warehouse and Data Mining">
-<meta property="og:url" content="https://bizard-lab.github.io/2022/10/19/5%E3%80%81%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:title" content="6、数据仓库Hive理论和实践">
+<meta property="og:url" content="https://bizard-lab.github.io/2022/11/12/6%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93Hive%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="大数据浪潮">
-<meta property="og:description" content="数据挖掘原理 知识发现过程 知识发现过程定义  知识发现（KDD）：从数据中发现有用知识的整个过程。 数据挖掘（DM） ：KDD过程中的一个特定步骤，它用专门算法从数据中抽取模式。   数据挖掘方法和技术概述 数据挖掘常用技术  关联分析 分类 聚类 人工神经网络等  关联分析 若两个或多个数据项的取值之间重复出现且概率很高时，它就存在某种关联，可以建立起这些数">
+<meta property="og:description" content="数据仓库Hive理论和实践 Hive 查询接口，提供SQL -&gt; MapReduce的转换。 Hive依托底层的HDFS进行分布式数据存储、MapReduce进行分布式数据处理或计算。 数据仓库：将异构的来自不同应用的数据源进行抽取、转换、加载到中心数据库，以提供决策分析支持。 数据仓库四大特色：面向主题、集成的、时变的、非易失的。 传统的数据仓库面临的挑战：海量数据、数据类型多">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bizard-lab.github.io/2022/10/19/images/DataMining/image-20221019130231010.png">
-<meta property="article:published_time" content="2022-10-19T04:53:10.000Z">
-<meta property="article:modified_time" content="2022-10-31T04:29:46.752Z">
+<meta property="article:published_time" content="2022-11-12T12:53:32.000Z">
+<meta property="article:modified_time" content="2022-11-12T13:33:23.512Z">
 <meta property="article:author" content="Bizard-Lab">
-<meta property="article:tag" content="Data Warehouse">
 <meta property="article:tag" content="Big Data">
+<meta property="article:tag" content="Cloud Computing">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bizard-lab.github.io/2022/10/19/images/DataMining/image-20221019130231010.png">
 
-<link rel="canonical" href="https://bizard-lab.github.io/2022/10/19/5%E3%80%81%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%8E%9F%E7%90%86/">
+<link rel="canonical" href="https://bizard-lab.github.io/2022/11/12/6%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93Hive%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/">
 
 
 <script id="page-configurations">
@@ -49,7 +47,7 @@
   };
 </script>
 
-  <title>Chapter 05：Data Warehouse and Data Mining | 大数据浪潮</title>
+  <title>6、数据仓库Hive理论和实践 | 大数据浪潮</title>
   
 
 
@@ -200,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/10/19/5%E3%80%81%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%8E%9F%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="https://bizard-lab.github.io/2022/11/12/6%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93Hive%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -213,7 +211,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Chapter 05：Data Warehouse and Data Mining
+          6、数据仓库Hive理论和实践
         </h1>
 
         <div class="post-meta">
@@ -222,27 +220,21 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-10-19 12:53:10" itemprop="dateCreated datePublished" datetime="2022-10-19T12:53:10+08:00">2022-10-19</time>
+              <time title="创建时间：2022-11-12 20:53:32 / 修改时间：21:33:23" itemprop="dateCreated datePublished" datetime="2022-11-12T20:53:32+08:00">2022-11-12</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-31 12:29:46" itemprop="dateModified" datetime="2022-10-31T12:29:46+08:00">2022-10-31</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
+                  <a href="/categories/Cloud-Computing/" itemprop="url" rel="index"><span itemprop="name">Cloud Computing</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Big-Data/Data-Warehouse/" itemprop="url" rel="index"><span itemprop="name">Data Warehouse</span></a>
+                  <a href="/categories/Cloud-Computing/Big-Data/" itemprop="url" rel="index"><span itemprop="name">Big Data</span></a>
                 </span>
             </span>
 
@@ -257,34 +249,47 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="数据挖掘原理">数据挖掘原理</h1>
-<h2 id="知识发现过程">知识发现过程</h2>
-<h3 id="知识发现过程定义">知识发现过程定义</h3>
-<ul>
-<li><p>知识发现（KDD）：从数据中发现有用知识的整个过程。</p></li>
-<li><p>数据挖掘（DM）
-：KDD过程中的一个特定步骤，它用专门算法从数据中抽取模式。</p></li>
-</ul>
-<p><img src="../images/DataMining/image-20221019130231010.png" /></p>
-<h2 id="数据挖掘方法和技术概述">数据挖掘方法和技术概述</h2>
-<h3 id="数据挖掘常用技术">数据挖掘常用技术</h3>
-<ul>
-<li><p>关联分析</p></li>
-<li><p>分类</p></li>
-<li><p>聚类</p></li>
-<li><p>人工神经网络等</p></li>
-</ul>
-<h3 id="关联分析">关联分析</h3>
-<p>若两个或多个数据项的取值之间重复出现且概率很高时，它就存在某种关联，可以建立起这些数据项的关联规则。</p>
-<p>一般用“支持度”和“可信度”两个阈值来淘汰无用的关联规则。</p>
-<h3 id="数据挖掘工具">数据挖掘工具</h3>
-<ul>
-<li>SAS Enterprise Miner</li>
-<li>SPSS Clementine</li>
-<li>IBM Intelligent Miner</li>
-<li>Oracle Data Miner</li>
-<li>SSAS、SSIS、SSRS</li>
-</ul>
+        <h1 id="数据仓库hive理论和实践">数据仓库Hive理论和实践</h1>
+<h2 id="hive">Hive</h2>
+<p>查询接口，提供SQL -&gt; MapReduce的转换。
+Hive依托底层的HDFS进行分布式数据存储、MapReduce进行分布式数据处理或计算。</p>
+<p>数据仓库：将异构的来自不同应用的数据源进行抽取、转换、加载到中心数据库，以提供决策分析支持。</p>
+<p>数据仓库四大特色：面向主题、集成的、时变的、非易失的。</p>
+<p>传统的数据仓库面临的挑战：海量数据、数据类型多样、可扩展性有限</p>
+<h2 id="hive架构">Hive架构</h2>
+<p>Hive访问接口：命令行（CLI）、Web页面（HWI）、开放数据库连接接口（ODBC或JDBC）、Thrift
+Server</p>
+<p>Driver：SQL -&gt; MapReduce</p>
+<p>元数据：MetaStore，存储表的定义等元数据，这些元数据存储在Derby或MySQL等关系数据库中。</p>
+<p>Hive QL（Hive 语句） /etc/init.d/mysqld restart hive</p>
+<p>create database *** ; show databases;</p>
+<p>use database;</p>
+<p>create table [if not exists] ... [partitioned by ...] [row format
+delimited fields terminated by '] location ' '; e.g. create table
+student(id int, name string, age int) row format delimited fields
+terminated by ' location "/data";</p>
+<p>alter table *** add partition (...) location '...';</p>
+<p>show tables;</p>
+<p>load data [local] inpth '' overwrite into table *** ; e.g. load data
+local inpath 'student_data' overwrite into table student;</p>
+<p>insert overwrite table *** select *** from ... ;</p>
+<p>另一个例子（来自https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.3.4/bk_dataintegration/content/new-feature-insert-values-update-delete.html）：
+CREATE TABLE students (name VARCHAR(64), age INT, gpa DECIMAL(3,2))
+CLUSTERED BY (age) INTO 2 BUCKETS STORED AS ORC;</p>
+<p>INSERT INTO TABLE students VALUES ('fred flintstone', 35, 1.28),
+('barney rubble', 32, 2.32);</p>
+<p>CREATE TABLE pageviews (userid VARCHAR(64), link STRING, from STRING)
+PARTITIONED BY (datestamp STRING) CLUSTERED BY (userid) INTO 256 BUCKETS
+STORED AS ORC;</p>
+<p>INSERT INTO TABLE pageviews PARTITION (datestamp = '2014-09-23')
+VALUES ('jsmith', 'mail.com', 'sports.com'), ('jdoe', 'mail.com',
+null);</p>
+<p>INSERT INTO TABLE pageviews PARTITION (datestamp) VALUES ('tjohnson',
+'sports.com', 'finance.com', '2014-09-23'), ('tlee', 'finance.com',
+null, '2014-09-21');</p>
+<p>echo ... &gt; file.txt e.g. echo "Hello Hadoop!" &gt; westart.txt ...
+echo "Bye Hadoop!" &gt; wecomplete.txt</p>
+<p>hope every guy enjoys our special time ...</p>
 
     </div>
 
@@ -295,8 +300,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/Data-Warehouse/" rel="tag"><i class="fa fa-tag"></i> Data Warehouse</a>
               <a href="/tags/Big-Data/" rel="tag"><i class="fa fa-tag"></i> Big Data</a>
+              <a href="/tags/Cloud-Computing/" rel="tag"><i class="fa fa-tag"></i> Cloud Computing</a>
           </div>
 
         
@@ -305,12 +310,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/09/30/1%E3%80%81%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%A6%82%E8%BF%B0/" rel="prev" title="Chapter 01：Data Warehouse and Data Mining">
-      <i class="fa fa-chevron-left"></i> Chapter 01：Data Warehouse and Data Mining
+    <a href="/2022/11/12/5%E3%80%81MapReduce/" rel="prev" title="5、MapReduce">
+      <i class="fa fa-chevron-left"></i> 5、MapReduce
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/10/19/6%E3%80%81%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99/" rel="next" title="Chapter 06：Data Warehouse and Data Mining">
-      Chapter 06：Data Warehouse and Data Mining <i class="fa fa-chevron-right"></i>
+    <a href="/2022/11/12/7%E3%80%81%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A5%E5%85%85lecture/" rel="next" title="7、大数据补充lecture">
+      7、大数据补充lecture <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -370,7 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">数据挖掘原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%8F%91%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">知识发现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%8F%91%E7%8E%B0%E8%BF%87%E7%A8%8B%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">知识发现过程定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%96%B9%E6%B3%95%E5%92%8C%E6%8A%80%E6%9C%AF%E6%A6%82%E8%BF%B0"><span class="nav-number">1.2.</span> <span class="nav-text">数据挖掘方法和技术概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%B8%B8%E7%94%A8%E6%8A%80%E6%9C%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据挖掘常用技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E5%88%86%E6%9E%90"><span class="nav-number">1.2.2.</span> <span class="nav-text">关联分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据挖掘工具</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93hive%E7%90%86%E8%AE%BA%E5%92%8C%E5%AE%9E%E8%B7%B5"><span class="nav-number">1.</span> <span class="nav-text">数据仓库Hive理论和实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hive"><span class="nav-number">1.1.</span> <span class="nav-text">Hive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hive%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">Hive架构</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
