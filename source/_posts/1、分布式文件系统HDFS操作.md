@@ -3,11 +3,11 @@ title: 1、分布式文件系统HDFS操作
 date: 2022-11-12 20:40:01
 top: 1
 tags:
-- Cloud Computing
 - Big Data
+- Cloud Computing
 categories:
-- Cloud Computing
 - Big Data
+- Cloud Computing
 ---
 
 # 分布式文件系统HDFS操作

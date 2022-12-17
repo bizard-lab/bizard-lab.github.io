@@ -3,11 +3,11 @@ title: 7、大数据补充lecture
 date: 2022-11-12 20:55:08
 top: 7
 tags:
-- Cloud Computing
 - Big Data
+- Cloud Computing
 categories:
-- Cloud Computing
 - Big Data
+- Cloud Computing
 ---
 
 # 大数据补充
@@ -80,10 +80,10 @@ BigTable：Google半结构/结构化数据分布式存储
 1. 高扩展性：横向扩展（增加单机数量），传统的小型机等纵向扩展（增强单机性能）
 
 2. 高容错性：三副本机制，热点数据请求卸载（offload）
-  传统并行分布式计算技术MPI（消息传递机制）
+    传统并行分布式计算技术MPI（消息传递机制）
 
 3. 高易用性：提供了分布式存储和计算框架，将通用的分布式存储和计算任务（e.g.  不同节点的通讯、任务或数据的划分、任务或数据的容错处理）进行实现，
-  用户主要实现Map和Reduce函数
+    用户主要实现Map和Reduce函数
 
 
 

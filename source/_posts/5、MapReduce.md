@@ -3,11 +3,11 @@ title: 5、MapReduce
 date: 2022-11-12 20:52:23
 top: 5
 tags:
-- Cloud Computing
 - Big Data
+- Cloud Computing
 categories:
-- Cloud Computing
 - Big Data
+- Cloud Computing
 ---
 
 # MapReduce
