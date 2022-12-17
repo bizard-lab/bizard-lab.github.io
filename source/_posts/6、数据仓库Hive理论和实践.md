@@ -4,10 +4,10 @@ date: 2022-11-12 20:53:32
 top: 6
 tags:
 - Big Data
-- Cloud Computing
+
 categories:
 - Big Data
-- Cloud Computing
+
 ---
 
 # 数据仓库Hive理论和实践

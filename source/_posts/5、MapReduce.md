@@ -4,10 +4,10 @@ date: 2022-11-12 20:52:23
 top: 5
 tags:
 - Big Data
-- Cloud Computing
+
 categories:
 - Big Data
-- Cloud Computing
+
 ---
 
 # MapReduce
