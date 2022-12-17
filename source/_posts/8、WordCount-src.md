@@ -6,7 +6,6 @@ tags:
 - Big Data
 categories:
 - Big Data
-
 ---
 
 ```
